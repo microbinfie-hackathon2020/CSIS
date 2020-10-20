@@ -12,7 +12,7 @@ We are adding basic unit tests for bioinformatics software here using the GitHub
 
 # Contributing
 
-Please see [CONTRIBUTIONS.md](CONTRIBUTIONS.md)
+Please see [CONTRIBUTING.md](CONTRIBUTING.md)
 
 # Etymology
 
