@@ -31,6 +31,9 @@ jobs:
       - name: test prokka
         run: |
          export PATH=$PATH:$GITHUB_WORKSPACE/prokka/bin
+         export PATH=$PATH:$GITHUB_WORKSPACE/prokka/binaries/linux
+         ls -lhS $GITHUB_WORKSPACE/prokka/bin
+         chmod -v +x $GITHUB_WORKSPACE/prokka/bin/prokka
          cd $GITHUB_WORKSPACE/prokka
          "prokka --version"
          "prokka --help"
