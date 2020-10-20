@@ -28,13 +28,14 @@ jobs:
           path: prokka
       - name: directory structure
         run: tree -d $GITHUB_WORKSPACE
+      - name: ls bin dir
+        run: ls -lh $GITHUB_WORKSPACE/prokka/bin $GITHUB_WORKSPACE/prokka/binaries/linux
       - name: test prokka
         run: |
          export PATH=$PATH:$GITHUB_WORKSPACE/prokka/bin
          export PATH=$PATH:$GITHUB_WORKSPACE/prokka/binaries/linux
-         ls -lhS $GITHUB_WORKSPACE/prokka/bin
-         chmod -v +x $GITHUB_WORKSPACE/prokka/bin/prokka
          cd $GITHUB_WORKSPACE/prokka
+         which prokka
          "prokka --version"
          "prokka --help"
          "! prokka --doesnotexist"
