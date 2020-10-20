@@ -10,6 +10,11 @@ We are adding basic unit tests for bioinformatics software here using the GitHub
 
 ## Long story
 
+# Current software
+
+* ![CSIS](https://github.com/lskatz/CSIS/workflows/CSIS/badge.svg)
+* ![prokka](https://github.com/lskatz/CSIS/workflows/prokka/badge.svg)
+
 # Contributing
 
 Please see [CONTRIBUTING.md](CONTRIBUTING.md)
