@@ -1,5 +1,5 @@
 # CSIS
-:female-detective: Code Safety Inspection Service
+:detective: Code Safety Inspection Service
 
 ## In short
 
