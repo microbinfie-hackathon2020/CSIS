@@ -36,13 +36,13 @@ jobs:
          export PATH=$PATH:$GITHUB_WORKSPACE/prokka/binaries/linux
          cd $GITHUB_WORKSPACE/prokka
          which prokka
-         "prokka --version"
-         "prokka --help"
-         "! prokka --doesnotexist"
-         "prokka --depends"
-         "prokka --setupdb"
-         "prokka --listdb"
-         "prokka --cpus 2 --outdir asm --prefix asm test/plasmid.fna"
-         "grep '>' asm/asm.fna"
-         "prokka --cleandb"
+         prokka --version
+         prokka --help
+         ! prokka --doesnotexist
+         prokka --depends
+         prokka --setupdb
+         prokka --listdb
+         prokka --cpus 2 --outdir asm --prefix asm test/plasmid.fna
+         grep '>' asm/asm.fna
+         prokka --cleandb
          
