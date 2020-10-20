@@ -20,7 +20,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: apt
-        run:  sudo apt-get install tree libdb-dev libbio-perl-perl libxml-simple-perl ncbi-blast+
+        run:  sudo apt-get install tree libdb-dev libbio-perl-perl libxml-simple-perl tbl2asn
       # Checks-out prokka under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
         with:
@@ -36,6 +36,7 @@ jobs:
          export PATH=$PATH:$GITHUB_WORKSPACE/prokka/binaries/linux
          cd $GITHUB_WORKSPACE/prokka
          which prokka
+         which makeblastdb
          prokka --version
          prokka --help
          ! prokka --doesnotexist
