@@ -16,6 +16,7 @@ When changes are done, create a pull request with the dev branch.
 1. See if running the command with `--version` gives a version number and exits with 0
 2. See if running the command with `--help` gives a usage with stdout and exits with 0
 3. Run the most basic command and compare it with a simple expected value.
+4. More ideas can be found in this publication: https://academic.oup.com/gigascience/article/2/1/2047-217X-2-15/2656133
 
 ## Documentation
 
