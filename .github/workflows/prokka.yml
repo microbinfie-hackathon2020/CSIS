@@ -20,7 +20,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: apt
-        run:  sudo apt-get install tree
+        run:  sudo apt-get install tree libdb-dev libbio-perl-perl libxml-simple-perl
       # Checks-out prokka under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
         with:
