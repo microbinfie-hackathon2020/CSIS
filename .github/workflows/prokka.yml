@@ -26,10 +26,12 @@ jobs:
         with:
           repository: tseemann/prokka
           path: prokka
+      - name: directory structure
+        run: tree -d $GITHUB_WORKSPACE
       - name: test prokka
         run: |
-         export PATH=$PATH:$(pwd)/prokka/bin
-         cd prokka
+         export PATH=$PATH:$GITHUB_WORKSPACE/prokka/bin
+         cd $GITHUB_WORKSPACE/prokka
          "prokka --version"
          "prokka --help"
          "! prokka --doesnotexist"
