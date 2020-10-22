@@ -31,6 +31,7 @@ jobs:
         ./setup.py install
     - name: test 1
       run: |
+        wget quast.sf.net/test_data.tar.gz && tar xzf test_data.tar.gz
         tree test_data
         which quast.py
         quast.py --test
