@@ -19,6 +19,8 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: ${{ matrix.python-version }}
+    - name: apt
+      run: sudo apt-get install tree
     - uses: actions/checkout@v2
       with:
         repository: ablab/quast
@@ -29,6 +31,6 @@ jobs:
         ./setup.py install
     - name: test 1
       run: |
+        tree test_data
         which quast.py
-        quast.py test_data/contigs_1.fasta
         quast.py --test
