@@ -23,14 +23,13 @@ jobs:
       with:
         repository: ablab/quast
         path: quast
-    - name: apt and tree
-      run: |
-        sudo apt-get install tree
-        tree -d $GITHUB_WORKSPACE
+    - name: apt
+      run: sudo apt-get install tree
     - name: Install quast
       run: |
         cd $GITHUB_WORKSPACE/quast
         ./setup.py install
     - name: test 1
       run: |
+        tree -d .
         ./quast.py test_data/contigs_1.fasta
