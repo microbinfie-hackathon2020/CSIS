@@ -20,7 +20,9 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
     - name: apt
-      run: sudo apt-get install tree
+      run: |
+        sudo apt-get install tree
+        sudo apt-get update && sudo apt-get install -y pkg-config libfreetype6-dev libpng-dev python-matplotlib
     - uses: actions/checkout@v2
       with:
         repository: ablab/quast
@@ -34,4 +36,4 @@ jobs:
         wget quast.sf.net/test_data.tar.gz && tar xzf test_data.tar.gz
         tree test_data
         which quast.py
-        quast.py --test
+        quast.py --threads 1 --test
