@@ -8,6 +8,12 @@ Without unit testing, it is difficult to ensure which bioinformatics software is
  or which bioinformatics software adheres to basic standards.
 We are adding basic unit tests for bioinformatics software here using the GitHub Actions platform.
 
+# Current software
+
+* ![CSIS](https://github.com/lskatz/CSIS/workflows/CSIS/badge.svg)
+* ![prokka](https://github.com/lskatz/CSIS/workflows/prokka/badge.svg)
+* ![quast](https://github.com/lskatz/CSIS/workflows/quast/badge.svg)
+
 ## Long story
 
 ### Why is this useful?
@@ -28,12 +34,6 @@ For test ideas and examples using Prokka and Quast, see [EXAMPLES.md](EXAMPLES.m
 * This is a process that can be crowdsourced well. 
 * Participants learn valuable skills that can be brought back to their own projects. 
 * Early warning system for software that is breaking
-
-# Current software
-
-* ![CSIS](https://github.com/lskatz/CSIS/workflows/CSIS/badge.svg)
-* ![prokka](https://github.com/lskatz/CSIS/workflows/prokka/badge.svg)
-* ![quast](https://github.com/lskatz/CSIS/workflows/quast/badge.svg)
 
 # Contributing
 
