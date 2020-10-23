@@ -24,7 +24,10 @@ For test ideas and examples using Prokka and Quast, see [EXAMPLES.md](EXAMPLES.m
 
 ### Why is this a cool idea for a hackathon?
 
-Multiple widely-used tools could benefit from automated testing, and this is a process that can be crowdsourced well. Additionally, participants learn valuable skills that can be brought back to their own projects. 
+* Multiple widely-used tools could benefit from automated testing.
+* This is a process that can be crowdsourced well. 
+* Participants learn valuable skills that can be brought back to their own projects. 
+* Early warning system for software that is breaking
 
 # Current software
 
