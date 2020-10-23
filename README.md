@@ -20,7 +20,7 @@ GitHub Actions offers automated testing of code, which get triggered by certain 
 
 For more information on GitHub Actions, see [the documentation](https://docs.github.com/en/free-pro-team@latest/actions).
 
-For test ideas and an example using Prokka, see [CONTRIBUTING.md](CONTRIBUTING.md).
+For test ideas and examples using Prokka and Quast, see [EXAMPLES.md](EXAMPLES.md).
 
 ### Why is this a cool idea for a hackathon?
 
@@ -30,6 +30,7 @@ Multiple widely-used tools could benefit from automated testing, and this is a p
 
 * ![CSIS](https://github.com/lskatz/CSIS/workflows/CSIS/badge.svg)
 * ![prokka](https://github.com/lskatz/CSIS/workflows/prokka/badge.svg)
+* ![quast](https://github.com/lskatz/CSIS/workflows/quast/badge.svg)
 
 # Contributing
 

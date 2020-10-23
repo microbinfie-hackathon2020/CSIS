@@ -1,0 +1,38 @@
+name: quast
+
+on:
+  push:
+    branches: [ main, dev ]
+  pull_request:
+    branches: [ main, dev ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.5, 3.6, 3.7, 3.8]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: apt
+      run: |
+        sudo apt-get install tree
+    - uses: actions/checkout@v2
+      with:
+        repository: ablab/quast
+        path: quast
+    - name: Install quast
+      run: |
+        cd $GITHUB_WORKSPACE/quast
+        ./setup.py install
+    - name: test 1
+      run: |
+        wget quast.sf.net/test_data.tar.gz && tar xzf test_data.tar.gz
+        tree test_data
+        which quast.py
+        quast.py --threads 1 --test
