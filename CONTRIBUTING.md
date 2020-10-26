@@ -10,7 +10,7 @@ Your team can create a workflow in the `.github/workflows` folder.
 It needs to be a file with extension `.yml`.
 It should be named after the software being tested.
 The `name` parameter in the file needs to be named after the software too.
-Structure of the workflow is described [here](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions).
+Structure of the workflow is described [here](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions). Some examples can be found in [EXAMPLES](EXAMPLES.md)
 
 Please fork the repo, create a separate branch in your repo.
 Make changes.
