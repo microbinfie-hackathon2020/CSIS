@@ -1,8 +1,12 @@
 # CONTRIBUTING
 
+## Teams
+
+We plan to subdivide participants into small teams to stimulate interaction. These teams will be of mixed experience and work together to introduce automated tests to as many tools as possible.
+
 ## Workflows
 
-You can create a workflow in the `.github/workflows` folder.
+Your team can create a workflow in the `.github/workflows` folder.
 It needs to be a file with extension `.yml`.
 It should be named after the software being tested.
 The `name` parameter in the file needs to be named after the software too.
@@ -24,7 +28,3 @@ When changes are done, create a pull request from your new branch with the dev b
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](code_of_conduct.md)
 
 To stimulate a positive environment for all contributors, we have adopted v2.0 of the Contributor Covenant: https://www.contributor-covenant.org/version/2/0/code_of_conduct/.
-
-## Documentation
-
-Making the documentation on this page more clear would be very helpful!
