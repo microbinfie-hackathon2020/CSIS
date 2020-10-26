@@ -10,7 +10,7 @@ Structure of the workflow is described [here](https://docs.github.com/en/free-pr
 
 Please fork the repo, create a separate branch in your repo.
 Make changes.
-When changes are done, create a pull request with the dev branch.
+When changes are done, create a pull request from your new branch with the dev branch on this repo.
 
 ### Basic test ideas
 
