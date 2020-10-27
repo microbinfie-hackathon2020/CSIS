@@ -1,9 +1,5 @@
 # CONTRIBUTING
 
-## Teams
-
-We plan to subdivide participants into small teams to stimulate interaction. These teams will be of mixed experience and work together to introduce automated tests to as many tools as possible. Preferably every participant would have a GitHub account to work with GitHub Actions.
-
 ## Workflows
 
 Your team can create a workflow in the `.github/workflows` folder.
@@ -23,8 +19,12 @@ When changes are done, create a pull request from your new branch with the dev b
 3. Run the most basic command and compare it with a simple expected value.
 4. More ideas can be found in this publication: https://academic.oup.com/gigascience/article/2/1/2047-217X-2-15/2656133
 
-# Code of conduct
+## Code of conduct
 
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](code_of_conduct.md)
 
 To stimulate a positive environment for all contributors, we have adopted v2.0 of the Contributor Covenant: https://www.contributor-covenant.org/version/2/0/code_of_conduct/.
+
+## Practicalities
+
+Please see [HACKATHON.md](HACKATHON.md).
