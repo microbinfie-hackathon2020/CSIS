@@ -15,7 +15,7 @@ If you need a primer, here are [instructions](https://docs.github.com/en/free-pr
 Name                | GitHub profile                       | What knowledge I bring to the group
 --------------------|--------------------------------------|------------------------------------
 Lee Katz            | [lskatz](https://github.com/lskatz)  | GitHub actions, yaml, unit testing
-Boas van der Putten | [boasvdp](https://github.com/boasvdp)| GitHub actions, yaml, species-specific knowledge (_Streptococcus suis_)
+Boas van der Putten | [boasvdp](https://github.com/boasvdp)| GitHub actions, yaml, species-specific knowledge (_Escherichia coli_)
 
 ### Team 1
 
