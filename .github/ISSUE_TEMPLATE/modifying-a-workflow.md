@@ -3,7 +3,7 @@ name: Modifying a workflow
 about: Modify a workflow
 title: "[WORKFLOW MODIFICATION]"
 labels: ''
-assignees: lskatz
+assignees: lskatz, boasvdp
 
 ---
 

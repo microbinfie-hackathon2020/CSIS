@@ -3,7 +3,7 @@ name: Workflow contribution
 about: Contribute a new workflow for unit testing
 title: "[NEW WORKFLOW]"
 labels: New workflow
-assignees: lskatz
+assignees: lskatz, boasvdp
 
 ---
 

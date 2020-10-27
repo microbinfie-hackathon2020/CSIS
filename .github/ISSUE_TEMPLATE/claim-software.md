@@ -3,7 +3,7 @@ name: Claim software (do this first!)
 about: Tell us that you are working on unit testing for some software
 title: "[CLAIM]"
 labels: Claim
-assignees: lskatz
+assignees: lskatz, boasvdp
 
 ---
 
