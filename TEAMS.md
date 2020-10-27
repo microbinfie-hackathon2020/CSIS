@@ -4,7 +4,7 @@
 
 Please fill out the table to join a team.
 Include a link to your github username.
-Under your GitHub username, please also have a basic introduction.  
+Under your GitHub username, please also have a basic introduction.
 If you need a primer, here are [instructions](https://docs.github.com/en/free-pro-team@latest/github/setting-up-and-managing-your-github-profile/about-your-profile).
 
 ### Example team
