@@ -12,3 +12,6 @@ Provide a name and URL
 
 **Which team is working on it?**  
 State your team name here
+
+**Is any other team working on it?**  
+Tell us that you made sure that no one else has claimed this software.
