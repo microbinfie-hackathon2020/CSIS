@@ -9,8 +9,8 @@ If you need a primer, here are [instructions](https://docs.github.com/en/free-pr
 
 ### Example team
 
-Main time zone: Eastern (UTC -5)
-Goal: unit testing QUAST
+* Main time zone: Eastern (UTC -5)
+* Goal: unit testing QUAST
 
 Name                | GitHub profile                       | What knowledge I bring to the group
 --------------------|--------------------------------------|------------------------------------
