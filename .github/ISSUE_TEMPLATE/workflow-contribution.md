@@ -7,7 +7,7 @@ assignees: lskatz
 
 ---
 
-**What is the software**
+**What is the software**  
 Provide a name and a URL to the software
 
 **The claim**  
