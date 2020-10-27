@@ -24,12 +24,14 @@ The main program will be in Eastern Standard Time, but individual groups can wor
 
 _Times are in Eastern Time to coincide with ASM NGS_
 
-* 9am Orientation - the hackathon concept, Zoom, Discord (Lee Katz)
-* 9:30am Go through an example (Boas van der Putten)
-* 10am Team formation, network with team members (via Discord)
-* 10:30am Record team names and team members on `TEAMS.md`
-* 11am Individual team discussions and logistics
-* 12pm close
+| time   | what | presentor |
+|--------|------|-----------|
+| 9am    | Orientation - the hackathon concept, Zoom, Discord | Lee Katz |
+| 9:30am | Go through an example | Boas van der Putten |
+| 10am   | Team formation, network with team members, choose team captain, choose software for unit testing | via Discord |
+| 10:30am| Record team names and team members on `TEAMS.md` | Individual groups |
+| 11am   | Individual team discussions and logistics | Discord |
+| 12pm   | close | - |
 
 After hours: contact Lee Katz and Boas van der Putten
 * New team formation
@@ -42,10 +44,12 @@ After hours: contact Lee Katz and Boas van der Putten
 
 _Times are in Eastern Time to coincide with ASM NGS_
 
-* 9am To be determined (TBD)
-* 10am TBD
-* 11am TBD
-* 12pm Happy hour
+| time   | what | presentor |
+|--------|------|-----------|
+| 9am    | To be determined (TBD) | - |
+| 10am   | TBD | - |
+| 11am   | TBD | - |
+| 12pm   | Happy hour | - |
 
 ### December 4th
 
@@ -53,10 +57,12 @@ _Times are in Eastern Time to coincide with ASM NGS_
 
 _Times are in Eastern Time to coincide with ASM NGS_
 
-* 9am Overview of contributions (Lee Katz)
-* 9:30am Presentations (5 min for presentation + 5 min for challenges faced)
-* 11am To be determined (TBD)
-* 12pm Happy hour
+| time   | what | presentor |
+|--------|------|-----------|
+| 9am    | Overview of contributions | Lee Katz |
+| 9:30am | Presentations (5 min for presentation + 5 min for challenges faced) | Team captains |
+| 11am   | To be determined (TBD) | - |
+| 12pm   | Happy hour | - |
 
 ## Teams
 
