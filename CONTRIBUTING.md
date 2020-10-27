@@ -14,6 +14,8 @@ Please fork the repo, create a separate branch in your repo.
 Make changes.
 When changes are done, create a pull request from your new branch with the dev branch on this repo.
 
+From time to time, the owners of this repo will merge the dev branch with the main branch.
+
 Please see [Read Git Flow](https://leanpub.com/git-flow/read#leanpub-auto-git-flow-example) for more information,
 or also please see this depiction for our workflow: https://leanpub.com/site_images/git-flow/git-flow-nvie.png
 
