@@ -17,7 +17,7 @@ When changes are done, create a pull request from your new branch with the dev b
 From time to time, the owners of this repo will merge the dev branch with the main branch.
 
 Please see [Read Git Flow](https://leanpub.com/git-flow/read#leanpub-auto-git-flow-example) for more information,
-or also please see this depiction for our workflow: https://leanpub.com/site_images/git-flow/git-flow-nvie.png
+or also please see this depiction for our workflow: https://leanpub.com/site_images/git-flow/git-workflow-release-cycle-3release.png
 
 ### Basic test ideas
 
@@ -40,4 +40,4 @@ Please see [HACKATHON.md](HACKATHON.md).
 
 ## Git flow depiction
 
-![Git flow](https://leanpub.com/site_images/git-flow/git-flow-nvie.png)
+![Git flow](https://leanpub.com/site_images/git-flow/git-workflow-release-cycle-3release.png)
