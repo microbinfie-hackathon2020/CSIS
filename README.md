@@ -12,9 +12,9 @@ We are adding basic unit tests for bioinformatics software here using the GitHub
 
 | Software | badge with link to CI | yaml |
 |----------|-----------------------|------|
-| This repo| [![CSIS](https://github.com/lskatz/CSIS/workflows/CSIS/badge.svg)](https://github.com/lskatz/CSIS/actions?query=workflow%3ACSIS) | [CSIS.yml](/.github/workflow/CSIS.yml) |
-| Prokka   | [![prokka](https://github.com/lskatz/CSIS/workflows/prokka/badge.svg)](https://github.com/lskatz/CSIS/actions?query=workflow%3Aprokka) | [prokka.yml](/.github/workflow/prokka.yml) |
-| Quast    | [![quast](https://github.com/lskatz/CSIS/workflows/quast/badge.svg)](https://github.com/lskatz/CSIS/actions?query=workflow%3Aquast) | [quast.yml](./github/workflow/quast.yml) |
+| This repo| [![CSIS](https://github.com/lskatz/CSIS/workflows/CSIS/badge.svg)](https://github.com/lskatz/CSIS/actions?query=workflow%3ACSIS) | [CSIS.yml](/.github/workflows/CSIS.yml) |
+| Prokka   | [![prokka](https://github.com/lskatz/CSIS/workflows/prokka/badge.svg)](https://github.com/lskatz/CSIS/actions?query=workflow%3Aprokka) | [prokka.yml](/.github/workflows/prokka.yml) |
+| Quast    | [![quast](https://github.com/lskatz/CSIS/workflows/quast/badge.svg)](https://github.com/lskatz/CSIS/actions?query=workflow%3Aquast) | [quast.yml](./github/workflows/quast.yml) |
 
 ## Long story
 
