@@ -19,6 +19,11 @@ From time to time, the owners of this repo will merge the dev branch with the ma
 Please see [Read Git Flow](https://leanpub.com/git-flow/read#leanpub-auto-git-flow-example) for more information,
 or also please see this depiction for our workflow: https://leanpub.com/site_images/git-flow/git-workflow-release-cycle-3release.png
 
+**Important:** in the basic templates, triggering tests on push events is switched off by default (e.g. lines 8 and 9 in `prokka.yaml`).
+The reason is that if you are working on a Quast test in your fork, you don't want to trigger a Prokka test every time you push to your fork.
+However, keep in mind that when starting the development of a new test, you need to activate triggering tests on push by uncommenting these lines.
+We will explain this in the examples we will present and if anything's unclear, don't hesitate to ask Lee or Boas.
+
 ### Basic test ideas
 
 _These are ideas and are not mandatory_

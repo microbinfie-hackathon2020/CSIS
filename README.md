@@ -46,6 +46,18 @@ For test ideas and examples using Prokka and Quast, see [EXAMPLES.md](EXAMPLES.m
 * Participants learn valuable skills that can be brought back to their own projects. 
 * Early warning system for software that is breaking
 
+### Why GitHub Actions?
+
+There are many continuous integration (CI) platforms available.
+Examples include CircleCI, Travis, Galaxy's Planemo or Jenkins.
+While many of these platforms offer the same or highly similar functionalities, GitHub Actions offers a couple of advantages:
+
+1. Actions fully integrates with GitHub
+2. Actions is completely free for public repositories, including running builds and tests on GitHub servers
+3. Actions provides many premade configurations on Marketplace
+
+Based on these characteristics, we think that GitHub Actions is a great way to learn CI and unit testing.
+
 # Contributing
 
 Please see [CONTRIBUTING.md](CONTRIBUTING.md)
