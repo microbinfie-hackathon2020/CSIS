@@ -81,3 +81,15 @@ Each team will have a channel, named after their team.
 Although Discord is encouraged, each team can decide if there is a different platform that they would like to set up for themselves.
 * To communicate new pull requests, please start with a new issue in GitHub.
 * The hackathon itself will be held over Zoom.
+
+## Why GitHub Actions?
+
+There are many continuous integration (CI) platforms available.
+Examples include CircleCI, Travis, Galaxy's Planemo or Jenkins.
+While many of these platforms offer the same or highly similar functionalities, GitHub Actions offers a couple of advantages:
+
+1. Actions fully integrates with GitHub
+2. Actions is completely free for public repositories, including running builds and tests on GitHub servers
+3. Actions provides many premade configurations on Marketplace
+
+Based on these characteristics, we think that GitHub Actions is a great way to learn CI and unit testing.
