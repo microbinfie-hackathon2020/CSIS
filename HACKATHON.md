@@ -10,6 +10,10 @@
 
 ## Program
 
+### At a glance
+
+* Register at https://forms.gle/rSSkQZv3pZXEAh3a7
+
 **NB: This is a tentative planning and might be subject to change.**
 
 Tentative dates: December 2nd to 4th (Wed-Fri), 2020. ASM NGS will take place from 7 to 11 December (Mon-Fri).
@@ -71,14 +75,17 @@ To stimulate interaction, we will subdivide participants into teams of 3-4 peopl
 Ideally, these teams will cover different levels of experience with Git, GitHub Actions, and software testing.
 This way, every team can contribute to testing software.
 
-To register your team, please edit and submit a pull request to [TEAMS.md](/TEAMS.md)
+To register your team, please edit and submit a pull request to [TEAMS.md](/TEAMS.md) according to the [contribution etiquette](/CONTRIBUTING.md#pull-request-etiquette).
 
 ## Communication
 
 All links to Discord and Zoom will be emailed separately to help avoid "Zoom bombing."
+
+To register, please go to https://forms.gle/rSSkQZv3pZXEAh3a7
 
 * We will use a Discord server, to be determined.
 Each team will have a channel, named after their team.
 Although Discord is encouraged, each team can decide if there is a different platform that they would like to set up for themselves.
 * To communicate new pull requests, please start with a new issue in GitHub.
 * The hackathon itself will be held over Zoom.
+
