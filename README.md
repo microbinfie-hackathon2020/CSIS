@@ -58,6 +58,7 @@ While many of these platforms offer the same or highly similar functionalities, 
 
 Based on these characteristics, we think that GitHub Actions is a great way to learn CI and unit testing.
 
+=======
 # Contributing
 
 Please see [CONTRIBUTING.md](CONTRIBUTING.md)
