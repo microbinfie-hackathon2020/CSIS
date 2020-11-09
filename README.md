@@ -62,6 +62,8 @@ Based on these characteristics, we think that GitHub Actions is a great way to l
 
 Please see [CONTRIBUTING.md](CONTRIBUTING.md)
 
+Register your team at [TEAMS.md](TEAMS.md)
+
 # Practicalities
 
 Please see [HACKATHON.md](HACKATHON.md) for information on the teams, schedule, communication and other practicalities.
