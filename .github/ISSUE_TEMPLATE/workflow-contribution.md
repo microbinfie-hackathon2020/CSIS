@@ -8,7 +8,7 @@ assignees: lskatz, boasvdp
 ---
 
 **What is the software**  
-Provide a name and a URL to the software
+Provide a name and a URL to the software, preferably with the specific version you've tested
 
 **The claim**  
 Provide a link to where you claimed this software in Issues.
