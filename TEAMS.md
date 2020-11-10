@@ -24,4 +24,4 @@ Boas van der Putten | [boasvdp](https://github.com/boasvdp)| GitHub actions, yam
 ### Team "doesn't grok unit tests"
 Name                | GitHub profile                            | What knowledge I bring to the group
 --------------------|-------------------------------------------|------------------------------------
-Justin Payne        | [crashfrog](https://github.com/crashfrog) | Python, cloud, semver, Hypothesis framework for unit testing
+Justin Payne        | [crashfrog](https://github.com/crashfrog) | Python, cloud, semver, Hypothesis framework for unit testing in Python
