@@ -51,7 +51,7 @@ _Times are in Eastern Time to coincide with ASM NGS_
 | time   | what | presentor |
 |--------|------|-----------|
 | 9am    | Day 2 introduction | Boas van der Putten |
-| 9:15am | Keynote | TBD |
+| 9:15am | Keynote: _The why and the how of testing scientific software_  | Luis Pedro Coelho |
 | 10am | Team updates | team captains |
 | 11:30am| Closeout | Lee Katz |
 | 12pm   | Happy hour (?) | - |
