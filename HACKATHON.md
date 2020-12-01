@@ -54,7 +54,6 @@ _Times are in Eastern Time to coincide with ASM NGS_
 | 9:15am | Keynote: _The why and the how of testing scientific software_  | Luis Pedro Coelho |
 | 10am | Team updates | team captains |
 | 11:30am| Closeout | Lee Katz |
-| 12pm   | Happy hour (?) | - |
 
 ### December 4th
 
@@ -67,7 +66,7 @@ _Times are in Eastern Time to coincide with ASM NGS_
 | 9am    | Overview of contributions | Boas van der Putten |
 | 9:30am | Presentations (5 min for presentation + 5 min for challenges faced) | Team captains |
 | 11am   | Discussion of future plans | Lee Katz |
-| 12pm   | Happy hour (?) | - |
+| 12pm   | Happy hour | In Discord |
 
 ## Teams
 
