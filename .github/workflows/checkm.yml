@@ -1,0 +1,127 @@
+name: checkm
+
+on:
+  push:
+    branches: [main, dev]
+  pull_request:
+    branches: [main, dev]
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, ubuntu-20.04] #arch and centos both unavailable https://github.com/actions/virtual-environments#available-environments
+        python-version: [3.6, 3.9]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: setup python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+        architecture: x64
+    - name: report environment variables for debugging
+        run: |
+          printf '%s\n' \
+            "Workflow ${GITHUB_WORKFLOW}" \
+            "Action Number ${GITHUB_ACTION}" \
+            "Run ID ${GITHUB_RUN_ID}" \
+            "Run Number ${GITHUB_RUN_NUMBER}" \
+            "Workspace ${GITHUB_WORKSPACE}"
+
+    - name: report python version
+      run: |
+        python -c 'import sys; print(sys.version)'
+
+    - name: setup workspace
+      run: |
+        mkdir "${GITHUB_WORKSPACE}"/{bin,Downloads}
+        echo "${GITHUB_WORKSPACE}"/bin" >> "${GITHUB_PATH}"
+
+    - name: install pplacer
+      # homepage: https://github.com/matsen/pplacer
+      # NOTE: compiling from src requires old OCaml version so avoid for now
+      #       https://github.com/matsen/pplacer/issues/354
+      #       sudo apt install libgsl-dev libgslcblas0 libsqlite3-dev -y
+      run: |
+        wget https://github.com/matsen/pplacer/releases/download/v1.1.alpha19/pplacer-linux-v1.1.alpha19.zip \
+         -O ${GITHUB_WORKSPACE}/Downloads/pplacer-linux-v1.1.alpha19.zip
+        unzip ${GITHUB_WORKSPACE}/Downloads/pplacer-linux-v1.1.alpha19.zip
+        mv -v ${GITHUB_WORKSPACE}/pplacer-Linux-v1.1.alpha19/pplacer \
+         ${GITHUB_WORKSPACE}/bin
+
+    - name: test pplacer
+      run: |
+        pplacer
+        pplacer -h
+        pplacer -help
+        pplacer --help
+        pplacer --version
+
+    - name: install hmmer3
+      run: |
+        wget http://eddylab.org/software/hmmer/hmmer-3.3.2.tar.gz \
+         -O ${GITHUB_WORKSPACE}/Downloads/hmmer-3.3.2.tar.gz
+        tar zxvf ${GITHUB_WORKSPACE}/Downloads/hmmer-3.3.2.tar.gz
+        cd ${GITHUB_WORKSPACE}/hmmer-3.3.2
+        ./configure --prefix ${GITHUB_WORKSPACE}
+        make
+        make check
+
+    - name: test hmmer3
+      run: |
+        # not all binaries are used for checkm; only check those called in
+        #  https://github.com/Ecogenomics/CheckM/blob/master/checkm/hmmer.py
+        # skip no argument tests because return value is 1 
+        # ` --help` nonexistent
+        for _bin in hmmalign hmmfetch hmmpress hmmscan hmmsearch; do\ 
+          $_bin -h ;\
+          man -P cat $_bin ;\
+        done
+
+    - name: install prodigal
+    - uses: actions/checkout@v2.6.3
+      with:
+        repository: hyattpd/Prodigal
+        path: github_src_prodigal_v2.6.3
+      run: |
+        cd ${GITHUB_WORKSPACE}/github_src_prodigal_v2.6.3
+        make
+        mv -v prodigal \
+         ${GITHUB_WORKSPACE}/bin
+
+    - name: test prodigal
+      run: |
+        prodigal
+        prodigal -h
+        # `prodigal --help` nonexistent option
+
+    - name: install python library dependencies and checkm
+      run: |
+        pip3 install checkm-genome matplotlib numpy pysam
+
+    - name: test matplotlib
+      run: |
+        python -c 'import matplotlib; matplotlib.test()'
+
+    - name: test numpy
+      run: |
+        python -c 'import numpy; numpy.test()'
+
+    - name: test pysam
+      run: |
+        python -c 'import pysam' #TO-DO pytest run pysam/tests; how?
+
+    - name: test checkm
+    - uses: actions/checkout@v1.1.3
+      with:
+        repository: Ecogenomics/CheckM
+        path: github_src_checkm_1.1.3
+      run: |
+        checkm
+        checkm -h
+        checkm --help
+        cd ${GITHUB_WORKSPACE}/github_src_checkm_1.1.3
+        pytest
+        checkm test checkm_test_results
