@@ -82,11 +82,11 @@ jobs:
           man -P cat $_bin ;\
         done
 
-    - name: install prodigal
-      uses: actions/checkout@v2.6.3
+    - uses: actions/checkout@v2.6.3
       with:
         repository: hyattpd/Prodigal
         path: github_src_prodigal_v2.6.3
+    - name: install prodigal
       run: |
         cd ${GITHUB_WORKSPACE}/github_src_prodigal_v2.6.3
         make
