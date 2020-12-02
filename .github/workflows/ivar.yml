@@ -33,7 +33,10 @@ jobs:
           which ivar
           ivar version
           cd $GITHUB_WORKSPACE/ivar/data
-      - name: test trim command
-        run: |
-          ivar trim -b test_primers.bed -i test.bam -p test.trimmed -q 15 -m 50 -s 4
-          
+          ivar trim -b test.bed -i test.sorted.bam -p ivar_test.trimmed -q 15 -m 50 -s 4
+          samtools mpileup -aa -A -d 600000 -B -Q 0 ivar_test.trimmed.bam | ivar variants -p ivar_test.trimmed.variants -q 20 -t 0.03 -r db/test_ref.fa -g test.gff
+          ivar filtervariants -t 0.5 -p ivar_test.filtered test.filtered.tsv
+          echo "test.filtered.tsv" > filter_files.txt
+          ivar filtervariants -t 0.5 -p ivar_test.filtered -f filter_files.txt
+          samtools mpileup -d 1000 -A -Q 0 test.sorted.bam | ivar consensus -p ivar_test -q 20 -t 0 -m 1
+          ivar getmasked -i test.filtered.tsv -b test.bed  -f pair_information.tsv -p ivar_test.masked
