@@ -4,7 +4,7 @@
 
 Provide a link to the GitHub issue here: ...
 
-[ ] Did you check everything off the list?
+- [ ] Did you check everything off the list?
 
 ## Proposed workflow
 
