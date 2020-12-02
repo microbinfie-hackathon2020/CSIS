@@ -21,6 +21,11 @@ Boas van der Putten | [boasvdp](https://github.com/boasvdp)| GitHub actions, yam
 
 ### Team 2
 
+Name                | GitHub profile                       | What knowledge I bring to the group
+--------------------|--------------------------------------|------------------------------------
+Amit Yadav            | [ay-amityadav](https://github.com/ay-amityadav)  | Python, git (basic)
+
+
 ### Team "doesn't grok unit tests"
 Name                | GitHub profile                            | What knowledge I bring to the group
 --------------------|-------------------------------------------|------------------------------------
