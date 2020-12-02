@@ -27,6 +27,11 @@ Pedro Cerqueira     | [pedrorvc](https://github.com/pedrorvc)   | Python, yaml, 
 
 ### Team 2
 
+Name                | GitHub profile                       | What knowledge I bring to the group
+--------------------|--------------------------------------|------------------------------------
+Amit Yadav            | [ay-amityadav](https://github.com/ay-amityadav)  | Python, git (basic)
+
+
 ### Team "doesn't grok unit tests"
 Name                | GitHub profile                            | What knowledge I bring to the group
 --------------------|-------------------------------------------|------------------------------------
