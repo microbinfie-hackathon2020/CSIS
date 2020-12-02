@@ -38,8 +38,8 @@ jobs:
 
     - name: setup workspace
       run: |
-        mkdir "${GITHUB_WORKSPACE}"/{bin,Downloads}
-        echo "${GITHUB_WORKSPACE}"/bin" >> "${GITHUB_PATH}"
+        mkdir -v "${GITHUB_WORKSPACE}"/{bin,Downloads}
+        echo "${GITHUB_WORKSPACE}"/bin >> "${GITHUB_PATH}"
 
     - name: install pplacer
       run: |
