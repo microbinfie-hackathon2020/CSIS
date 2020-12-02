@@ -16,11 +16,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+
     - name: setup python ${{ matrix.python-version }}
       uses: actions/setup-python@v2
       with:
         python-version: ${{ matrix.python-version }}
         architecture: x64
+
     - name: report environment variables for debugging
       run: |
         printf '%s\n' \
@@ -40,16 +42,16 @@ jobs:
         echo "${GITHUB_WORKSPACE}"/bin" >> "${GITHUB_PATH}"
 
     - name: install pplacer
-      # homepage: https://github.com/matsen/pplacer
-      # NOTE: compiling from src requires old OCaml version so avoid for now
-      #       https://github.com/matsen/pplacer/issues/354
-      #       sudo apt install libgsl-dev libgslcblas0 libsqlite3-dev -y
       run: |
         wget https://github.com/matsen/pplacer/releases/download/v1.1.alpha19/pplacer-linux-v1.1.alpha19.zip \
          -O ${GITHUB_WORKSPACE}/Downloads/pplacer-linux-v1.1.alpha19.zip
         unzip ${GITHUB_WORKSPACE}/Downloads/pplacer-linux-v1.1.alpha19.zip
         mv -v ${GITHUB_WORKSPACE}/pplacer-Linux-v1.1.alpha19/pplacer \
          ${GITHUB_WORKSPACE}/bin
+      # homepage: https://github.com/matsen/pplacer
+      # NOTE: compiling from src requires old OCaml version so avoid for now
+      #       https://github.com/matsen/pplacer/issues/354
+      #       sudo apt install libgsl-dev libgslcblas0 libsqlite3-dev -y
 
     - name: test pplacer
       run: |
@@ -81,7 +83,7 @@ jobs:
         done
 
     - name: install prodigal
-    - uses: actions/checkout@v2.6.3
+      uses: actions/checkout@v2.6.3
       with:
         repository: hyattpd/Prodigal
         path: github_src_prodigal_v2.6.3
@@ -99,7 +101,11 @@ jobs:
 
     - name: install python library dependencies and checkm
       run: |
-        pip3 install checkm-genome matplotlib numpy pysam
+        pip3 install checkm-genome dendropy matplotlib numpy pysam scipy
+
+    - name: test dendropy
+      run: |
+        python -c 'import dendropy' #TO-DO pytest run DendroPy/tests; how?
 
     - name: test matplotlib
       run: |
@@ -113,8 +119,12 @@ jobs:
       run: |
         python -c 'import pysam' #TO-DO pytest run pysam/tests; how?
 
+    - name: test scipy
+      run: |
+        python -c 'import scipy; scipy.test()'
+
     - name: test checkm
-    - uses: actions/checkout@v1.1.3
+      uses: actions/checkout@v1.1.3
       with:
         repository: Ecogenomics/CheckM
         path: github_src_checkm_1.1.3
