@@ -77,9 +77,10 @@ jobs:
         #  https://github.com/Ecogenomics/CheckM/blob/master/checkm/hmmer.py
         # skip no argument tests because return value is 1 
         # ` --help` nonexistent
-        for _bin in hmmalign hmmfetch hmmpress hmmscan hmmsearch; do\ 
-          $_bin -h ;\
-          man -P cat $_bin ;\
+        for _bin in hmmalign hmmfetch hmmpress hmmscan hmmsearch \
+        do \
+          $_bin -h \
+          man -P cat $_bin \
         done
 
     - name: checkout prodigal
