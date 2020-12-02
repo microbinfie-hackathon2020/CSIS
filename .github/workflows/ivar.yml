@@ -32,8 +32,8 @@ jobs:
           source ${CONDA}/bin/activate ivar
           which ivar
           ivar version
-          cd $GITHUB_WORKSPACE/data
-      - name: test ivar
+          cd $GITHUB_WORKSPACE/ivar/data
+      - name: test trim command
         run: |
           ivar trim -b test_primers.bed -i test.bam -p test.trimmed -q 15 -m 50 -s 4
           
