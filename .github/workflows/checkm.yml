@@ -69,6 +69,7 @@ jobs:
         cd ${GITHUB_WORKSPACE}/hmmer-3.3.2
         ./configure --prefix ${GITHUB_WORKSPACE}
         make
+        make install
         make check
 
     - name: test hmmer3
