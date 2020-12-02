@@ -17,7 +17,13 @@ Name                | GitHub profile                       | What knowledge I br
 Lee Katz            | [lskatz](https://github.com/lskatz)  | GitHub actions, yaml, unit testing
 Boas van der Putten | [boasvdp](https://github.com/boasvdp)| GitHub actions, yaml, species-specific knowledge (_Escherichia coli_)
 
-### Team 1
+### Team 1 - Chewie!
+Name                | GitHub profile                            | What knowledge I bring to the group
+--------------------|-------------------------------------------|------------------------------------
+Inês Mendes         | [cimendes](https://github.com/cimendes)   | Python, basic knowledge of pytest 
+Rafael Mamede       | [rfm-targa](https://github.com/rfm-targa) | Python, yaml, chewBBACA main dev
+Pedro Cerqueira     | [pedrorvc](https://github.com/pedrorvc)   | Python, yaml, chewBBACA main dev
+
 
 ### Team 2
 
@@ -25,4 +31,3 @@ Boas van der Putten | [boasvdp](https://github.com/boasvdp)| GitHub actions, yam
 Name                | GitHub profile                            | What knowledge I bring to the group
 --------------------|-------------------------------------------|------------------------------------
 Justin Payne        | [crashfrog](https://github.com/crashfrog) | Python, cloud, semver, Hypothesis framework for unit testing in Python
-Inês Mendes         | [cimendes](https://github.com/cimendes)   | Python, basic knowledge of pytest 
