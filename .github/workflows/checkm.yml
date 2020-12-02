@@ -56,7 +56,7 @@ jobs:
     - name: test pplacer
       run: |
         pplacer
-        pplacer -h
+        # `pplacer -h` prints help menu but gives exit code 2
         pplacer -help
         pplacer --help
         pplacer --version
