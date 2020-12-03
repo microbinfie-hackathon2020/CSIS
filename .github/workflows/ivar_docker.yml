@@ -61,20 +61,23 @@ jobs:
         uses: docker/login-action@v1
         with:
           username: poeli
-          password: ${{ secrets.DOCKER_PASSWORD }}
+          password: ${{ env.DOCKER_PASSWORD }}
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v1 
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.CR_PAT }}
-
+      - uses: actions/checkout@v2
+        with:
+          repository: andersen-lab/ivar
+          path: ivar
       - name: Build and push
         id:   docker_build
         uses: docker/build-push-action@v2
         with:
           context: .
-          file: ./Dockerfile
+          file: $GITHUB_WORKSPACE/ivar/Dockerfile
           platforms: linux/amd64,linux/arm64,linux/386
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.prep.outputs.tags }}
