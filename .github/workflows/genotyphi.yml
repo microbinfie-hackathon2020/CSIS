@@ -1,4 +1,4 @@
-name: genotyphi unit testing
+name: genotyphi
 
 on: [push]
 
@@ -13,6 +13,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+      repository: katholt/genotyphi
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v2
       with:
