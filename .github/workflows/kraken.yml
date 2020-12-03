@@ -35,7 +35,7 @@ jobs:
          kraken --help
          kraken-build --help
          kraken-build --version
-         kraken2-build --build --db db
+         kraken-build --build --db db
          #kraken2-inspect --help
          #kraken2-inspect --version
          #kraken2-inspect --db db
