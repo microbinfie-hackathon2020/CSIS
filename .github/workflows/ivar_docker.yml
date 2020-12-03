@@ -11,8 +11,8 @@ on:
 env:      
   DOCKER_PASSWORD:   ${{ secrets.DOCKER_PASSWORD }}
   DOCKER_USERNAME:   poeli
-  CI_PROJECT_NAME:   ivar
-  github_repository: andersen-lab/ivar
+  CI_PROJECT_NAME:   csis
+  github_repository: poeli/csis
   tag: fake-tag
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -71,12 +71,16 @@ jobs:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.CR_PAT }}
+      - uses: actions/checkout@v2
+        with:
+          repository: andersen-lab/ivar
+          path: ivar
       - name: Build and push
         id:   docker_build
         uses: docker/build-push-action@v2
         with:
           context: .
-          file: ./Dockerfile
+          file: ${{ github.workspace }}/ivar/Dockerfile
           platforms: linux/amd64,linux/arm64,linux/386
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.prep.outputs.tags }}
