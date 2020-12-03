@@ -96,13 +96,13 @@ jobs:
         mv -v prodigal \
          ${GITHUB_WORKSPACE}/bin
 
-    - name: test prodigal
-      run: |
-        prodigal
-        prodigal -h
-        # `prodigal --help` nonexistent option
-        cd ${GITHUB_WORKSPACE}/github_src_prodigal
-        prodigal -i anthus_aco.fas -a proteins.faa
+    # - name: test prodigal
+    #   run: |
+    #     prodigal
+    #     prodigal -h
+    #     # `prodigal --help` nonexistent option
+    #     cd ${GITHUB_WORKSPACE}/github_src_prodigal
+    #     prodigal -i anthus_aco.fas -a proteins.faa -d genes.ffn
 
     - name: install python library dependencies and checkm
       run: |
