@@ -106,7 +106,7 @@ jobs:
 
     - name: install python library dependencies and checkm
       run: |
-        pip3 install checkm-genome dendropy matplotlib numpy pysam scipy
+        pip3 install checkm-genome dendropy matplotlib numpy pysam pytest scipy
 
     - name: test dendropy
       run: |
