@@ -29,15 +29,16 @@ jobs:
         run: |
          export PATH=$CONDA/envs/kraken/bin:$PATH
          which kraken
-         #mv $GITHUB_WORKSPACE/viral-classify/test/input/TestMetagenomicsViralMix/db ./
-         #mv $GITHUB_WORKSPACE/viral-classify/test/input/TestSplitReads/in.fastq ./
-         #kraken2-build --help
-         #kraken2-build --version
-         #kraken2-build --build --db db
+         mv $GITHUB_WORKSPACE/viral-classify/test/input/TestMetagenomicsViralMix/db ./
+         mv $GITHUB_WORKSPACE/viral-classify/test/input/TestSplitReads/in.fastq ./
+         kraken --version
+         kraken --help
+         kraken-build --help
+         kraken-build --version
+         kraken2-build --build --db db
          #kraken2-inspect --help
          #kraken2-inspect --version
          #kraken2-inspect --db db
-         #kraken2 --version
-         #kraken2 --help
+         
          #kraken2 --db db --report report.txt --report-zero-counts in.fastq
          #grep "root" report.txt
