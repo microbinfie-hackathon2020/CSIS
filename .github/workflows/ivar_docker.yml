@@ -11,8 +11,8 @@ on:
 env:      
   DOCKER_PASSWORD:   ${{ secrets.DOCKER_PASSWORD }}
   DOCKER_USERNAME:   poeli
-  CI_PROJECT_NAME:   CSIS
-  github_repository: poeli/CSIS
+  CI_PROJECT_NAME:   csis
+  github_repository: poeli/csis
   tag: fake-tag
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
