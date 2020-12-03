@@ -31,11 +31,14 @@ jobs:
          which kraken
          mv $GITHUB_WORKSPACE/viral-classify/test/input/TestMetagenomicsViralMix/db ./
          mv $GITHUB_WORKSPACE/viral-classify/test/input/TestSplitReads/in.fastq ./
+         
          kraken --version
          kraken --help
+         
          kraken-build --help
          kraken-build --version
          kraken-build --build --db db
+         
          #kraken2-inspect --help
          #kraken2-inspect --version
          #kraken2-inspect --db db
