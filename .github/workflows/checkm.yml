@@ -104,9 +104,13 @@ jobs:
     #     cd ${GITHUB_WORKSPACE}/github_src_prodigal
     #     prodigal -i anthus_aco.fas -a proteins.faa -d genes.ffn
 
+    - name: install python test libraries
+      run: |
+        pip3 install nose pysam pytest
+
     - name: install python library dependencies and checkm
       run: |
-        pip3 install checkm-genome dendropy matplotlib numpy pysam pytest scipy
+        pip3 install checkm-genome dendropy matplotlib numpy pysam scipy
 
     - name: test dendropy
       run: |
@@ -114,10 +118,16 @@ jobs:
 
     - name: test matplotlib
       run: |
+        _ver=$(python -c 'import matplotlib; print(matplotlib.__version__'))
+        git clone https://github.com/matplotlib/matplotlib/archive/v${_ver}.tar.gz \
+         ${GITHUB_WORKSPACE}/Downloads
+        tar zxvf ${GITHUB_WORKSPACE}/Downloads/v${_ver}.tar.gz
+        cd ${GITHUB_WORKSPACE}/Downloads/matplotlib-${_ver}
         python -c 'import matplotlib; matplotlib.test()'
 
     - name: test numpy
       run: |
+        pip3 install hypothesis #dependency for testing
         python -c 'import numpy; numpy.test()'
 
     - name: test pysam
