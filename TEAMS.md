@@ -25,14 +25,23 @@ Rafael Mamede       | [rfm-targa](https://github.com/rfm-targa) | Python, yaml, 
 Pedro Cerqueira     | [pedrorvc](https://github.com/pedrorvc)   | Python, yaml, chewBBACA main dev
 
 
-### Team 2
+### Team *All the Krakens*
 
 Name                | GitHub profile                       | What knowledge I bring to the group
 --------------------|--------------------------------------|------------------------------------
+Robert Petit        | [rpetit3](https://github.com/rpetit3) | Python, gitlab-ci, debugging
+Justin Payne        | [crashfrog](https://github.com/crashfrog) | Python, cloud, semver, Hypothesis framework for unit testing in Python
 Amit Yadav            | [ay-amityadav](https://github.com/ay-amityadav)  | Python, git (basic)
 
-
-### Team "doesn't grok unit tests"
+### Team bio-cwl-tools
+* Make bio-cwl-tools (the CWL bioinformatics tools repository) working
+* Main time zone: Central African Time (GMT+2)
+* Goals:
+  * Expand cwltest to make it suitable for testing tools
+  * Work on integrating cwltest and pytest: https://github.com/common-workflow-language/cwltest/pull/74
+  * Learn Github Actions
+  * Apply Github Actions with cwltest to create tests for [bio-cwl-tools](https://github.com/common-workflow-library/bio-cwl-tools)
+  
 Name                | GitHub profile                            | What knowledge I bring to the group
 --------------------|-------------------------------------------|------------------------------------
-Justin Payne        | [crashfrog](https://github.com/crashfrog) | Python, cloud, semver, Hypothesis framework for unit testing in Python
+Peter van Heusden   | [pvanheus](https://github.com/pvanheus)   | Python, CWL, bioinformatics
