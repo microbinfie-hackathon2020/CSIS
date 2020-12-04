@@ -26,7 +26,7 @@ jobs:
 
     - name: setup conda
       run: |
-        conda init
+        conda init bash
 
     - name: update the pip package manager and the setuptools and wheel libraries
       run: |
