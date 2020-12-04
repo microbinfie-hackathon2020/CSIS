@@ -26,15 +26,15 @@ jobs:
           path: centrifuge
       
       - name: Staging
-         run: |
-         echo "${CONDA}/envs/centrifuge/bin" >> $GITHUB_PATH 
+        run: |
+          echo "${CONDA}/envs/centrifuge/bin" >> $GITHUB_PATH 
       
       - name: Test centrifuge-build
         run: |
-         which centrifuge-build
-         centrifuge-build --version
-         centrifuge-build --help
-         centrifuge-build --conversion-table centrifuge/example/reference/gi_to_tid.dmp \
+          which centrifuge-build
+          centrifuge-build --version
+          centrifuge-build --help
+          centrifuge-build --conversion-table centrifuge/example/reference/gi_to_tid.dmp \
                           --taxonomy-tree centrifuge/example/reference/nodes.dmp \
                           --name-table centrifuge/example/reference/nodes.dmp \ 
                           centrifuge/example/reference/test.fa index1 
