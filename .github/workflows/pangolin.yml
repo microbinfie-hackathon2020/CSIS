@@ -11,19 +11,24 @@ jobs:
         os: ["ubuntu-latest", "macos-latest"]
     steps:
       - uses: actions/checkout@v2
+        with:
+          respository: cov-lineages/pangolin
+          path: pangolin
       - uses: conda-incubator/setup-miniconda@v2
         with:
-          environment-file: environment.yml
+          environment-file: pangolin/environment.yml
           activate-environment: pangolin
           channels: conda-forge,bioconda,defaults
           mamba-version: "*"
       - name: Install pangolin
         shell: bash -l {0}
-        run: pip install -e .
+        run: |
+          cd $GITHUB_WORKSPACE/pangolin
+          pip install -e .
       - name: Check pangolin version
         shell: bash -l {0}
         run: pangolin --version
       - name: Run pangolin with test data
         shell: bash -l {0}
-        run: pangolin pangolin/test/test_seqs.fasta 2>&1 | tee pangolin.log
+        run: pangolin $GITHUB_WORKSPACE/pangolin/pangolin/test/test_seqs.fasta 2>&1 | tee pangolin.log
 # add more tests here
