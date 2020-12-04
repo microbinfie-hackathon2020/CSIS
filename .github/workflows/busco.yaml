@@ -24,6 +24,10 @@ jobs:
         python-version: ${{ matrix.python-version }}
         architecture: x64
 
+    - name: setup conda
+      run: |
+        conda init
+
     - name: update the pip package manager and the setuptools and wheel libraries
       run: |
         python -m pip install -U pip setuptools wheel
@@ -48,11 +52,11 @@ jobs:
 
     - name: install busco with conda
       run: |
-        conda create -y -n my_env -c conda-forge -c bioconda busco
+        conda create -n my_env -c conda-forge -c bioconda busco -y
 
     - name: test busco
       run: |
-        source activate my_env #After running `conda init`, most shells will need to be restarted
+        conda activate my_env
         busco
         busco -h
         busco --help
