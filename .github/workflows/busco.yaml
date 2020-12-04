@@ -52,6 +52,7 @@ jobs:
 
     - name: test busco
       run: |
+        conda activate my_env
         busco
         busco -h
         busco --help
