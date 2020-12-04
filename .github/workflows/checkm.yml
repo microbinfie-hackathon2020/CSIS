@@ -24,6 +24,10 @@ jobs:
         python-version: ${{ matrix.python-version }}
         architecture: x64
 
+    - name: install python header files and static library
+      run: |
+        sudo apt install python3-dev
+
     - name: update the pip package manager and the setuptools and wheel libraries
       run: |
         python -m pip install -U pip setuptools wheel
@@ -135,6 +139,7 @@ jobs:
         tar zxvf ${GITHUB_WORKSPACE}/Downloads/matplotlib-v${_ver}.tar.gz \
          --directory ${GITHUB_WORKSPACE}/Downloads
         cd ${GITHUB_WORKSPACE}/Downloads/matplotlib-${_ver}
+        sudo apt install inkscape
         python -m pytest --maxfail=50
 
     - name: test numpy
