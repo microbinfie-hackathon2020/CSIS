@@ -24,6 +24,15 @@ jobs:
         python-version: ${{ matrix.python-version }}
         architecture: x64
 
+    - name: update the pip package manager and the setuptools and wheel libraries
+      run: |
+        python -m pip install -U pip setuptools wheel
+        # GitHub does not always have up-to-date pip, and
+        # installation from pre-built binary archives (with pip)
+        # will complain if pip is out of date.
+        # Up-to-date setuptools and wheel libraries
+        # enable installation from source archives.
+
     - name: report environment variables for debugging
       run: |
         printf '%s\n' \
@@ -108,23 +117,29 @@ jobs:
       run: |
         pip3 install nose pysam pytest
 
+    - name: install and test DendroPy
+      run: |
+        pip3 install dendropy --install-option test_suite
+
     - name: install python library dependencies and checkm
       run: |
-        pip3 install checkm-genome dendropy matplotlib numpy pysam scipy
+        pip3 install checkm-genome matplotlib numpy pysam scipy
+    #     pip3 install checkm-genome dendropy matplotlib numpy pysam scipy
 
-    - name: test dendropy
-      run: |
-        python -c 'import dendropy' #TO-DO pytest run DendroPy/tests; how?
+    # - name: test dendropy
+    #   run: |
+    #     python -c 'import dendropy' #TO-DO pytest run DendroPy/tests; how?
 
     - name: test matplotlib
       run: |
+        python -c 'import matplotlib'
         _ver=$(python -c 'import matplotlib; print(matplotlib.__version__)')
         wget -O ${GITHUB_WORKSPACE}/Downloads/matplotlib-v${_ver}.tar.gz \
          https://github.com/matplotlib/matplotlib/archive/v${_ver}.tar.gz
         tar zxvf ${GITHUB_WORKSPACE}/Downloads/matplotlib-v${_ver}.tar.gz \
          --directory ${GITHUB_WORKSPACE}/Downloads
         cd ${GITHUB_WORKSPACE}/Downloads/matplotlib-${_ver}
-        python -c 'import matplotlib; matplotlib.test()'
+        python -m pytest --maxfail=50 --timeout=300 --durations=25
 
     - name: test numpy
       run: |
