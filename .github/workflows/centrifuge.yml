@@ -1,4 +1,4 @@
-# This is a workflow for testing Centrifuge (https://github.com/DaehwanKimLab/centrifuge)
+# This is a workflow for testing "centrifuge" (https://github.com/DaehwanKimLab/centrifuge)
 
 name: centrifuge
 
@@ -34,7 +34,4 @@ jobs:
           which centrifuge-build
           centrifuge-build --version
           centrifuge-build --help
-          centrifuge-build --conversion-table centrifuge/example/reference/gi_to_tid.dmp \
-                          --taxonomy-tree centrifuge/example/reference/nodes.dmp \
-                          --name-table centrifuge/example/reference/nodes.dmp \ 
-                          centrifuge/example/reference/test.fa index1 
+          centrifuge-build --conversion-table centrifuge/example/reference/gi_to_tid.dmp --taxonomy-tree centrifuge/example/reference/nodes.dmp --name-table centrifuge/example/reference/nodes.dmp centrifuge/example/reference/test.fa index1 
