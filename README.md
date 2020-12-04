@@ -16,6 +16,8 @@ We are adding basic unit tests for bioinformatics software here using the GitHub
 | Genotyphi   | [![genotyphi](https://github.com/microbinfie-hackathon2020/CSIS/workflows/genotyphi/badge.svg)](https://github.com/microbinfie-hackathon2020/CSIS/actions?query=workflow%3Agenotyphi) | [![Tested Version](https://img.shields.io/badge/version-4296976-brightgreen)](https://github.com/katholt/genotyphi/tree/42969769753a53bb74f15bfb3d60846b5828ff91) | [genotyphi.yml](/.github/workflows/genotyphi.yml) |
 | Prokka   | [![prokka](https://github.com/microbinfie-hackathon2020/CSIS/workflows/prokka/badge.svg)](https://github.com/microbinfie-hackathon2020/CSIS/actions?query=workflow%3Aprokka) | [![Tested Version](https://img.shields.io/badge/version-v1.14.5-brightgreen)](https://github.com/tseemann/prokka/releases/tag/v1.14.5) | [prokka.yml](/.github/workflows/prokka.yml) |
 | Quast    | [![quast](https://github.com/microbinfie-hackathon2020/CSIS/workflows/quast/badge.svg)](https://github.com/microbinfie-hackathon2020/CSIS/actions?query=workflow%3Aquast) | [![Tested Version](https://img.shields.io/badge/version-v5.0.2-brightgreen)](https://github.com/ablab/quast/releases/tag/quast_5.0.2) | [quast.yml](/.github/workflows/quast.yml) |
+| Pangolin    | [![pangolin](https://github.com/microbinfie-hackathon2020/CSIS/workflows/pangolin/badge.svg)](https://github.com/microbinfie-hackathon2020/CSIS/actions?query=workflow%3Apangolin) | [![Tested Version](https://img.shields.io/badge/version-v2.0.8-brightgreen)](https://github.com/cov-lineages/pangolin/releases/tag/v2.0.8) | [pangolin.yml](/.github/workflows/pangolin.yml) |
+
 
 ## Long story
 
