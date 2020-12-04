@@ -11,17 +11,15 @@ on:
     branches: [ main, dev ]
 
 jobs:
-  build:
+  functional-test:
     runs-on: ubuntu-latest
     steps:
-      - name: installation
+      - name: install ivar and dependencies
         run: conda create -n ivar -c defaults -c bioconda -c conda-forge ivar samtools 
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
         with:
           repository: andersen-lab/ivar
           path: ivar
-      # Runs a set of commands using the runners shell
       - name: test ivar
         run: |
           source ${CONDA}/bin/activate ivar
@@ -30,16 +28,20 @@ jobs:
           cd $GITHUB_WORKSPACE/ivar/data
       - name: test ivar trim
         run: |
+          source ${CONDA}/bin/activate ivar
           ivar trim -b test.bed -i test.sorted.bam -p ivar_test.trimmed -q 15 -m 50 -s 4
       - name: test ivar filtervariants
         run: |
+          source ${CONDA}/bin/activate ivar
           samtools mpileup -aa -A -d 600000 -B -Q 0 ivar_test.trimmed.bam | ivar variants -p ivar_test.trimmed.variants -q 20 -t 0.03 -r db/test_ref.fa -g test.gff
           ivar filtervariants -t 0.5 -p ivar_test.filtered test.filtered.tsv
           echo "test.filtered.tsv" > filter_files.txt
           ivar filtervariants -t 0.5 -p ivar_test.filtered -f filter_files.txt
       - name: test ivar consensus
         run: |
+          source ${CONDA}/bin/activate ivar
           samtools mpileup -d 1000 -A -Q 0 test.sorted.bam | ivar consensus -p ivar_test -q 20 -t 0 -m 1
       - name: test ivar getmasked
         run: |
+          source ${CONDA}/bin/activate ivar
           ivar getmasked -i test.filtered.tsv -b test.bed  -f pair_information.tsv -p ivar_test.masked
