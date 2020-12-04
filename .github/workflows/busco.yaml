@@ -52,7 +52,7 @@ jobs:
 
     - name: test busco
       run: |
-        conda activate my_env
+        source activate my_env #After running `conda init`, most shells will need to be restarted
         busco
         busco -h
         busco --help
