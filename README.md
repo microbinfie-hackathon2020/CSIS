@@ -15,6 +15,7 @@ We are adding basic unit tests for bioinformatics software here using the GitHub
 | This repo| [![CSIS](https://github.com/microbinfie-hackathon2020/CSIS/workflows/CSIS/badge.svg)](https://github.com/microbinfie-hackathon2020/CSIS/actions?query=workflow%3ACSIS) | [![Tested Version](https://img.shields.io/badge/version-v1-brightgreen)](https://github.com/microbinfie-hackathon2020/CSIS) |  [CSIS.yml](/.github/workflows/CSIS.yml) |
 | Prokka   | [![prokka](https://github.com/microbinfie-hackathon2020/CSIS/workflows/prokka/badge.svg)](https://github.com/microbinfie-hackathon2020/CSIS/actions?query=workflow%3Aprokka) | [![Tested Version](https://img.shields.io/badge/version-v1.14.5-brightgreen)](https://github.com/tseemann/prokka/releases/tag/v1.14.5) | [prokka.yml](/.github/workflows/prokka.yml) |
 | Quast    | [![quast](https://github.com/microbinfie-hackathon2020/CSIS/workflows/quast/badge.svg)](https://github.com/microbinfie-hackathon2020/CSIS/actions?query=workflow%3Aquast) | [![Tested Version](https://img.shields.io/badge/version-v5.0.2-brightgreen)](https://github.com/ablab/quast/releases/tag/quast_5.0.2) | [quast.yml](/.github/workflows/quast.yml) |
+| iVar   | [![iVar](https://github.com/microbinfie-hackathon2020/CSIS/workflows/ivar/badge.svg)](https://github.com/microbinfie-hackathon2020/CSIS/actions?query=workflow%3Aivar) | [![Tested Version](https://img.shields.io/badge/version-v1.3-brightgreen)](https://github.com/andersen-lab/ivar) | [ivar.yml](/.github/workflows/ivar.yml) |
 
 ## Long story
 
