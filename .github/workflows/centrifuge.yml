@@ -9,7 +9,7 @@ on:
     branches: [ main, dev ]
 
 jobs:
-  # This workflow contains a single job called "build"
+  # This workflow contains a single job called "build-test"
   build-test:
     
     # The type of runner that the job will run on
@@ -54,7 +54,5 @@ jobs:
       - name: Test centrifuge-kreport # convert centrifuge output to kraken format
         run: |
           which centrifuge-kreport
-          centrifuge-kreport --version
-          centrifuge-kreport --help
           centrifuge-kreport -x index centrifuge-report.tsv
 
