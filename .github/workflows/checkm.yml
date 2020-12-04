@@ -63,13 +63,13 @@ jobs:
       #       https://github.com/matsen/pplacer/issues/354
       #       sudo apt install libgsl-dev libgslcblas0 libsqlite3-dev -y
 
-    - name: test pplacer
-      run: |
-        pplacer
-        # `pplacer -h` prints help menu but gives exit code 2
-        pplacer -help
-        pplacer --help
-        pplacer --version
+    # - name: test pplacer
+    #   run: |
+    #     pplacer
+    #     # `pplacer -h` prints help menu but gives exit code 2
+    #     pplacer -help
+    #     pplacer --help
+    #     pplacer --version
 
     - name: install hmmer3
       run: |
@@ -82,13 +82,13 @@ jobs:
         make install
         make check
 
-    - name: test hmmer3
-      run: |
-        # not all binaries are used for checkm; only check those called in
-        #  https://github.com/Ecogenomics/CheckM/blob/master/checkm/hmmer.py
-        # skip no argument tests because return value is 1 
-        # ` --help` nonexistent
-        for _bin in hmmalign hmmfetch hmmpress hmmscan hmmsearch; do $_bin -h; man -P cat $_bin; done
+    # - name: test hmmer3
+    #   run: |
+    #     # not all binaries are used for checkm; only check those called in
+    #     #  https://github.com/Ecogenomics/CheckM/blob/master/checkm/hmmer.py
+    #     # skip no argument tests because return value is 1 
+    #     # ` --help` nonexistent
+    #     for _bin in hmmalign hmmfetch hmmpress hmmscan hmmsearch; do $_bin -h; man -P cat $_bin; done
 
     - name: checkout prodigal
       uses: actions/checkout@v2
@@ -117,22 +117,14 @@ jobs:
       run: |
         pip3 install nose pysam pytest
 
-    - name: install and test DendroPy
-      run: |
-        pip3 install dendropy --install-option test
-        # NOTE: error invoking test this way:
-        #  ERROR: Command errored out with exit status 1: /opt/hostedtoolcache/Python/3.6.12/x64/bin/python -u -c 'import sys, setuptools, tokenize; sys.argv[0] = '"'"'/tmp/pip-install-k2vbdh4f/dendropy_dc74f5c3597441c59618a93b4efe37ac/setup.py'"'"'; __file__='"'"'/tmp/pip-install-k2vbdh4f/dendropy_dc74f5c3597441c59618a93b4efe37ac/setup.py'"'"';f=getattr(tokenize, '"'"'open'"'"', open)(__file__);code=f.read().replace('"'"'\r\n'"'"', '"'"'\n'"'"');f.close();exec(compile(code, __file__, '"'"'exec'"'"'))' install --record /tmp/pip-record-64i5y2zo/install-record.txt --single-version-externally-managed --compile --install-headers /opt/hostedtoolcache/Python/3.6.12/x64/include/python3.6m/dendropy test Check the logs for full command output.
-        #  Error: Process completed with exit code 1.
-
-
     - name: install python library dependencies and checkm
       run: |
-        pip3 install checkm-genome matplotlib numpy pysam scipy
-    #     pip3 install checkm-genome dendropy matplotlib numpy pysam scipy
+        pip3 install checkm-genome dendropy matplotlib numpy pysam scipy
 
-    # - name: test dendropy
-    #   run: |
-    #     python -c 'import dendropy' #TO-DO pytest run DendroPy/tests; how?
+    - name: test dendropy
+      run: |
+        python -c 'import dendropy'
+        #TO-DO pytest run the DendroPy/tests; dir missing from pip install
 
     - name: test matplotlib
       run: |
