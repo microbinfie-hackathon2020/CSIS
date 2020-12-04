@@ -24,7 +24,8 @@ jobs:
         with:
           repository: DaehwanKimLab/centrifuge
           path: centrifuge
-      
+          ref: v1.0.4-beta
+
       - name: Staging
         run: |
           echo "${CONDA}/envs/centrifuge/bin" >> $GITHUB_PATH 
@@ -48,4 +49,12 @@ jobs:
           which centrifuge
           centrifuge --version
           centrifuge --help
-          centrifuge -f -x index centrifuge/example/reads/input.fa
+          centrifuge -f -x index centrifuge/example/reads/input.fa > centrifuge-report.tsv
+
+      - name: Test centrifuge-kreport # convert centrifuge output to kraken format
+        run: |
+          which centrifuge-kreport
+          centrifuge-kreport --version
+          centrifuge-kreport --help
+          centrifuge-kreport -x index centrifuge-report.tsv
+
