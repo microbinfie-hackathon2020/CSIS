@@ -119,7 +119,7 @@ jobs:
 
     - name: install and test DendroPy
       run: |
-        pip3 install dendropy --install-option test_suite
+        pip3 install dendropy --install-option test
 
     - name: install python library dependencies and checkm
       run: |
