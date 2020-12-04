@@ -120,6 +120,10 @@ jobs:
     - name: install and test DendroPy
       run: |
         pip3 install dendropy --install-option test
+        # NOTE: error invoking test this way:
+        #  ERROR: Command errored out with exit status 1: /opt/hostedtoolcache/Python/3.6.12/x64/bin/python -u -c 'import sys, setuptools, tokenize; sys.argv[0] = '"'"'/tmp/pip-install-k2vbdh4f/dendropy_dc74f5c3597441c59618a93b4efe37ac/setup.py'"'"'; __file__='"'"'/tmp/pip-install-k2vbdh4f/dendropy_dc74f5c3597441c59618a93b4efe37ac/setup.py'"'"';f=getattr(tokenize, '"'"'open'"'"', open)(__file__);code=f.read().replace('"'"'\r\n'"'"', '"'"'\n'"'"');f.close();exec(compile(code, __file__, '"'"'exec'"'"'))' install --record /tmp/pip-record-64i5y2zo/install-record.txt --single-version-externally-managed --compile --install-headers /opt/hostedtoolcache/Python/3.6.12/x64/include/python3.6m/dendropy test Check the logs for full command output.
+        #  Error: Process completed with exit code 1.
+
 
     - name: install python library dependencies and checkm
       run: |
