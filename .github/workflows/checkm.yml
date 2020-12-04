@@ -135,7 +135,7 @@ jobs:
         tar zxvf ${GITHUB_WORKSPACE}/Downloads/matplotlib-v${_ver}.tar.gz \
          --directory ${GITHUB_WORKSPACE}/Downloads
         cd ${GITHUB_WORKSPACE}/Downloads/matplotlib-${_ver}
-        python -m pytest --maxfail=50 --timeout=300 --durations=25
+        python -m pytest --maxfail=50
 
     - name: test numpy
       run: |
