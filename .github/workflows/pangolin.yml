@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          respository: cov-lineages/pangolin
+          repository: cov-lineages/pangolin
           path: pangolin
       - uses: conda-incubator/setup-miniconda@v2
         with:
