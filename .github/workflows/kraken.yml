@@ -19,29 +19,40 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - name: install kraken
-        run: conda create -n kraken -c bioconda kraken
+      - name: Install kraken
+        run: conda create -y -n kraken -c conda-forge -c bioconda kraken
       - uses: actions/checkout@v2
         with:
           repository: broadinstitute/viral-classify
           path: viral-classify
-      - name: test kraken
+      - name: Staging
         run: |
-         export PATH=$CONDA/envs/kraken/bin:$PATH
-         which kraken
+         echo "${CONDA}/envs/kraken/bin" >> $GITHUB_PATH
          mv $GITHUB_WORKSPACE/viral-classify/test/input/TestMetagenomicsViralMix/db ./
          mv $GITHUB_WORKSPACE/viral-classify/test/input/TestSplitReads/in.fastq ./
-         
-         kraken --version
-         kraken --help
-         
+      - name: Test kraken-build
+        run: |
+         which kraken-build
          kraken-build --help
          kraken-build --version
-         kraken-build --build --db db
-         
-         #kraken2-inspect --help
-         #kraken2-inspect --version
-         #kraken2-inspect --db db
-         
-         #kraken2 --db db --report report.txt --report-zero-counts in.fastq
-         #grep "root" report.txt
+         kraken-build --build --kmer-len 11 --minimizer-len 5 --db db
+      - name: Test kraken
+        run: |
+         which kraken
+         kraken --version
+         kraken --help        
+         kraken --db db in.fastq > kraken.out
+      - name: Test kraken-report
+        run: |
+         which kraken-report
+         kraken-report --version
+         kraken-report --help        
+         kraken-report --db db --show-zeros kraken.out > kraken.report
+         grep "root" kraken.report
+      - name: Test kraken-mpa-report
+        run: |
+         which kraken-mpa-report
+         kraken-mpa-report --version
+         kraken-mpa-report --help        
+         kraken-mpa-report --db db --show-zeros kraken.out > kraken.mpa-report
+         grep "d__Viruses" kraken.mpa-report
