@@ -11,7 +11,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, ubuntu-20.04] #arch and centos both unavailable https://github.com/actions/virtual-environments#available-environments
+        os: [ubuntu-latest] #arch and centos both unavailable https://github.com/actions/virtual-environments#available-environments
         python-version: [3.6, 3.9]
 
     steps:
@@ -119,9 +119,10 @@ jobs:
     - name: test matplotlib
       run: |
         _ver=$(python -c 'import matplotlib; print(matplotlib.__version__)')
-        git clone https://github.com/matplotlib/matplotlib/archive/v${_ver}.tar.gz \
-         ${GITHUB_WORKSPACE}/Downloads
-        tar zxvf ${GITHUB_WORKSPACE}/Downloads/v${_ver}.tar.gz
+        wget -O ${GITHUB_WORKSPACE}/Downloads/matplotlib-v${_ver}.tar.gz \
+         https://github.com/matplotlib/matplotlib/archive/v${_ver}.tar.gz
+        tar zxvf ${GITHUB_WORKSPACE}/Downloads/matplotlib-v${_ver}.tar.gz \
+         --directory ${GITHUB_WORKSPACE}/Downloads
         cd ${GITHUB_WORKSPACE}/Downloads/matplotlib-${_ver}
         python -c 'import matplotlib; matplotlib.test()'
 
@@ -145,11 +146,20 @@ jobs:
         path: github_src_checkm
         ref: v1.1.3
 
+    - name: download checkm data
+      run: |
+        mkdir -p github_src_checkm/database
+        wget -O github_src_checkm/database/checkm_data_2015_01_16.tar.gz \
+        https://data.ace.uq.edu.au/public/CheckM_databases/checkm_data_2015_01_16.tar.gz
+        tar zxvf github_src_checkm/database/checkm_data_2015_01_16.tar.gz \
+        --directory github_src_checkm/database
+
     - name: test checkm
       run: |
+        checkm data setRoot github_src_checkm/database
         checkm
         checkm -h
-        checkm --help
+        # checkm --help
         cd ${GITHUB_WORKSPACE}/github_src_checkm
         pytest
         checkm test checkm_test_results
