@@ -25,6 +25,7 @@ jobs:
         with:
           repository: broadinstitute/viral-classify
           path: viral-classify
+          ref: v2.1.10.0
       - name: Staging
         run: |
           echo "${CONDA}/envs/kraken2/bin" >> $GITHUB_PATH
