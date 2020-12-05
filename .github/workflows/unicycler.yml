@@ -72,6 +72,8 @@ jobs:
         git clone --branch "${_ver}" https://github.com/rrwick/Unicycler.git \
          Downloads/github_src_unicycler
         cd Downloads/github_src_unicycler
+        sudo apt-get install tree
+        tree
         python test/test_assembly_graph.py
         python test/test_assembly_graph_copy_depth.python
         python test/test_blast_func.py
