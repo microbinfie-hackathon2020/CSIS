@@ -5,16 +5,16 @@ on:
     branches: [main, dev]
   pull_request:
     branches: [main, dev]
-  # schedule:
-  #   - cron:  '55 5 1 * *'
+  schedule:
+    - cron:  '55 5 1 * *'
 
 jobs:
   build:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest] #arch and centos both unavailable https://github.com/actions/virtual-environments#available-environments
-        python-version: [3.6]
+        os: [ubuntu-20.04] #arch and centos both unavailable https://github.com/actions/virtual-environments#available-environments
+        python-version: [3.6, 3.9]
 
     steps:
     - name: initialize github actions test environment
@@ -56,23 +56,24 @@ jobs:
       shell: bash -l {0}
       run: |
         conda activate my_env
-        mamba install unicycler=0.4.8
+        mamba install unicycler=0.4.8 -y
 
     - name: test unicycler
       shell: bash -l {0}
       run: |
         conda activate my_env
-        unicycler
-        # unicycler -h #Error: Process completed with exit code 1.
-        # unicycler --help #Error: Process completed with exit code 1.
+        # unicycler #Error: Process completed with exit code 1.
+        unicycler -h
+        unicycler --help
+        unicycler --help_all
         unicycler --version
-        _ver=$(unicycler --version | cut -f 2)
+        _ver=$(unicycler --version | awk '{print $2}')
         mkdir Downloads/github_src_unicycler
         git clone --branch "${_ver}" https://github.com/rrwick/Unicycler.git \
          Downloads/github_src_unicycler
         cd Downloads/github_src_unicycler
         python test/test_assembly_graph.py
-        python test/test_assembly_graph_copy_depth.py
+        python test/test_assembly_graph_copy_depth.python
         python test/test_blast_func.py
         python test/test_dependencies.py
         python test/test_semi_global_alignment.py

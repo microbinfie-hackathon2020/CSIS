@@ -11,7 +11,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest] #arch and centos both unavailable https://github.com/actions/virtual-environments#available-environments
+        os: [ubuntu-20.04] #arch and centos both unavailable https://github.com/actions/virtual-environments#available-environments
         python-version: [3.6, 3.9]
 
     steps:
