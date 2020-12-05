@@ -122,7 +122,7 @@ jobs:
         prodigal -v
         cd ${GITHUB_WORKSPACE}/github_src_prodigal
         # NOTE: v2.6.3 (from 2016) lacks test files but repo now has them
-        git pull
+        git pull origin master
         prodigal -i anthus_aco.fas -a proteins.faa -d genes.ffn
 
     - name: install python test libraries

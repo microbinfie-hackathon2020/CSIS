@@ -75,7 +75,7 @@ jobs:
         sudo apt-get install tree
         tree
         python test/test_assembly_graph.py
-        python test/test_assembly_graph_copy_depth.python
+        python test/test_assembly_graph_copy_depth.py
         python test/test_blast_func.py
         python test/test_dependencies.py
         python test/test_semi_global_alignment.py
