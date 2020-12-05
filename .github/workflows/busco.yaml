@@ -57,6 +57,7 @@ jobs:
     - name: test busco
       run: |
         source "${CONDA}/bin/activate" my_env
+        sudo apt-get install tree
         echo 'debug step 1'
         tree $(dirname $(dirname $(which run_busco)))
         echo 'debug step 2'

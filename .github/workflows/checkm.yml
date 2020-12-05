@@ -138,17 +138,17 @@ jobs:
     #     sudo apt install freetype inkscape
     #     python -m pytest --maxfail=50
 
-    - name: test numpy
-      run: |
-        python -c 'import numpy; numpy.test()'
+    # - name: test numpy
+    #   run: |
+    #     python -c 'import numpy; numpy.test()'
 
     - name: test pysam
       run: |
         python -c 'import pysam' #TO-DO pytest run pysam/tests; how?
 
-    - name: test scipy
-      run: |
-        python -c 'import scipy; scipy.test()'
+    # - name: test scipy
+    #   run: |
+    #     python -c 'import scipy; scipy.test()'
 
     - name: checkout checkm
       uses: actions/checkout@v2
@@ -159,7 +159,7 @@ jobs:
 
     - name: download checkm data
       run: |
-        mkdir -p github_src_checkm/database
+        mkdir github_src_checkm/database
         wget -O github_src_checkm/database/checkm_data_2015_01_16.tar.gz \
          https://data.ace.uq.edu.au/public/CheckM_databases/checkm_data_2015_01_16.tar.gz
         tar zxvf github_src_checkm/database/checkm_data_2015_01_16.tar.gz \
@@ -170,7 +170,7 @@ jobs:
         checkm data setRoot github_src_checkm/database
         checkm
         checkm -h
-        checkm --help
+        # `checkm --help` checkm: error: unrecognized arguments: --help
         cd ${GITHUB_WORKSPACE}/github_src_checkm
         # python -m pytest --maxfail=5
         checkm test checkm_test_results
