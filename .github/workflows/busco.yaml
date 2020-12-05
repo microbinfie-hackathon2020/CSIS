@@ -74,11 +74,10 @@ jobs:
          -m geno -f --out outdir
         sudo apt-get install tree
         tree -L 2 outdir
-        ls -lh outdir/logs/busco.log
-        ls -lh Downloads/gitlab_src_busco/test_data/bacteria/expected_log.txt
-        diff outdir/logs/busco.log \
-         Downloads/gitlab_src_busco/test_data/bacteria/expected_log.txt
-        # https://gitlab.com/ezlab/busco/-/blob/b40b3ba2d3c5b4793bc9d42416d9a3aebccb6752/test_data/bacteria/expected_log.txt
-        #  recommends comparing logfile but tough due to paths and timestamps
+        # diff outdir/logs/busco.log \
+        #  Downloads/gitlab_src_busco/test_data/bacteria/expected_log.txt
+        # # NOTE: diff fails because paths and timestamps are different
+        # #  https://gitlab.com/ezlab/busco/-/blob/b40b3ba2d3c5b4793bc9d42416d9a3aebccb6752/test_data/bacteria/expected_log.txt
+        # #  recommends comparing logfile but tough due to paths and timestamps
         grep $'\t|C:' outdir/logs/busco.log
         echo "diff comparison returned: $?"

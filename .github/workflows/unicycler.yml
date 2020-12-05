@@ -56,16 +56,24 @@ jobs:
       shell: bash -l {0}
       run: |
         conda activate my_env
-        mamba install unicycler
+        mamba install unicycler=0.4.8
 
     - name: test unicycler
       shell: bash -l {0}
       run: |
         conda activate my_env
+        unicycler
+        unicycler -h
+        unicycler --help
         unicycler --version
-        _ver=$(unicycler --version)
+        _ver=$(unicycler --version | cut -f 2)
         mkdir Downloads/github_src_unicycler
-        git clone --branch v0.4.8 https://github.com/rrwick/Unicycler.git \
+        git clone --branch "${_ver}" https://github.com/rrwick/Unicycler.git \
          Downloads/github_src_unicycler
         cd Downloads/github_src_unicycler
-        python -m unittest
+        python test/test_assembly_graph.py
+        python test/test_assembly_graph_copy_depth.py
+        python test/test_blast_func.py
+        python test/test_dependencies.py
+        python test/test_semi_global_alignment.py
+        python test/test_spades_func.py
