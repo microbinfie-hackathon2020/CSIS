@@ -24,15 +24,6 @@ jobs:
         python-version: ${{ matrix.python-version }}
         architecture: x64
 
-    - name: update the pip package manager and the setuptools and wheel libraries
-      run: |
-        python -m pip install -U pip setuptools wheel
-        # GitHub does not always have up-to-date pip, and
-        # installation from pre-built binary archives (with pip)
-        # will complain if pip is out of date.
-        # Up-to-date setuptools and wheel libraries
-        # enable installation from source archives.
-
     - name: report environment variables for debugging
       run: |
         printf '%s\n' \
@@ -41,10 +32,6 @@ jobs:
           "Run ID ${GITHUB_RUN_ID}" \
           "Run Number ${GITHUB_RUN_NUMBER}" \
           "Workspace ${GITHUB_WORKSPACE}"
-
-    - name: report python version
-      run: |
-        python -c 'import sys; print(sys.version)'
 
     - name: report conda version
       run: |
@@ -57,6 +44,16 @@ jobs:
     - name: install busco with conda
       run: |
         conda create -n my_env -c conda-forge -c bioconda busco=4.1.4 -y
+
+    - name: report conda version, mamba version, and config info
+      shell: bash -l {0}
+      run: |
+        conda activate my_env
+        conda info
+        conda list
+        conda config --show-sources
+        conda config --show
+        mamba --version
 
     - name: test busco
       run: |
@@ -79,5 +76,8 @@ jobs:
         # # NOTE: diff fails because paths and timestamps are different
         # #  https://gitlab.com/ezlab/busco/-/blob/b40b3ba2d3c5b4793bc9d42416d9a3aebccb6752/test_data/bacteria/expected_log.txt
         # #  recommends comparing logfile but tough due to paths and timestamps
-        grep $'\t|C:' outdir/logs/busco.log
+        grep $'\t|C:' outdir/logs/busco.log > test_output
+        grep $'\t|C:' Downloads/gitlab_src_busco/test_data/bacteria/expected_log.txt \
+         > expected_output
+        diff test_output expected_output
         echo "diff comparison returned: $?"

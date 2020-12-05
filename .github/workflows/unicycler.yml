@@ -63,7 +63,7 @@ jobs:
       run: |
         conda activate my_env
         unicycler
-        unicycler -h
+        # unicycler -h #Error: Process completed with exit code 1.
         unicycler --help
         unicycler --version
         _ver=$(unicycler --version | cut -f 2)
