@@ -161,16 +161,16 @@ jobs:
       run: |
         mkdir -p github_src_checkm/database
         wget -O github_src_checkm/database/checkm_data_2015_01_16.tar.gz \
-        https://data.ace.uq.edu.au/public/CheckM_databases/checkm_data_2015_01_16.tar.gz
+         https://data.ace.uq.edu.au/public/CheckM_databases/checkm_data_2015_01_16.tar.gz
         tar zxvf github_src_checkm/database/checkm_data_2015_01_16.tar.gz \
-        --directory github_src_checkm/database
+         --directory github_src_checkm/database
 
     - name: test checkm
       run: |
         checkm data setRoot github_src_checkm/database
         checkm
         checkm -h
-        # checkm --help
+        checkm --help
         cd ${GITHUB_WORKSPACE}/github_src_checkm
-        pytest
+        # python -m pytest --maxfail=5
         checkm test checkm_test_results

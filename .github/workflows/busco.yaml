@@ -46,16 +46,36 @@ jobs:
       run: |
         python -c 'import sys; print(sys.version)'
 
+    - name: setup workspace
+      run: |
+        mkdir -v "${GITHUB_WORKSPACE}/Downloads"
+
     - name: install busco with conda
       run: |
-        conda create -n my_env -c conda-forge -c bioconda busco -y
+        conda create -n my_env -c conda-forge -c bioconda busco=4.1.4 -y
 
     - name: test busco
       run: |
         source "${CONDA}/bin/activate" my_env
-        sudo apt install tree
+        echo 'debug step 1'
         tree $(dirname $(dirname $(which run_busco)))
+        echo 'debug step 2'
         tree $(dirname $(dirname $(which busco)))
         busco -h
         busco --help
-        sudo apt install tree
+        busco -v
+        busco --version
+        mkdir Downloads/gitlab_src_busco
+        wget -O Downloads/gitlab_src_busco/busco-4.1.4.tar.gz \
+         https://gitlab.com/ezlab/busco/-/archive/4.1.4/busco-4.1.4.tar.gz
+        tar zxvf Downloads/gitlab_src_busco/busco-4.1.4.tar.gz \
+         --directory Downloads/gitlab_src_busco --strip-components=1
+        busco -i Downloads/gitlab_src_busco/test_data/bacteria/genome.fna \
+         -m geno -f --out outdir
+        tree outdir
+        diff outdir/output.log \
+         Downloads/gitlab_src_busco/test_data/bacteria/expected_log.txt
+        # https://gitlab.com/ezlab/busco/-/blob/b40b3ba2d3c5b4793bc9d42416d9a3aebccb6752/test_data/bacteria/expected_log.txt
+        #  recommends comparing logfile but tough due to paths and timestamps
+        grep $'\t|C:' outdir/output.log
+        echo "diff comparison returned: $?"
