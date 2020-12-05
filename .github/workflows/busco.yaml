@@ -57,11 +57,6 @@ jobs:
     - name: test busco
       run: |
         source "${CONDA}/bin/activate" my_env
-        sudo apt-get install tree
-        echo 'debug step 1'
-        tree $(dirname $(dirname $(which run_busco)))
-        echo 'debug step 2'
-        tree $(dirname $(dirname $(which busco)))
         busco -h
         busco --help
         busco -v
@@ -73,10 +68,13 @@ jobs:
          --directory Downloads/gitlab_src_busco --strip-components=1
         busco -i Downloads/gitlab_src_busco/test_data/bacteria/genome.fna \
          -m geno -f --out outdir
-        tree outdir
-        diff outdir/output.log \
+        sudo apt-get install tree
+        tree -L 2 outdir
+        ls -lh outdir/logs/busco.log
+        ls -lh Downloads/gitlab_src_busco/test_data/bacteria/expected_log.txt
+        diff outdir/logs/busco.log \
          Downloads/gitlab_src_busco/test_data/bacteria/expected_log.txt
         # https://gitlab.com/ezlab/busco/-/blob/b40b3ba2d3c5b4793bc9d42416d9a3aebccb6752/test_data/bacteria/expected_log.txt
         #  recommends comparing logfile but tough due to paths and timestamps
-        grep $'\t|C:' outdir/output.log
+        grep $'\t|C:' outdir/logs/busco.log
         echo "diff comparison returned: $?"

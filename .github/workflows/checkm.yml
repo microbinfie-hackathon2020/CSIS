@@ -56,6 +56,8 @@ jobs:
         wget https://github.com/matsen/pplacer/releases/download/v1.1.alpha19/pplacer-linux-v1.1.alpha19.zip \
          -O ${GITHUB_WORKSPACE}/Downloads/pplacer-linux-v1.1.alpha19.zip
         unzip ${GITHUB_WORKSPACE}/Downloads/pplacer-linux-v1.1.alpha19.zip
+        mv -v ${GITHUB_WORKSPACE}/pplacer-Linux-v1.1.alpha19/guppy \
+         ${GITHUB_WORKSPACE}/bin
         mv -v ${GITHUB_WORKSPACE}/pplacer-Linux-v1.1.alpha19/pplacer \
          ${GITHUB_WORKSPACE}/bin
       # homepage: https://github.com/matsen/pplacer
