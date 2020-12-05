@@ -60,7 +60,6 @@ jobs:
          ${GITHUB_WORKSPACE}/bin
         mv -v ${GITHUB_WORKSPACE}/pplacer-Linux-v1.1.alpha19/pplacer \
          ${GITHUB_WORKSPACE}/bin
-      # homepage: https://github.com/matsen/pplacer
       # NOTE: compiling from src requires old OCaml version so avoid for now
       #       https://github.com/matsen/pplacer/issues/354
       #       sudo apt install libgsl-dev libgslcblas0 libsqlite3-dev -y

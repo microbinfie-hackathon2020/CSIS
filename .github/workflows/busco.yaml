@@ -46,6 +46,10 @@ jobs:
       run: |
         python -c 'import sys; print(sys.version)'
 
+    - name: report conda version
+      run: |
+        conda --version
+
     - name: setup workspace
       run: |
         mkdir -v "${GITHUB_WORKSPACE}/Downloads"
