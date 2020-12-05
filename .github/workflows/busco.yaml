@@ -53,8 +53,9 @@ jobs:
     - name: test busco
       run: |
         source "${CONDA}/bin/activate" my_env
-        busco
+        sudo apt install tree
+        tree $(dirname $(dirname $(which run_busco)))
+        tree $(dirname $(dirname $(which busco)))
         busco -h
         busco --help
         sudo apt install tree
-        tree $(dirname $(dirname $(which busco)))

@@ -12,7 +12,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest] #arch and centos both unavailable https://github.com/actions/virtual-environments#available-environments
-        python-version: [3.6, 3.9]
+        python-version: [3.6]
 
     steps:
     - name: initialize github actions test environment
@@ -24,18 +24,14 @@ jobs:
         python-version: ${{ matrix.python-version }}
         architecture: x64
 
-    - name: install python header files and static library
-      run: |
-        sudo apt install python3-dev
-
-    - name: update the pip package manager and the setuptools and wheel libraries
+    - name: update pip package manager and the setuptools and wheel libraries
       run: |
         python -m pip install -U pip setuptools wheel
         # GitHub does not always have up-to-date pip, and
-        # installation from pre-built binary archives (with pip)
-        # will complain if pip is out of date.
+        #  installation from pre-built binary archives (with pip)
+        #  will complain if pip is out of date.
         # Up-to-date setuptools and wheel libraries
-        # enable installation from source archives.
+        #  enable installation from source archives.
 
     - name: report environment variables for debugging
       run: |
@@ -119,7 +115,7 @@ jobs:
 
     - name: install python test libraries
       run: |
-        pip3 install nose pysam pytest
+        pip3 install hypothesis nose pytest
 
     - name: install python library dependencies and checkm
       run: |
@@ -130,21 +126,20 @@ jobs:
         python -c 'import dendropy'
         #TO-DO pytest run the DendroPy/tests; dir missing from pip install
 
-    - name: test matplotlib
-      run: |
-        python -c 'import matplotlib'
-        _ver=$(python -c 'import matplotlib; print(matplotlib.__version__)')
-        wget -O ${GITHUB_WORKSPACE}/Downloads/matplotlib-v${_ver}.tar.gz \
-         https://github.com/matplotlib/matplotlib/archive/v${_ver}.tar.gz
-        tar zxvf ${GITHUB_WORKSPACE}/Downloads/matplotlib-v${_ver}.tar.gz \
-         --directory ${GITHUB_WORKSPACE}/Downloads
-        cd ${GITHUB_WORKSPACE}/Downloads/matplotlib-${_ver}
-        sudo apt install inkscape
-        python -m pytest --maxfail=50
+    # - name: test matplotlib
+    #   run: |
+    #     python -c 'import matplotlib'
+    #     _ver=$(python -c 'import matplotlib; print(matplotlib.__version__)')
+    #     wget -O ${GITHUB_WORKSPACE}/Downloads/matplotlib-v${_ver}.tar.gz \
+    #      https://github.com/matplotlib/matplotlib/archive/v${_ver}.tar.gz
+    #     tar zxvf ${GITHUB_WORKSPACE}/Downloads/matplotlib-v${_ver}.tar.gz \
+    #      --directory ${GITHUB_WORKSPACE}/Downloads
+    #     cd ${GITHUB_WORKSPACE}/Downloads/matplotlib-${_ver}
+    #     sudo apt install freetype inkscape
+    #     python -m pytest --maxfail=50
 
     - name: test numpy
       run: |
-        pip3 install hypothesis #dependency for testing
         python -c 'import numpy; numpy.test()'
 
     - name: test pysam
