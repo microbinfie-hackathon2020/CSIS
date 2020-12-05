@@ -45,7 +45,7 @@ jobs:
       run: |
         conda create -n my_env -c conda-forge -c bioconda busco=4.1.4 -y
 
-    - name: report conda version, mamba version, and config info
+    - name: report conda version and config info
       shell: bash -l {0}
       run: |
         conda activate my_env
@@ -53,7 +53,6 @@ jobs:
         conda list
         conda config --show-sources
         conda config --show
-        mamba --version
 
     - name: test busco
       run: |
