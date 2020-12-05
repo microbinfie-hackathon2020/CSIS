@@ -14,7 +14,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-20.04] #arch and centos both unavailable https://github.com/actions/virtual-environments#available-environments
-        python-version: [3.6, 3.9]
+        python-version: [3.6, 3.7, 3.8] #3.9 not working in conda
 
     steps:
     - name: initialize github actions test environment
