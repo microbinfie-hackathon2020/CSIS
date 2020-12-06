@@ -64,7 +64,7 @@ jobs:
     - name: install dependencies
       run: |
         sudo apt-get install mash minimap2 muscle r-base
-        R -e "install.packages(c('ape', 'phangorn'), \
+        sudo R -e "install.packages(c('ape', 'phangorn'), \
          repos = 'http://cran.us.r-project.org')"
 
     - name: report dependency versions
