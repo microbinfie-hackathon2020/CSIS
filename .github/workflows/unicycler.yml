@@ -79,4 +79,4 @@ jobs:
         python test/test_dependencies.py
         python test/test_semi_global_alignment.py
         python test/test_spades_func.py
-        echo 'DEBUG: tests complete'
+        echo 'INFO: tests complete'

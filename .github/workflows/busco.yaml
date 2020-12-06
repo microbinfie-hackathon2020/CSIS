@@ -82,3 +82,4 @@ jobs:
          > expected_output
         diff test_output expected_output
         echo "diff comparison returned: $?"
+        echo 'INFO: tests complete'

@@ -85,10 +85,11 @@ jobs:
 
     - name: test trycycler
       run: |
-        trycycler
+        # trycycler #prints usage but exit code 1
         trycycler -h
         trycycler --help
         trycycler -v
         cd ${GITHUB_WORKSPACE}/github_src_trycycler/test
         python test_cluster.py
         python test_int_range.py
+        echo 'INFO: tests complete'

@@ -127,7 +127,7 @@ jobs:
 
     - name: install python test libraries
       run: |
-        pip install hypothesis nose pytest
+        pip install click hypothesis nose pytest
 
     - name: install python library dependencies and checkm
       run: |
@@ -199,3 +199,4 @@ jobs:
         #  NOTE: `checkm test` only fails because pplacer takes a long time to
         #   run and gets killed, so it's disabled until longer runtime allowed
         #   for github actions testing
+        echo 'INFO: tests complete'
