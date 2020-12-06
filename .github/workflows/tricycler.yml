@@ -61,8 +61,25 @@ jobs:
         path: github_src_tricycler
         ref:  v0.3.3
 
+    - name: install dependencies
+      run: |
+        sudo apt-get install mash minimap2 muscle r-base
+        R -e "install.packages(c('ape', 'phangorn'), \
+         repos = 'http://cran.us.r-project.org')"
+
+    - name: report dependency versions
+      run: |
+        _ver=$(mash --version)
+        echo "mash ${_ver}"
+        _ver=$(minimap2 --version)
+        echo "minimap2 ${_ver}"
+        muscle -version
+        echo 'sessionInfo()' | R --vanilla
+
     - name: install tricycler
       run: |
+        sudo apt-get install tree
+        tree
         cd ${GITHUB_WORKSPACE}/github_src_tricycler
         pip install -e .
 
