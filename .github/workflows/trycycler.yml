@@ -1,4 +1,4 @@
-name: tricycler
+name: trycycler
 
 on:
   push:
@@ -54,11 +54,11 @@ jobs:
       run: |
         python -c 'import sys; print(sys.version)'
 
-    - name: checkout tricycler
+    - name: checkout trycycler
       uses: actions/checkout@v2
       with:
         repository: rrwick/Trycycler
-        path: github_src_tricycler
+        path: github_src_trycycler
         ref:  v0.3.3
 
     - name: install dependencies
@@ -76,19 +76,19 @@ jobs:
         muscle -version
         echo 'sessionInfo()' | R --vanilla
 
-    - name: install tricycler
+    - name: install trycycler
       run: |
         sudo apt-get install tree
         tree
-        cd ${GITHUB_WORKSPACE}/github_src_tricycler
+        cd ${GITHUB_WORKSPACE}/github_src_trycycler
         pip install -e .
 
-    - name: test tricycler
+    - name: test trycycler
       run: |
-        tricycler
-        tricycler -h
-        tricycler --help
-        tricycler -v
-        cd ${GITHUB_WORKSPACE}/github_src_tricycler/test
+        trycycler
+        trycycler -h
+        trycycler --help
+        trycycler -v
+        cd ${GITHUB_WORKSPACE}/github_src_trycycler/test
         python test_cluster.py
         python test_int_range.py
