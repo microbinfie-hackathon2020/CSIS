@@ -78,8 +78,6 @@ jobs:
 
     - name: install trycycler
       run: |
-        sudo apt-get install tree
-        tree
         cd ${GITHUB_WORKSPACE}/github_src_trycycler
         pip install -e .
 
@@ -87,9 +85,11 @@ jobs:
       run: |
         # trycycler #prints usage but exit code 1
         trycycler -h
-        # trycycler --help
+        trycycler --help
         trycycler --version
         cd ${GITHUB_WORKSPACE}/github_src_trycycler/test
+        sudo apt-get install tree
+        tree
         python test_cluster.py
-        python test_int_range.py
+        python test_software.py
         echo 'INFO: tests complete'

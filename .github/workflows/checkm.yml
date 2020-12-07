@@ -5,6 +5,8 @@ on:
     branches: [main, dev]
   pull_request:
     branches: [main, dev]
+  schedule:
+    - cron:  '55 5 1 * *'
 
 jobs:
   build:
@@ -191,8 +193,6 @@ jobs:
         checkm -h
         # `checkm --help` nonexistent option
         cd ${GITHUB_WORKSPACE}/github_src_checkm
-        # python checkm/test/test_aminoAcidIdentity.py
-        # python checkm/test/test_ecoli.py
         rm -v checkm/test/test_genomicSignatures.py
         python -m pytest
         # checkm test checkm_test_results 
