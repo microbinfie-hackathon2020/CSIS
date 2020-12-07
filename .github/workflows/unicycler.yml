@@ -70,6 +70,7 @@ jobs:
         unicycler --version
         _ver=$(unicycler --version | awk '{print $2}')
         mkdir Downloads/github_src_unicycler
+        git config --global advice.detachedHead false
         git clone --branch "${_ver}" https://github.com/rrwick/Unicycler.git \
          Downloads/github_src_unicycler
         cd Downloads/github_src_unicycler

@@ -5,6 +5,8 @@ on:
     branches: [main, dev]
   pull_request:
     branches: [main, dev]
+  schedule:
+    - cron:  '55 5 1 * *'
 
 jobs:
   build:
@@ -88,8 +90,6 @@ jobs:
         trycycler --help
         trycycler --version
         cd ${GITHUB_WORKSPACE}/github_src_trycycler/test
-        sudo apt-get install tree
-        tree
         python test_cluster.py
         python test_software.py
         echo 'INFO: tests complete'
