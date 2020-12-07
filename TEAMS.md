@@ -36,3 +36,15 @@ Amit Yadav            | [ay-amityadav](https://github.com/ay-amityadav)  | Pytho
 Name                | GitHub profile                            | What knowledge I bring to the group
 --------------------|-------------------------------------------|------------------------------------
 Justin Payne        | [crashfrog](https://github.com/crashfrog) | Python, cloud, semver, Hypothesis framework for unit testing in Python
+
+### Team SARS-CoV-2
+Name                | GitHub profile                            | What knowledge I bring to the group
+--------------------|-------------------------------------------|------------------------------------
+Brooke Talbot | bmtalbot | 
+Aine O'Toole | aineniamh | 
+Verity Hill | viralverity | 
+Po-E Paul Li | poeli | 
+Peter van Heusden | pvanheus | 
+Jolinda de Korne | jolindadekorne |
+Yvette Unoarumhi | | 
+
