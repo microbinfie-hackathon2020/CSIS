@@ -55,7 +55,7 @@ jobs:
       run: |
         # NOTE: conda environment still usable without login shell as above
         source "${CONDA}/bin/activate" my_env
-        busco
+        # busco #empty args doesn't print help menu; exit code 1
         busco -h
         busco --help
         busco -v
@@ -65,8 +65,8 @@ jobs:
          https://gitlab.com/ezlab/busco/-/archive/4.1.4/busco-4.1.4.tar.gz
         tar zxvf Downloads/gitlab_src_busco/busco-4.1.4.tar.gz \
          --directory Downloads/gitlab_src_busco --strip-components=1
-        busco -i Downloads/gitlab_src_busco/test_data/bacteria/genome.fna \
-         -m geno -f --out outdir
+        busco --in Downloads/gitlab_src_busco/test_data/bacteria/genome.fna \
+         --mode geno --out outdir
         # diff outdir/logs/busco.log \
         #  Downloads/gitlab_src_busco/test_data/bacteria/expected_log.txt
         # # NOTE: diff fails because paths and timestamps are different
