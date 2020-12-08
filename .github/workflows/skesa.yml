@@ -2,7 +2,7 @@ name: skesa
 
 on:
   push:
-    branches: [main, dev, skesa]
+    branches: [main, dev]
   pull_request:
     branches: [main, dev]
 
