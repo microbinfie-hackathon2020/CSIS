@@ -1,0 +1,202 @@
+name: checkm
+
+on:
+  push:
+    branches: [main, dev]
+  pull_request:
+    branches: [main, dev]
+  schedule:
+    - cron:  '55 5 1 * *'
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-20.04] #arch and centos both unavailable https://github.com/actions/virtual-environments#available-environments
+        python-version: [3.6, 3.7, 3.8, 3.9]
+
+    steps:
+    - name: initialize github actions test environment
+      uses: actions/checkout@v2
+
+    - name: setup python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+        architecture: x64
+
+    - name: update pip package manager and the setuptools and wheel libraries
+      run: |
+        python -m pip install -U pip setuptools wheel
+        # GitHub does not always have up-to-date pip, and
+        #  installation from pre-built binary archives (with pip)
+        #  will complain if pip is out of date.
+        # Up-to-date setuptools and wheel libraries
+        #  enable installation from source archives.
+
+    - name: report pip, setuptools, and wheel versions
+      run: |
+        pip --version
+        _ver=$(python -c 'import setuptools; print(setuptools.__version__)')
+        echo "setuptools version $_ver"
+        _ver=$(python -c 'import wheel; print(wheel.__version__)')
+        echo "wheel version $_ver"
+
+    - name: report environment variables for debugging
+      run: |
+        printf '%s\n' \
+          "Workflow ${GITHUB_WORKFLOW}" \
+          "Action Number ${GITHUB_ACTION}" \
+          "Run ID ${GITHUB_RUN_ID}" \
+          "Run Number ${GITHUB_RUN_NUMBER}" \
+          "Workspace ${GITHUB_WORKSPACE}"
+
+    - name: report python version
+      run: |
+        python -c 'import sys; print(sys.version)'
+
+    - name: setup workspace
+      run: |
+        mkdir -v "${GITHUB_WORKSPACE}"/{bin,Downloads}
+        echo "${GITHUB_WORKSPACE}"/bin >> "${GITHUB_PATH}"
+
+    - name: install pplacer
+      run: |
+        wget https://github.com/matsen/pplacer/releases/download/v1.1.alpha19/pplacer-linux-v1.1.alpha19.zip \
+         -O ${GITHUB_WORKSPACE}/Downloads/pplacer-linux-v1.1.alpha19.zip
+        unzip ${GITHUB_WORKSPACE}/Downloads/pplacer-linux-v1.1.alpha19.zip
+        mv -v ${GITHUB_WORKSPACE}/pplacer-Linux-v1.1.alpha19/guppy \
+         ${GITHUB_WORKSPACE}/bin
+        mv -v ${GITHUB_WORKSPACE}/pplacer-Linux-v1.1.alpha19/pplacer \
+         ${GITHUB_WORKSPACE}/bin
+      # NOTE: compiling from src requires old OCaml version so avoid for now
+      #       https://github.com/matsen/pplacer/issues/354
+      #       sudo apt-get install libgsl-dev libgslcblas0 libsqlite3-dev -y
+
+    - name: test pplacer
+      run: |
+        pplacer
+        # `pplacer -h` prints help menu but gives exit code 2
+        pplacer -help
+        pplacer --help
+        pplacer --version
+
+    - name: install hmmer3
+      run: |
+        wget http://eddylab.org/software/hmmer/hmmer-3.3.2.tar.gz \
+         -O ${GITHUB_WORKSPACE}/Downloads/hmmer-3.3.2.tar.gz
+        tar zxvf ${GITHUB_WORKSPACE}/Downloads/hmmer-3.3.2.tar.gz
+        cd ${GITHUB_WORKSPACE}/hmmer-3.3.2
+        ./configure --prefix ${GITHUB_WORKSPACE}
+        make
+        make install
+        make check
+
+    - name: test hmmer3
+      run: |
+        # not all binaries are used for checkm; only check those called in
+        #  https://github.com/Ecogenomics/CheckM/blob/master/checkm/hmmer.py
+        # skip no argument tests because return value is 1 
+        # ` --help` nonexistent
+        for _bin in hmmalign hmmfetch hmmpress hmmscan hmmsearch; do $_bin -h; man -P cat $_bin; done
+
+    - name: checkout prodigal
+      uses: actions/checkout@v2
+      with:
+        repository: hyattpd/Prodigal
+        path: github_src_prodigal
+        ref: v2.6.3
+
+    - name: install prodigal
+      run: |
+        cd ${GITHUB_WORKSPACE}/github_src_prodigal
+        make
+        chmod +x prodigal
+        mv -v prodigal \
+         ${GITHUB_WORKSPACE}/bin
+
+    - name: test prodigal
+      run: |
+        # prodigal #Error: Process completed with exit code 9.
+        prodigal -h
+        # `prodigal --help` nonexistent option
+        prodigal -v
+        cd ${GITHUB_WORKSPACE}/github_src_prodigal
+        # NOTE: v2.6.3 (from 2016) lacks test files but repo now has them
+        git pull origin 6ccc8d1ca126969be402e5bf495ed31a74f7edd5
+        prodigal -i anthus_aco.fas -a proteins.faa -d genes.ffn
+
+    - name: install python test libraries
+      run: |
+        pip install click hypothesis nose pytest
+
+    - name: install python library dependencies and checkm
+      run: |
+        pip install checkm-genome==1.1.3 dendropy matplotlib numpy pysam scipy
+
+    - name: report python test libraries' versions
+      run: |
+        hypothesis --version
+        nosetests --version
+        pytest --version
+
+    - name: test dendropy
+      run: |
+        python -c 'import dendropy'
+        #TO-DO pytest run the DendroPy/tests; dir missing from pip install
+
+    - name: test matplotlib
+      run: |
+        python -c 'import matplotlib'
+        # NOTE: additional pytest fails but most of lib not used in checkm
+        # _ver=$(python -c 'import matplotlib; print(matplotlib.__version__)')
+        # wget -O ${GITHUB_WORKSPACE}/Downloads/matplotlib-v${_ver}.tar.gz \
+        #  https://github.com/matplotlib/matplotlib/archive/v${_ver}.tar.gz
+        # tar zxvf ${GITHUB_WORKSPACE}/Downloads/matplotlib-v${_ver}.tar.gz \
+        #  --directory ${GITHUB_WORKSPACE}/Downloads
+        # cd ${GITHUB_WORKSPACE}/Downloads/matplotlib-${_ver}
+        # sudo apt-get install freetype inkscape
+        # python -m pytest --maxfail=50
+
+    - name: test numpy
+      run: |
+        python -c 'import numpy; numpy.test()'
+
+    - name: test pysam
+      run: |
+        python -c 'import pysam' #TO-DO pytest run pysam/tests; how?
+
+    - name: test scipy
+      run: |
+        python -c 'import scipy; scipy.test()'
+
+    - name: checkout checkm
+      uses: actions/checkout@v2
+      with:
+        repository: Ecogenomics/CheckM
+        path: github_src_checkm
+        ref: v1.1.3
+
+    - name: download checkm data
+      run: |
+        mkdir github_src_checkm/database
+        wget -O github_src_checkm/database/checkm_data_2015_01_16.tar.gz \
+         https://data.ace.uq.edu.au/public/CheckM_databases/checkm_data_2015_01_16.tar.gz
+        tar zxvf github_src_checkm/database/checkm_data_2015_01_16.tar.gz \
+         --directory github_src_checkm/database
+
+    - name: test checkm
+      run: |
+        checkm data setRoot github_src_checkm/database
+        checkm
+        checkm -h
+        # `checkm --help` nonexistent option
+        cd ${GITHUB_WORKSPACE}/github_src_checkm
+        rm -v checkm/test/test_genomicSignatures.py
+        python -m pytest
+        # checkm test checkm_test_results 
+        #  NOTE: `checkm test` only fails because pplacer takes a long time to
+        #   run and gets killed, so it's disabled until longer runtime allowed
+        #   for github actions testing
+        echo 'INFO: tests complete'
