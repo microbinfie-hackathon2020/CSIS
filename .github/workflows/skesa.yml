@@ -1,0 +1,90 @@
+name: skesa
+
+on:
+  push:
+    branches: [main, dev]
+  pull_request:
+    branches: [main, dev]
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-20.04]
+        boost-version: [1.67, 1.71]
+
+    steps:
+    - name: apt
+      run: |
+        apt-cache madison libboost-all-dev
+        sudo apt-get install libboost${{ matrix.boost-version }}-all-dev
+    - name: check out SKESA
+      uses: actions/checkout@v2
+      with:
+        repository: ncbi/SKESA
+        path: SKESA
+    - name: compile
+      run: |
+        cd ${GITHUB_WORKSPACE}/SKESA
+        make
+    - name: download test data
+      run: |
+        cd ${GITHUB_WORKSPACE}/SKESA
+        ls -ltrh
+        
+        # Download test data from SPAdes repo
+        wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR112/094/SRR11283994/SRR11283994_1.fastq.gz
+        wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR112/094/SRR11283994/SRR11283994_2.fastq.gz
+    - name: create faulty data
+      run: |
+        cd ${GITHUB_WORKSPACE}/SKESA
+        
+        # Remove last 5 characters from R1 file, creating a mismatch between lengths of sequence and quality score in that file 
+        zcat SRR11283994_1.fastq.gz | sed '$ s/.....$//' | gzip > SRR11283994_truncated_1.fastq.gz
+        
+        # Remove read 26 from the R1 file only 
+        zcat SRR11283994_1.fastq.gz | awk 'NR < 100 || NR > 103 {print $0}' | gzip > SRR11283994_missing_1.fastq.gz
+    - name: test
+      run: |
+        cd ${GITHUB_WORKSPACE}/SKESA
+        
+        echo "which skesa"
+        which ./skesa
+        
+        echo "./skesa gives exit code 1"
+        ! ./skesa # raises an error
+        
+        echo "./skesa --help"
+        ./skesa --help
+        
+        echo "./skesa --version"
+        ./skesa --version
+        
+        echo "./skesa --doesnotexist"
+        ! ./skesa --doesnotexist
+        
+        echo "Start assembly"
+        ./skesa --fastq SRR11283994_1.fastq.gz,SRR11283994_2.fastq.gz > asm_local.fa
+        grep -c '>' asm_local.fa
+        
+        echo "small test using --sra_run on SRR11283994"
+        ./skesa --sra_run SRR11283994 > asm_sra.fa
+        grep -c '>' asm_sra.fa
+        
+        echo "check whether assemblies are identical"
+        diff asm_local.fa asm_sra.fa
+        
+        echo "test whether SKESA catches a truncated quality score"
+        ./skesa --fastq SRR11283994_truncated_1.fastq.gz,SRR11283994_2.fastq.gz > asm_truncated.fa
+        grep -c '>' asm_truncated.fa
+        
+        echo "test whether truncated assembly is different from normal assembly"
+        diff asm_local.fa asm_truncated.fa
+        
+        echo "test whether SKESA catches when the forward read of a read pair is missing"
+        ./skesa --fastq SRR11283994_missing_1.fastq.gz,SRR11283994_2.fastq.gz > asm_missing.fa
+        grep -c '>' asm_missing.fa
+        
+        echo "test whether a missing read gives a different assembly"
+        ! diff asm_local.fa asm_missing.fa
