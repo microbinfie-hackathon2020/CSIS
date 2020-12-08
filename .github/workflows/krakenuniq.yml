@@ -1,0 +1,59 @@
+# This is a basic workflow to help you get started with Actions
+
+name: krakenuniq
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the main branch
+on:
+  push:
+    branches: [ main, dev ]
+  pull_request:
+    branches: [ main, dev ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - name: Install krakenuniq
+        run: conda create -y -n krakenuniq -c conda-forge -c bioconda krakenuniq
+      - uses: actions/checkout@v2
+        with:
+          repository: broadinstitute/viral-classify
+          path: viral-classify
+          ref: v2.1.10.0
+      - name: Staging
+        run: |
+         echo "${CONDA}/envs/krakenuniq/bin" >> $GITHUB_PATH
+         mv $GITHUB_WORKSPACE/viral-classify/test/input/TestMetagenomicsViralMix/db ./
+         mv $GITHUB_WORKSPACE/viral-classify/test/input/TestSplitReads/in.fastq ./
+      - name: Test krakenuniq-build
+        run: |
+         which krakenuniq-build
+         krakenuniq-build --help
+         krakenuniq-build --version
+         krakenuniq-build --build --kmer-len 11 --minimizer-len 5 --db db
+      - name: Test krakenuniq
+        run: |
+         which krakenuniq
+         krakenuniq --version
+         krakenuniq --help        
+         krakenuniq --db db in.fastq > krakenuniq.out
+      - name: Test krakenuniq-report
+        run: |
+         which krakenuniq-report
+         krakenuniq-report --version
+         krakenuniq-report --help        
+         krakenuniq-report --db db --show-zeros krakenuniq.out > krakenuniq.report
+         grep "root" krakenuniq.report
+      - name: Test krakenuniq-mpa-report
+        run: |
+         which krakenuniq-mpa-report
+         krakenuniq-mpa-report --version
+         krakenuniq-mpa-report --help        
+         krakenuniq-mpa-report --db db --show-zeros krakenuniq.out > krakenuniq.mpa-report
+         grep "d__Viruses" krakenuniq.mpa-report

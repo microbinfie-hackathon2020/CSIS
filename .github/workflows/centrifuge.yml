@@ -1,0 +1,58 @@
+# This is a workflow for testing "centrifuge" (https://github.com/DaehwanKimLab/centrifuge)
+
+name: centrifuge
+
+on:
+  push:
+    branches: [ main, dev ]
+  pull_request:
+    branches: [ main, dev ]
+
+jobs:
+  # This workflow contains a single job called "build-test"
+  build-test:
+    
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install centrifuge
+        run: conda create -y -n centrifuge -c bioconda centrifuge
+      
+      - name: Clone centrifuge repo # for test data
+        uses: actions/checkout@v2
+        with:
+          repository: DaehwanKimLab/centrifuge
+          path: centrifuge
+          ref: v1.0.4-beta
+
+      - name: Staging
+        run: |
+          echo "${CONDA}/envs/centrifuge/bin" >> $GITHUB_PATH 
+      
+      - name: Test centrifuge-build
+        run: |
+          which centrifuge-build
+          centrifuge-build --version
+          centrifuge-build --help
+          centrifuge-build --conversion-table centrifuge/example/reference/gi_to_tid.dmp --taxonomy-tree centrifuge/example/reference/nodes.dmp --name-table centrifuge/example/reference/nodes.dmp centrifuge/example/reference/test.fa index
+
+      - name: Test centrifuge-inspect
+        run: |
+          which centrifuge-inspect 
+          centrifuge-inspect --version
+          centrifuge-inspect --help
+          centrifuge-inspect index
+
+      - name: Test centrifuge
+        run: |
+          which centrifuge
+          centrifuge --version
+          centrifuge --help
+          centrifuge -f -x index centrifuge/example/reads/input.fa > centrifuge-report.tsv
+
+      - name: Test centrifuge-kreport # convert centrifuge output to kraken format
+        run: |
+          which centrifuge-kreport
+          centrifuge-kreport -x index centrifuge-report.tsv
+
