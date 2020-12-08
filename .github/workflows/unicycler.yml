@@ -1,0 +1,83 @@
+name: unicycler
+
+on:
+  push:
+    branches: [main, dev]
+  pull_request:
+    branches: [main, dev]
+  schedule:
+    - cron:  '55 5 1 * *'
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-20.04] #arch and centos both unavailable https://github.com/actions/virtual-environments#available-environments
+        python-version: [3.6, 3.7, 3.8] #3.9 not working in conda
+
+    steps:
+    - name: initialize github actions test environment
+      uses: actions/checkout@v2
+
+    - name: report environment variables for debugging
+      run: |
+        printf '%s\n' \
+          "Workflow ${GITHUB_WORKFLOW}" \
+          "Action Number ${GITHUB_ACTION}" \
+          "Run ID ${GITHUB_RUN_ID}" \
+          "Run Number ${GITHUB_RUN_NUMBER}" \
+          "Workspace ${GITHUB_WORKSPACE}"
+
+    - name: setup workspace
+      run: |
+        mkdir -v "${GITHUB_WORKSPACE}/Downloads"
+
+    - name: setup conda environment
+      uses: conda-incubator/setup-miniconda@v2
+      with:
+        activate-environment: my_env
+        channels: conda-forge,bioconda,defaults
+        channel-priority: true
+        mamba-version: "*"
+        python-version: ${{ matrix.python-version }}
+
+    - name: report conda version, mamba version, and config info
+      shell: bash -l {0}
+      run: |
+        conda activate my_env
+        conda info
+        conda list
+        conda config --show-sources
+        conda config --show
+        mamba --version
+
+    - name: install unicycler with mamba
+      shell: bash -l {0}
+      run: |
+        conda activate my_env
+        mamba install unicycler=0.4.8 -y
+
+    - name: test unicycler
+      shell: bash -l {0}
+      run: |
+        conda activate my_env
+        export TERM=xterm
+        # unicycler #Error: Process completed with exit code 1.
+        unicycler -h
+        unicycler --help
+        unicycler --help_all
+        unicycler --version
+        _ver=$(unicycler --version | awk '{print $2}')
+        mkdir Downloads/github_src_unicycler
+        git config --global advice.detachedHead false
+        git clone --branch "${_ver}" https://github.com/rrwick/Unicycler.git \
+         Downloads/github_src_unicycler
+        cd Downloads/github_src_unicycler
+        python test/test_assembly_graph.py
+        python test/test_assembly_graph_copy_depth.py
+        python test/test_blast_func.py
+        python test/test_dependencies.py
+        python test/test_semi_global_alignment.py
+        python test/test_spades_func.py
+        echo 'INFO: tests complete'

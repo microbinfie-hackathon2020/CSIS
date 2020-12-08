@@ -1,0 +1,81 @@
+name: busco
+
+on:
+  push:
+    branches: [main, dev]
+  pull_request:
+    branches: [main, dev]
+  schedule:
+    - cron:  '55 5 1 * *'
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-20.04] #arch and centos both unavailable https://github.com/actions/virtual-environments#available-environments
+        python-version: [3.6, 3.7, 3.8] #3.9 not working
+
+    steps:
+    - name: initialize github actions test environment
+      uses: actions/checkout@v2
+
+    - name: report environment variables for debugging
+      run: |
+        printf '%s\n' \
+          "Workflow ${GITHUB_WORKFLOW}" \
+          "Action Number ${GITHUB_ACTION}" \
+          "Run ID ${GITHUB_RUN_ID}" \
+          "Run Number ${GITHUB_RUN_NUMBER}" \
+          "Workspace ${GITHUB_WORKSPACE}"
+
+    - name: report conda version
+      run: |
+        conda --version
+
+    - name: setup workspace
+      run: |
+        mkdir -v "${GITHUB_WORKSPACE}/Downloads"
+
+    - name: install busco with conda
+      run: |
+        conda create -n my_env python=${{ matrix.python-version }} \
+         busco=4.1.4 -c conda-forge -c bioconda -y
+
+    - name: report conda version and config info
+      shell: bash -l {0}
+      run: |
+        conda activate my_env
+        conda info
+        conda list
+        conda config --show-sources
+        conda config --show
+
+    - name: test busco
+      run: |
+        # NOTE: conda environment still usable without login shell as above
+        source "${CONDA}/bin/activate" my_env
+        # busco #empty args doesn't print help menu; exit code 1
+        busco -h
+        busco --help
+        busco -v
+        busco --version
+        mkdir Downloads/gitlab_src_busco
+        wget -O Downloads/gitlab_src_busco/busco-4.1.4.tar.gz \
+         https://gitlab.com/ezlab/busco/-/archive/4.1.4/busco-4.1.4.tar.gz
+        tar zxvf Downloads/gitlab_src_busco/busco-4.1.4.tar.gz \
+         --directory Downloads/gitlab_src_busco --strip-components=1
+        busco --in Downloads/gitlab_src_busco/test_data/bacteria/genome.fna \
+         --mode geno --out outdir
+        # diff outdir/logs/busco.log \
+        #  Downloads/gitlab_src_busco/test_data/bacteria/expected_log.txt
+        # # NOTE: diff fails because paths and timestamps are different
+        # #  https://gitlab.com/ezlab/busco/-/blob/b40b3ba2d3c5b4793bc9d42416d9a3aebccb6752/test_data/bacteria/expected_log.txt
+        # #  recommends comparing logfile but tough due to paths and timestamps
+        grep $'\t|C:' outdir/logs/busco.log > test_output
+        grep $'\t|C:' \
+         Downloads/gitlab_src_busco/test_data/bacteria/expected_log.txt \
+         > expected_output
+        diff test_output expected_output
+        echo "diff comparison returned: $?"
+        echo 'INFO: tests complete'

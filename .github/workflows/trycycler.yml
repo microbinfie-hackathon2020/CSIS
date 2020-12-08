@@ -1,0 +1,95 @@
+name: trycycler
+
+on:
+  push:
+    branches: [main, dev]
+  pull_request:
+    branches: [main, dev]
+  schedule:
+    - cron:  '55 5 1 * *'
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-20.04] #arch and centos both unavailable https://github.com/actions/virtual-environments#available-environments
+        python-version: [3.6, 3.7, 3.8, 3.9]
+
+    steps:
+    - name: initialize github actions test environment
+      uses: actions/checkout@v2
+
+    - name: setup python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+        architecture: x64
+
+    - name: update pip package manager and the setuptools and wheel libraries
+      run: |
+        python -m pip install -U pip setuptools wheel
+        # GitHub does not always have up-to-date pip, and
+        #  installation from pre-built binary archives (with pip)
+        #  will complain if pip is out of date.
+        # Up-to-date setuptools and wheel libraries
+        #  enable installation from source archives.
+
+    - name: report pip, setuptools, and wheel versions
+      run: |
+        pip --version
+        _ver=$(python -c 'import setuptools; print(setuptools.__version__)')
+        echo "setuptools version $_ver"
+        _ver=$(python -c 'import wheel; print(wheel.__version__)')
+        echo "wheel version $_ver"
+
+    - name: report environment variables for debugging
+      run: |
+        printf '%s\n' \
+          "Workflow ${GITHUB_WORKFLOW}" \
+          "Action Number ${GITHUB_ACTION}" \
+          "Run ID ${GITHUB_RUN_ID}" \
+          "Run Number ${GITHUB_RUN_NUMBER}" \
+          "Workspace ${GITHUB_WORKSPACE}"
+
+    - name: report python version
+      run: |
+        python -c 'import sys; print(sys.version)'
+
+    - name: checkout trycycler
+      uses: actions/checkout@v2
+      with:
+        repository: rrwick/Trycycler
+        path: github_src_trycycler
+        ref:  v0.3.3
+
+    - name: install dependencies
+      run: |
+        sudo apt-get install mash minimap2 muscle r-base
+        sudo R -e "install.packages(c('ape', 'phangorn'), \
+         repos = 'http://cran.us.r-project.org')"
+
+    - name: report dependency versions
+      run: |
+        _ver=$(mash --version)
+        echo "mash ${_ver}"
+        _ver=$(minimap2 --version)
+        echo "minimap2 ${_ver}"
+        muscle -version
+        echo 'sessionInfo()' | R --vanilla
+
+    - name: install trycycler
+      run: |
+        cd ${GITHUB_WORKSPACE}/github_src_trycycler
+        pip install -e .
+
+    - name: test trycycler
+      run: |
+        # trycycler #prints usage but exit code 1
+        trycycler -h
+        trycycler --help
+        trycycler --version
+        cd ${GITHUB_WORKSPACE}/github_src_trycycler/test
+        python test_cluster.py
+        python test_software.py
+        echo 'INFO: tests complete'

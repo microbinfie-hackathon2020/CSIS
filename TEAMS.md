@@ -41,7 +41,19 @@ Amit Yadav            | [ay-amityadav](https://github.com/ay-amityadav)  | Pytho
   * Work on integrating cwltest and pytest: https://github.com/common-workflow-language/cwltest/pull/74
   * Learn Github Actions
   * Apply Github Actions with cwltest to create tests for [bio-cwl-tools](https://github.com/common-workflow-library/bio-cwl-tools)
-  
+
 Name                | GitHub profile                            | What knowledge I bring to the group
 --------------------|-------------------------------------------|------------------------------------
 Peter van Heusden   | [pvanheus](https://github.com/pvanheus)   | Python, CWL, bioinformatics
+
+### Team SARS-CoV-2
+Name                | GitHub profile                            | What knowledge I bring to the group
+--------------------|-------------------------------------------|------------------------------------
+Brooke Talbot | bmtalbot | 
+Aine O'Toole | aineniamh | 
+Verity Hill | viralverity | 
+Po-E Paul Li | poeli | 
+Peter van Heusden | pvanheus | 
+Jolinda de Korne | jolindadekorne |
+Yvette Unoarumhi | | 
+
