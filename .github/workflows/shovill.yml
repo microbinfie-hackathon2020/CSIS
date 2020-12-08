@@ -1,0 +1,79 @@
+name: shovill
+
+on:
+  push:
+    branches: [main, dev]
+  pull_request:
+    branches: [main, dev]
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-18.04, ubuntu-20.04]
+
+    steps:
+    - name: conda
+      run: |
+        conda create -y -n env_shovill -c bioconda -c conda-forge shovill
+    - name: Staging
+      run: |
+        echo "${CONDA}/envs/env_shovill/bin" >> $GITHUB_PATH
+    - name: download test data
+      run: |
+        # Download test data from ENA
+        wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR112/094/SRR11283994/SRR11283994_1.fastq.gz
+        wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR112/094/SRR11283994/SRR11283994_2.fastq.gz
+        
+        # Download test data from SPAdes repo
+        wget https://github.com/ablab/spades/raw/spades_3.14.1/assembler/test_dataset/ecoli_1K_1.fq.gz
+        wget https://github.com/ablab/spades/raw/spades_3.14.1/assembler/test_dataset/ecoli_1K_2.fq.gz
+
+    - name: create faulty data
+      run: |
+        # Remove last 5 characters from R1 file, creating a mismatch between lengths of sequence and quality score in that file 
+        zcat SRR11283994_1.fastq.gz | sed '$ s/.....$//' | gzip > SRR11283994_truncated_1.fastq.gz
+        
+        # Remove read 26 from the R1 file only 
+        zcat SRR11283994_1.fastq.gz | awk 'NR < 100 && NR > 103 {print $0}' | gzip > SRR11283994_missing_1.fastq.gz
+
+    - name: test shovill-skesa, shovill-spades and shovill-megahit
+      run: |
+        echo "which shovill"
+        which shovill
+        
+        echo "shovill"
+        ! shovill
+        
+        echo "shovill -h"
+        shovill -h
+        
+        echo "shovill --help"
+        shovill --help
+        
+        echo "shovill --version"
+        shovill --version
+        
+        echo "shovill --doesnotexist"
+        ! shovill --doesnotexist
+        
+        echo "Start assembly using SKESA"
+        shovill --R1 SRR11283994_1.fastq.gz --R2 SRR11283994_2.fastq.gz --assembler skesa --outdir skesa_standard
+        grep -c '>' skesa_standard/contigs.fa
+        
+        echo "Start assembly using SPAdes"
+        shovill --R1 ecoli_1K_1.fq.gz --R2 ecoli_1K_2.fq.gz --assembler spades --outdir spades_standard
+        grep -c '>' spades_standard/contigs.fa
+        
+        echo "Start assembly using Megahit"
+        shovill --R1 ecoli_1K_1.fq.gz --R2 ecoli_1K_2.fq.gz --assembler megahit --outdir megahit_standard
+        grep -c '>' megahit_standard/contigs.fa
+        
+        echo "test whether Shovill catches a truncated quality score"
+        ! shovill --R1 SRR11283994_truncated_1.fastq.gz --R2 SRR11283994_2.fastq.gz --assembler skesa --outdir skesa_truncated
+        ! grep -c '>' skesa_truncated/contigs.fa
+        
+        echo "test whether Shovill catches when one half of a read pair is missing"
+        ! shovill --R1 SRR11283994_missing_1.fastq.gz --R2 SRR11283994_2.fastq.gz --assembler skesa --outdir skesa_missing
+        ! grep -c '>' skesa_missing/contigs.fa

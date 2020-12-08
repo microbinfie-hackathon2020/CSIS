@@ -1,0 +1,50 @@
+# This is a basic workflow to help you get started with Actions
+
+name: kraken2
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the main branch
+on:
+  push:
+    branches: [ main, dev ]
+  pull_request:
+    branches: [ main, dev ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - name: Install kraken2
+        run: conda create -y -n kraken2 -c conda-forge -c bioconda kraken2
+      - uses: actions/checkout@v2
+        with:
+          repository: broadinstitute/viral-classify
+          path: viral-classify
+          ref: v2.1.10.0
+      - name: Staging
+        run: |
+          echo "${CONDA}/envs/kraken2/bin" >> $GITHUB_PATH
+          mv $GITHUB_WORKSPACE/viral-classify/test/input/TestMetagenomicsViralMix/db ./
+          mv $GITHUB_WORKSPACE/viral-classify/test/input/TestSplitReads/in.fastq ./
+      - name: Test kraken2-build
+        run: |
+          which kraken2-build
+          kraken2-build --help
+          kraken2-build --version
+          kraken2-build --build --db db
+      - name: Test kraken2-inspect
+        run: |
+         kraken2-inspect --help
+         kraken2-inspect --version
+         kraken2-inspect --db db
+      - name: Test kraken2
+        run: |
+         kraken2 --version
+         kraken2 --help
+         kraken2 --db db --report report.txt --report-zero-counts in.fastq
+         grep "root" report.txt
