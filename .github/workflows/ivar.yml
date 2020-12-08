@@ -1,0 +1,56 @@
+name: ivar
+
+on:
+  push:
+    branches: [ main, dev ]
+  pull_request:
+    branches: [ main, dev ]
+
+jobs:
+  functional-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: install ivar and dependencies
+        run: conda create -n ivar -c defaults -c bioconda -c conda-forge ivar samtools 
+      - uses: actions/checkout@v2
+        with:
+          repository: andersen-lab/ivar
+          path: ivar
+      - name: test ivar
+        run: |
+          source ${CONDA}/bin/activate ivar
+          which ivar
+          ivar version
+      - name: test ivar trim
+        run: |
+          source ${CONDA}/bin/activate ivar
+          cd $GITHUB_WORKSPACE/ivar/data
+          ivar trim -b test.bed -i test.sorted.bam -p ivar_test.trimmed -q 15 -m 50 -s 4
+          [ $(samtools view ivar_test.trimmed.bam | grep "^test" -c) == 2 ]
+      - name: test ivar variants
+        run: |
+          source ${CONDA}/bin/activate ivar
+          cd $GITHUB_WORKSPACE/ivar/data
+          samtools mpileup -aa -A -d 600000 -B -Q 0 ivar_test.trimmed.bam | ivar variants -p ivar_test.trimmed.variants -q 20 -t 0.03 -r db/test_ref.fa -g test.gff
+          [ $(cat ivar_test.trimmed.variants.tsv | grep "^test" -c) == 8 ]
+      - name: test ivar filtervariants
+        run: |
+          source ${CONDA}/bin/activate ivar
+          cd $GITHUB_WORKSPACE/ivar/data
+          ivar filtervariants -t 0.5 -p ivar_test.filtered test.filtered.tsv
+          [ $(cat ivar_test.filtered.tsv | grep "^Consensus_test" -c) == 4 ]
+          echo "test.filtered.tsv" > filter_files.txt
+          ivar filtervariants -t 0.5 -p ivar_test.filtered -f filter_files.txt
+          [ $(cat ivar_test.filtered.tsv | grep "^Consensus_test" -c) == 4 ]
+      - name: test ivar consensus
+        run: |
+          source ${CONDA}/bin/activate ivar
+          cd $GITHUB_WORKSPACE/ivar/data
+          samtools mpileup -d 1000 -A -Q 0 test.sorted.bam | ivar consensus -p ivar_test -q 20 -t 0 -m 1
+          [ $(grep -o "A" ivar_test.fa | grep -c "A") == 93 ]
+      - name: test ivar getmasked
+        run: |
+          source ${CONDA}/bin/activate ivar
+          cd $GITHUB_WORKSPACE/ivar/data
+          ivar getmasked -i test.filtered.tsv -b test.bed  -f pair_information.tsv -p ivar_test.masked
+          [ $(cat ivar_test.masked.txt | cut -f3) == "WNV_400_2_LEFT_alt" ]
