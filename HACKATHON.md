@@ -22,7 +22,7 @@ As automated software testing remains underused in scientific software, our set 
 
 Here we propose seven recommendations that should be followed during software development.
 
-### Establish software needs and testing goals
+### 1. Establish software needs and testing goals
 
 Manually testing the functionality of a tool is feasible in early development, but can become laborious as software matures.
 We recommend:
@@ -34,14 +34,14 @@ The following table provides an overview of testing methodologies and can serve 
 
 ADD TABLE!
 
-### Input test files: the good, the bad, and the ugly
+### 2. Input test files: the good, the bad, and the ugly
 
 When testing, it is important to include test files with known expected outcomes for a successful run.
 However, it is equally important to include files on which the tool is expected to fail.
 For example, some tools should recognize and report an empty input file or a wrong input format.
 Examples of valid and invalid file formats are available through the [BioJulia project](https://github.com/BioJulia/BioFmtSpecimens).
 
-### Use an easy-to-follow language format to implement testing
+### 3. Use an easy-to-follow language format to implement testing
 
 Understanding the test workflow is necessary not only to ensure continued software development but also the integrity of the project for developers and users.
 This can be done through the adoption of a standardized and easy-to-follow format, such as [YAML](https://yaml.org/).
@@ -50,76 +50,45 @@ Additionally, testing packages or frameworks offer an efficient approach to test
 Frameworks such as [unittest](https://docs.python.org/3/library/unittest.html) or [pytest](https://docs.pytest.org/en/stable/) for Python improve test efficiency, help bug detection and reduce manual intervention.  
 When possible frameworks should be integrated into test workflows.
 
+### 4. Testing is good, automated testing is better
 
-## Goals
+When designing tests for your software, plan to automate.
+Whether your tests are small or comprehensive, automatic triggering of tests will help reduce your workload.
 
-1. Introduce automated tests for bioinformatic tools.
-2. Educate ourselves in unit testing, continuous integration (CI), and YAML markup language.
-3. Network with other bioinformaticians.
-4. Create a community resource for identifying software that can pass unit tests.
-5. Publish.
+Many platforms trigger tests automatically based on a set of user-defined conditions. Platforms such as [GitHub Actions](https://github.com/features/actions), [GitLab CI](https://about.gitlab.com/stages-devops-lifecycle/continuous-integration), [CircleCI](https://circleci.com/), [Travis CI](https://www.travis-ci.com/) or [Jenkins](https://www.jenkins.io/) offer straightforward automated testing of code seamlessly upon deployment.
 
-## Program
+### 5. Try the test once, then try it again
 
-### At a glance
+The result of an automated test in the context of one computational workspace does not ensure the same result will be obtained in a different setup.
+Although package managers and containers have reduced variability between workspaces, it is still important to ensure your software can be installed and used across supported platforms.
+One way to ensure this is to test on different environments, with varying dependency versions (e.g., multiple Python versions, instead of only the most recent one).
 
-* Register at https://forms.gle/rSSkQZv3pZXEAh3a7
+### 6. Showcase the tests
 
-**NB: This is a tentative planning and might be subject to change.**
+For prospective users, it is good to know whether you have tested your software and, if so, which tests you have included.
+This can be done by displaying a badge in your [Github README](), or linking to your defined testing strategy e.g. a Github Actions YAML, (see [recommendation #2]()).
 
-Tentative dates: December 2nd to 4th (Wed-Fri), 2020. ASM NGS will take place from 7 to 11 December (Mon-Fri).
-We adhere to the same timezone as the ASM NGS conference itself, meaning the default timezone will be Eastern Standard Time (GMT -5:00).
-However, we will try to organize the schedule in such a way that takes into account timezones of all participants.
+Documenting the testing goal and process enables end-users to easily check tool functionality and the level of testing.
 
-The main program will be in Eastern Standard Time, but individual groups can work in local timezones.
+We recommend contacting the authors, directly or through issues in the code repository, whose software you have tested to share successful outcomes or if you encountered abnormal behaviour or component failures.
+An external perspective can be useful to find bugs that the authors are unaware of.  
 
-### December 2nd
+### 7. Encourage others to test your software
 
-**Orientation, team building, and project formation.**
+Software testing can be crowdsourced, as showcased by the ASM NGS 2020 Hackathon.
+Software suites such as [Pangolin](https://github.com/cov-lineages/pangolin) and [chewBBACA](https://github.com/B-UMMI/chewBBACA) have implemented automated testing developed during the hackathon.
 
-_Times are in Eastern Time to coincide with ASM NGS_
+For developers, crowdsourcing offers the benefits of fresh eyes on your software.
+Feedback and contributions from users can expedite the implementation of software testing practises.
+It also contributes to software sustainability by creating community buy-in, which ultimately helps the software maintainers keep pace with dependency changes, and identify current user needs.
 
-| time   | what | presentor |
-|--------|------|-----------|
-| 9am    | Orientation - the hackathon concept, Zoom, Discord | Lee Katz |
-| 9:30am | Go through an example | Boas van der Putten |
-| 10am   | Team formation, network with team members, choose team captain, choose software for unit testing | via Discord |
-| 10:30am| Record team names and team members on `TEAMS.md` | Individual groups |
-| 11am   | Individual team discussions and logistics | Discord |
-| 12pm   | close | - |
+## Examples
 
-After hours: contact Lee Katz and Boas van der Putten
-* New team formation
-* Questions
-* etc
+TODO
+## Hackathon participants
 
-### December 3rd
-
-**Check in**
-
-_Times are in Eastern Time to coincide with ASM NGS_
-
-| time   | what | presentor |
-|--------|------|-----------|
-| 9am    | Day 2 introduction | Boas van der Putten |
-| 9:15am | Keynote: _The why and the how of testing scientific software_  | Luis Pedro Coelho |
-| 10am | Team updates | team captains |
-| 11:30am| Closeout | Lee Katz |
-
-### December 4th
-
-**Wrap up**
-
-_Times are in Eastern Time to coincide with ASM NGS_
-
-| time   | what | presentor |
-|--------|------|-----------|
-| 9am    | Overview of contributions | Boas van der Putten |
-| 9:30am | Presentations (5 min for presentation + 5 min for challenges faced) | Team captains |
-| 11am   | Discussion of future plans | Lee Katz |
-| 12pm   | Happy hour | In Discord |
-
-## Teams
+TODO
+### Teams
 
 To stimulate interaction, we will subdivide participants into teams of 3-4 people.
 Ideally, these teams will cover different levels of experience with Git, GitHub Actions, and software testing.
@@ -127,15 +96,10 @@ This way, every team can contribute to testing software.
 
 To register your team, please edit and submit a pull request to [TEAMS.md](/TEAMS.md) according to the [contribution etiquette](/CONTRIBUTING.md#pull-request-etiquette).
 
-## Communication
+## Conclusions
 
-All links to Discord and Zoom will be emailed separately to help avoid "Zoom bombing."
+TODO
 
-To register, please go to https://forms.gle/rSSkQZv3pZXEAh3a7
+## Citation
 
-* We will use a Discord server, to be determined.
-Each team will have a channel, named after their team.
-Although Discord is encouraged, each team can decide if there is a different platform that they would like to set up for themselves.
-* To communicate new pull requests, please start with a new issue in GitHub.
-* The hackathon itself will be held over Zoom.
-
+TODO
