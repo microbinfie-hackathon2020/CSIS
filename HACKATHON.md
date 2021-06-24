@@ -1,4 +1,55 @@
-# Hackathon
+# Software testing in microbial bioinformatics: a call to action
+
+## The CSIS
+
+Prior to the American Society for Microbiology Conference on Rapid Applied Microbial Next-Generation Sequencing and Bioinformatic Pipelines held in December 2020, we organized a collaborative three-day “Hackathon” and brought together more than twenty researchers in the field of microbial bioinformatics from five continents.
+The goal of our Hackathon was to explore how to employ software testing in microbial bioinformatics.
+
+The ASM NGS 2020 Hackathon aimed to promote the uptake of testing practices and engage the community in its adoption for public health.
+This repository is an open-source project that gathers guidance, guidelines and examples for software testing for microbial bioinformatics researchers.
+
+## Why Software Testing
+
+Computational algorithms have become an essential component of research, with great efforts of the scientific community to raise standards on development and distribution of code.
+Despite these efforts, sustainability and reproducibility are major issues since continued validation through software testing is still not a widely-adopted practice.
+
+Based on the experiences from our Hackathon, we developed a set of seven recommendations for researchers seeking to improve the quality and reproducibility of their analyses through software testing.
+We propose collaborative software testing as an opportunity to continuously engage software users, developers, and students to unify scientific work across domains.
+
+## Our Recommendations
+
+As automated software testing remains underused in scientific software, our set of recommendations not only ensures appropriate effort can be invested into producing a high quality and robust software, but also increases engagement in its sustainability.
+
+Here we propose seven recommendations that should be followed during software development.
+
+### Establish software needs and testing goals
+
+Manually testing the functionality of a tool is feasible in early development, but can become laborious as software matures.
+We recommend:
+
+- Developers establish software needs and testing goals during planning and designing stages to ensure an efficient testing structure;
+- A minimal test set should address the validation of core components or  the program as a whole (Blackbox testing) and gradually progress toward verification of key functions which can accommodate code changes over time (Whitebox testing).
+
+The following table provides an overview of testing methodologies and can serve as a guide to developers that aim to implement testing practices.
+
+ADD TABLE!
+
+### Input test files: the good, the bad, and the ugly
+
+When testing, it is important to include test files with known expected outcomes for a successful run.
+However, it is equally important to include files on which the tool is expected to fail.
+For example, some tools should recognize and report an empty input file or a wrong input format.
+Examples of valid and invalid file formats are available through the [BioJulia project](https://github.com/BioJulia/BioFmtSpecimens).
+
+### Use an easy-to-follow language format to implement testing
+
+Understanding the test workflow is necessary not only to ensure continued software development but also the integrity of the project for developers and users.
+This can be done through the adoption of a standardized and easy-to-follow format, such as [YAML](https://yaml.org/).
+
+Additionally, testing packages or frameworks offer an efficient approach to test creation and design.
+Frameworks such as [unittest](https://docs.python.org/3/library/unittest.html) or [pytest](https://docs.pytest.org/en/stable/) for Python improve test efficiency, help bug detection and reduce manual intervention.  
+When possible frameworks should be integrated into test workflows.
+
 
 ## Goals
 
