@@ -51,7 +51,8 @@ The following table provides an overview of testing methodologies and can serve 
 	mso-number-format:General;
 	text-align:left;
 	vertical-align:top;
-	border:.5pt solid windowtext;
+	border:.5pt solid;
+    background:white;
 	mso-background-source:auto;
 	mso-pattern:auto;
 	white-space:normal;}
@@ -70,7 +71,7 @@ The following table provides an overview of testing methodologies and can serve 
 	mso-number-format:General;
 	text-align:center;
 	vertical-align:top;
-	border:.5pt solid windowtext;
+	border:.5pt solid;
 	background:#404040;
 	mso-pattern:black none;
 	white-space:normal;}
@@ -89,7 +90,8 @@ The following table provides an overview of testing methodologies and can serve 
 	mso-number-format:General;
 	text-align:left;
 	vertical-align:top;
-	border:.5pt solid windowtext;
+	border:.5pt solid;
+    background: white;
 	mso-background-source:auto;
 	mso-pattern:auto;
 	white-space:normal;}
@@ -108,7 +110,8 @@ The following table provides an overview of testing methodologies and can serve 
 	mso-number-format:General;
 	text-align:left;
 	vertical-align:top;
-	border:.5pt solid windowtext;
+	border:.5pt solid;
+    background: white;
 	mso-background-source:auto;
 	mso-pattern:auto;
 	white-space:normal;}
@@ -127,10 +130,10 @@ The following table provides an overview of testing methodologies and can serve 
 	mso-number-format:General;
 	text-align:center;
 	vertical-align:top;
-	border-top:.5pt solid windowtext;
+	border-top:.5pt solid;
 	border-right:none;
-	border-bottom:.5pt solid windowtext;
-	border-left:.5pt solid windowtext;
+	border-bottom:.5pt solid ;
+	border-left:.5pt solid ;
 	background:gray;
 	mso-pattern:black none;
 	white-space:normal;}
@@ -149,9 +152,9 @@ The following table provides an overview of testing methodologies and can serve 
 	mso-number-format:General;
 	text-align:center;
 	vertical-align:top;
-	border-top:.5pt solid windowtext;
+	border-top:.5pt solid;
 	border-right:none;
-	border-bottom:.5pt solid windowtext;
+	border-bottom:.5pt solid;
 	border-left:none;
 	background:gray;
 	mso-pattern:black none;
@@ -171,16 +174,16 @@ The following table provides an overview of testing methodologies and can serve 
 	mso-number-format:General;
 	text-align:center;
 	vertical-align:top;
-	border-top:.5pt solid windowtext;
-	border-right:.5pt solid windowtext;
-	border-bottom:.5pt solid windowtext;
+	border-top:.5pt solid ;
+	border-right:.5pt solid ;
+	border-bottom:.5pt solid ;
 	border-left:none;
 	background:gray;
 	mso-pattern:black none;
 	white-space:normal;}
 </style>
 
-<table border=0 cellpadding=0 cellspacing=0 width=1185 class=xl655356200 style='border-collapse:collapse table-layout:fixed;width:890pt'>
+<table cellpadding=0 cellspacing=0 width=1185 class=xl655356200 style='border-collapse:collapse table-layout:fixed;width:435pt'>
  <col class=xl655356200 width=179 style='mso-width-source:userset;mso=-width-alt:6260 width:135pt'>
  <col class=xl655356200 width=465 style='mso-width-source:userset;mso=-width-alt:16221;width:349pt'>
  <col class=xl655356200 width=541 style='mso-width-source:userset;mso=-width-alt:18897;width:406pt'>
@@ -198,57 +201,42 @@ The following table provides an overview of testing methodologies and can serve 
   <td height=19 class=xl656200 width=179 style='height:14.5pt;borde=
 r-top:none;
   width:135pt'><b>Installation testing</b></td>
-  <td class=xl636200 width=465 style='border-top:none;border-left:non=
-e;
-  width:349pt'>Can the software be installed on different platforms?</td>
-  <td class=xl666200 width=541 style='border-top:none;border-left:non=
-e;
-  width:406pt'><i>Test whether Software X can be installed using apt-get, pip, conda and from source.</i></td>
+  <td class=xl636200 width=465 style='border-top:none;border-left:none;width:349pt'>
+  Can the software be installed on different platforms?</td>
+  <td class=xl666200 width=541 style='border-top:none;border-left:none;width:406pt'>
+  <i>Test whether Software X can be installed using apt-get, pip, conda and from source.</i></td>
  </tr>
  <tr height=19 style='height:14.5pt'>
-  <td height=19 class=xl656200 width=179 style='height:14.5pt;borde=
-r-top:none;
-  width:135pt'><b>Configuration testing</b></td>
-  <td class=xl636200 width=465 style='border-top:none;border-left:non=
-e;
-  width:349pt'>With which dependencies can the software be used?</td>
-  <td class=xl666200 width=541 style='border-top:none;border-left:non=
-e;
-  width:406pt'><i>Test whether Software X can be used with different versions of BLAST+.</i></td>
+  <td height=19 class=xl656200 width=179 style='height:14.5pt;border-top:none;width:135pt'>
+  <b>Configuration testing</b></td>
+  <td class=xl636200 width=465 style='border-top:none;border-left:none;width:349pt'>
+  With which dependencies can the software be used?</td>
+  <td class=xl666200 width=541 style='border-top:none;border-left:none;width:406pt'>
+  <i>Test whether Software X can be used with different versions of BLAST+.</i></td>
  </tr>
  <tr height=39 style='height:29.0pt'>
-  <td height=39 class=xl656200 width=179 style='height:29.0pt;borde=
-r-top:none;
-  width:135pt'><b>Implementation testing<b></td>
-  <td class=xl636200 width=465 style='border-top:none;border-left:non=
-e;
-  width:349pt'>Do different implementations work similarly enough?</td>
-  <td class=xl666200 width=541 style='border-top:none;border-left:non=
-e;
-  width:406pt'><i>Test whether Software X works the same between the standalone and webserver versions.</i></td>
+  <td height=39 class=xl656200 width=179 style='height:29.0pt;border-top:none;width:135pt'>
+  <b>Implementation testing<b></td>
+  <td class=xl636200 width=465 style='border-top:none;border-left:none;width:349pt'>
+  Do different implementations work similarly enough?</td>
+  <td class=xl666200 width=541 style='border-top:none;border-left:none;width:406pt'>
+  <i>Test whether Software X works the same between the standalone and webserver versions.</i></td>
  </tr>
  <tr height=19 style='height:14.5pt'>
-  <td height=19 class=xl656200 width=179 style='height:14.5pt;borde=
-r-top:none;
-  width:135pt'><b>Compatibility testing</b></td>
-  <td class=xl636200 width=465 style='border-top:none;border-left:non=
-e;
-  width:349pt'>Are newer versions compatible with previous input/output?</t=
-d>
-  <td class=xl666200 width=541 style='border-top:none;border-left:non=
-e;
-  width:406pt'><i>Test whether Software X can be used with older versions of the UniProtKB database.</i></td>
+  <td height=19 class=xl656200 width=179 style='height:14.5pt;border-top:none;width:135pt'>
+  <b>Compatibility testing</b></td>
+  <td class=xl636200 width=465 style='border-top:none;border-left:none;width:349pt'>
+  Are newer versions compatible with previous input/output?</td>
+  <td class=xl666200 width=541 style='border-top:none;border-left:none;width:406pt'>
+  <i>Test whether Software X can be used with older versions of the UniProtKB database.</i></td>
  </tr>
  <tr height=39 style='height:29.0pt'>
-  <td height=39 class=xl656200 width=179 style='height:29.0pt;borde=
-r-top:none;
-  width:135pt'><b>Static testing</b></td>
-  <td class=xl636200 width=465 style='border-top:none;border-left:non=
-e;
-  width:349pt'>Is the source code syntactically correct?</td>
-  <td class=xl666200 width=541 style='border-top:none;border-left:non=
-e;
-  width:406pt'><i>Check whether all opening braces have corresponding closing braces or whether code is indented correctly in Software X.</i></td>
+  <td height=39 class=xl656200 width=179 style='height:29.0pt;border-top:none;width:135pt'>
+  <b>Static testing</b></td>
+  <td class=xl636200 width=465 style='border-top:none;border-left:none;width:349pt'>
+  Is the source code syntactically correct?</td>
+  <td class=xl666200 width=541 style='border-top:none;border-left:none;width:406pt'>
+  <i>Check whether all opening braces have corresponding closing braces or whether code is indented correctly in Software X.</i></td>
  </tr>
  <tr height=20 style='mso-height-source:userset;height:15.0pt'>
   <td colspan=3 height=20 class=xl676200 width=1185 style='border=
@@ -256,73 +244,57 @@ e;
   height:15.0pt;width:890pt'><b>Standard functionality testing: does the software do what it should in daily use?</b></td>
  </tr>
  <tr height=19 style='height:14.5pt'>
-  <td height=19 class=xl656200 width=179 style='height:14.5pt;borde=
-r-top:none;
-  width:135pt'><b>Use case testing</b></td>
-  <td class=xl636200 width=465 style='border-top:none;border-left:non=
-e;
-  width:349pt'>Can the software do what it is supposed to do regularly?</td>
-  <td class=xl666200 width=541 style='border-top:none;border-left:non=
-e;
-  width:406pt'><i>Test whether Software X can annotate a small plasmid.</i></td>
+  <td height=19 class=xl656200 width=179 style='height:14.5pt;border-top:none;width:135pt'>
+  <b>Use case testing</b></td>
+  <td class=xl636200 width=465 style='border-top:none;border-left:none;width:349pt'>
+  Can the software do what it is supposed to do regularly?</td>
+  <td class=xl666200 width=541 style='border-top:none;border-left:none;width:406pt'>
+  <i>Test whether Software X can annotate a small plasmid.</i></td>
  </tr>
  <tr height=39 style='height:29.0pt'>
-  <td height=39 class=xl656200 width=179 style='height:29.0pt;borde=
-r-top:none;
-  width:135pt'><b>Workflow testing</b></td>
-  <td class=xl636200 width=465 style='border-top:none;border-left:non=
-e;
-  width:349pt'>Can the software succesfully traverse each path in the analysis?</td>
-  <td class=xl666200 width=541 style='border-top:none;border-left:non=
-e;
-  width:406pt'><i>Test whether Software X works in different modes (using fast mode, using rnammer over barrnap or using rfam mode).</i></td>
+  <td height=39 class=xl656200 width=179 style='height:29.0pt;border-top:none;width:135pt'>
+  <b>Workflow testing</b></td>
+  <td class=xl636200 width=465 style='border-top:none;border-left:none;width:349pt'>
+  Can the software succesfully traverse each path in the analysis?</td>
+  <td class=xl666200 width=541 style='border-top:none;border-left:none;width:406pt'>
+  <i>Test whether Software X works in different modes (using fast mode, using rnammer over barrnap or using rfam mode).</i></td>
  </tr>
  <tr height=39 style='height:29.0pt'>
-  <td height=39 class=xl656200 width=179 style='height:29.0pt;borde=
-r-top:none;
-  width:135pt'><b>Sanity testing</b></td>
-  <td class=xl636200 width=465 style='border-top:none;border-left:non=
-e;
-  width:349pt'>Can the software be invoked without errors?</td>
-  <td class=xl666200 width=541 style='border-top:none;border-left:non=
-e;
-  width:406pt'><i>Test whether Software X works correctly without flags, or when checking dependencies or displaying help info.</i></td>
+  <td height=39 class=xl656200 width=179 style='height:29.0pt;border-top:none;width:135pt'>
+  <b>Sanity testing</b></td>
+  <td class=xl636200 width=465 style='border-top:none;border-left:none;width:349pt'>
+  Can the software be invoked without errors?</td>
+  <td class=xl666200 width=541 style='border-top:none;border-left:none;width:406pt'>
+  <i>Test whether Software X works correctly without flags, or when checking dependencies or displaying help info.</i></td>
  </tr>
  <tr height=20 style='mso-height-source:userset;height:15.0pt'>
-  <td colspan=3 height=20 class=xl676200 width=1185 style='border=
--right:.5pt solid black;
-  height:15.0pt;width:890pt'><b>Destructive testing: what makes the software fail?</b></td>
+  <td colspan=3 height=20 class=xl676200 width=1185 style='border-right:.5pt solid black;
+  height:15.0pt;width:890pt'>
+  <b>Destructive testing: what makes the software fail?</b></td>
  </tr>
  <tr height=58 style='height:43.5pt'>
-  <td height=58 class=xl656200 width=179 style='height:43.5pt;borde=
-r-top:none;
-  width:135pt'><b>Mutation/fuzz testing</b></td>
-  <td class=xl636200 width=465 style='border-top:none;border-left:non=
-e;
-  width:349pt'>How does the software handle different inputs and at which point does the software fail?</td>
-  <td class=xl666200 width=541 style='border-top:none;border-left:non=
-e;
-  width:406pt'><i>Test whether Software X can annotate different FASTA files: with spaces in the header, without a header, an empty file, with spaces in the sequence, with unknown characters in the sequences, et cetera.</i></td>
+  <td height=58 class=xl656200 width=179 style='height:43.5pt;border-top:none;width:135pt'>
+  <b>Mutation/fuzz testing</b></td>
+  <td class=xl636200 width=465 style='border-top:none;border-left:none;width:349pt'>
+  How does the software handle different inputs and at which point does the software fail?</td>
+  <td class=xl666200 width=541 style='border-top:none;border-left:none;width:406pt'>
+  <i>Test whether Software X can annotate different FASTA files: with spaces in the header, without a header, an empty file, with spaces in the sequence, with unknown characters in the sequences, et cetera.</i></td>
  </tr>
  <tr height=39 style='height:29.0pt'>
-  <td height=39 class=xl656200 width=179 style='height:29.0pt;borde=
-r-top:none;
-  width:135pt'><b>Load testing</b></td>
-  <td class=xl636200 width=465 style='border-top:none;border-left:non=
-e;
-  width:349pt'>At what input size does the software fail?</td>
-  <td class=xl666200 width=541 style='border-top:none;border-left:non=
-e;
-  width:406pt'><i>Test whether Software X can annotate a small plasmid (10 Kbp), a medium-size genome (2 Mbp) or an unrealistically large genome for a prokaryote (1 Gbp).</i></td>
+  <td height=39 class=xl656200 width=179 style='height:29.0pt;border-top:none;width:135pt'>
+  <b>Load testing</b></td>
+  <td class=xl636200 width=465 style='border-top:none;border-left:none;width:349pt'>
+  At what input size does the software fail?</td>
+  <td class=xl666200 width=541 style='border-top:none;border-left:none;width:406pt'>
+  <i>Test whether Software X can annotate a small plasmid (10 Kbp), a medium-size genome (2 Mbp) or an unrealistically large genome for a prokaryote (1 Gbp).</i></td>
  </tr>
  <tr height=39 style='height:29.0pt'>
-  <td height=39 class=xl656200 width=179 style='height:29.0pt;borde=
-r-top:none;
-  width:135pt'><b>Fault injection</b></td>
-  <td class=xl636200 width=465 style= border-top:none;border-left:none;
-  width:349pt>Does the software fail if faults are introduced and how is this handled?</td>
-  <td class=xl666200 width=541 style='border-top:none border-left:none;
-  width:406pt'><i>Test whether Software X fails if nonsense functions are introduced in the gene calling code.</i></td>
+  <td height=39 class=xl656200 width=179 style='height:29.0pt;border-top:none;width:135pt'>
+  <b>Fault injection</b></td>
+  <td class=xl636200 width=465 style='border-top:none;border-left:none;width:349pt'>
+  Does the software fail if faults are introduced and how is this handled?</td>
+  <td class=xl666200 width=541 style='border-top:none border-left:none;width:406pt'>
+  <i>Test whether Software X fails if nonsense functions are introduced in the gene calling code.</i></td>
  </tr>
 </table>
 
