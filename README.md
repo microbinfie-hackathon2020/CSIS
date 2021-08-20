@@ -201,7 +201,7 @@ For developers, crowd-sourcing offers the benefits of fresh eyes on your softwar
 Feedback and contributions from users can expedite the implementation of software testing practices.
 It also contributes to software sustainability by creating community buy-in, which ultimately helps the software maintainers keep pace with dependency changes, and identify current user needs.
 
-## Current software
+## Example software testing
 
 | Software | badge with link to CI | version badge | yaml |
 |----------|-----------------------|---------------|------|
