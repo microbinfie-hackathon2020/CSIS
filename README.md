@@ -36,265 +36,118 @@ We recommend:
 The following [table](#Table-1:-Overview-of-testing-approaches) provides an overview of testing methodologies and can serve as a guide to developers that aim to implement testing practices.
 
 #### Table 1: Overview of testing approaches
-<style>
-.xl636200
-	{padding-top:1px;
-	padding-right:1px;
-	padding-left:1px;
-	mso-ignore:padding;
-	color:black;
-	font-size:11.0pt;
-	font-weight:400;
-	font-style:normal;
-	text-decoration:none;
-	font-family:Calibri, sans-serif;
-	mso-font-charset:0;
-	mso-number-format:General;
-	text-align:left;
-	vertical-align:top;
-	border:.5pt solid;
-    background:white;
-	mso-background-source:auto;
-	mso-pattern:auto;
-	white-space:normal;}
-.xl646200
-	{padding-top:1px;
-	padding-right:1px;
-	padding-left:1px;
-	mso-ignore:padding;
-	color:white;
-	font-size:11.0pt;
-	font-weight:700;
-	font-style:normal;
-	text-decoration:none;
-	font-family:Calibri, sans-serif;
-	mso-font-charset:0;
-	mso-number-format:General;
-	text-align:center;
-	vertical-align:top;
-	border:.5pt solid;
-	background:#404040;
-	mso-pattern:black none;
-	white-space:normal;}
-.xl656200
-	{padding-top:1px;
-	padding-right:1px;
-	padding-left:1px;
-	mso-ignore:padding;
-	color:black;
-	font-size:11.0pt;
-	font-weight:700;
-	font-style:normal;
-	text-decoration:none;
-	font-family:Calibri, sans-serif;
-	mso-font-charset:0;
-	mso-number-format:General;
-	text-align:left;
-	vertical-align:top;
-	border:.5pt solid;
-    background: white;
-	mso-background-source:auto;
-	mso-pattern:auto;
-	white-space:normal;}
-.xl666200
-	{padding-top:1px;
-	padding-right:1px;
-	padding-left:1px;
-	mso-ignore:padding;
-	color:black;
-	font-size:11.0pt;
-	font-weight:400;
-	font-style:italic;
-	text-decoration:none;
-	font-family:Calibri, sans-serif;
-	mso-font-charset:0;
-	mso-number-format:General;
-	text-align:left;
-	vertical-align:top;
-	border:.5pt solid;
-    background: white;
-	mso-background-source:auto;
-	mso-pattern:auto;
-	white-space:normal;}
-.xl676200
-	{padding-top:1px;
-	padding-right:1px;
-	padding-left:1px;
-	mso-ignore:padding;
-	color:white;
-	font-size:11.0pt;
-	font-weight:700;
-	font-style:normal;
-	text-decoration:none;
-	font-family:Calibri, sans-serif;
-	mso-font-charset:0;
-	mso-number-format:General;
-	text-align:center;
-	vertical-align:top;
-	border-top:.5pt solid;
-	border-right:none;
-	border-bottom:.5pt solid ;
-	border-left:.5pt solid ;
-	background:gray;
-	mso-pattern:black none;
-	white-space:normal;}
-.xl686200
-	{padding-top:1px;
-	padding-right:1px;
-	padding-left:1px;
-	mso-ignore:padding;
-	color:white;
-	font-size:11.0pt;
-	font-weight:700;
-	font-style:normal;
-	text-decoration:none;
-	font-family:Calibri, sans-serif;
-	mso-font-charset:0;
-	mso-number-format:General;
-	text-align:center;
-	vertical-align:top;
-	border-top:.5pt solid;
-	border-right:none;
-	border-bottom:.5pt solid;
-	border-left:none;
-	background:gray;
-	mso-pattern:black none;
-	white-space:normal;}
-.xl696200
-	{padding-top:1px;
-	padding-right:1px;
-	padding-left:1px;
-	mso-ignore:padding;
-	color:white;
-	font-size:11.0pt;
-	font-weight:700;
-	font-style:normal;
-	text-decoration:none;
-	font-family:Calibri, sans-serif;
-	mso-font-charset:0;
-	mso-number-format:General;
-	text-align:center;
-	vertical-align:top;
-	border-top:.5pt solid ;
-	border-right:.5pt solid ;
-	border-bottom:.5pt solid ;
-	border-left:none;
-	background:gray;
-	mso-pattern:black none;
-	white-space:normal;}
-</style>
 
-<table cellpadding=0 cellspacing=0 width=1185 class=xl655356200 style='border-collapse:collapse table-layout:fixed;width:435pt'>
- <col class=xl655356200 width=179 style='mso-width-source:userset;mso=-width-alt:6260 width:135pt'>
- <col class=xl655356200 width=465 style='mso-width-source:userset;mso=-width-alt:16221;width:349pt'>
- <col class=xl655356200 width=541 style='mso-width-source:userset;mso=-width-alt:18897;width:406pt'>
+<table cellpadding=0 cellspacing=0 width=1185 style='border-collapse:collapse table-layout:fixed;width:435pt'>
+ <col width=179 style='mso-width-source:userset;mso=-width-alt:6260 width:135pt'>
+ <col width=465 style='mso-width-source:userset;mso=-width-alt:16221;width:349pt'>
+ <col width=541 style='mso-width-source:userset;mso=-width-alt:18897;width:406pt'>
  <tr height=19 style='height:14.5pt'>
-  <td height=19 class=xl646200 width=179 style='height:14.5pt;width:135pt'>
+  <td height=19 width=179 style='height:14.5pt;width:135pt'>
   <b>Name</b></td>
-  <td class=xl646200 width=465 style='border-left:none;width:349pt'><b>Description</b></td>
-  <td class=xl646200 width=541 style='border-left:none;width:406pt'><b>Example</b></td>
+  <td width=465 style='border-left:none;width:349pt'><b>Description</b></td>
+  <td width=541 style='border-left:none;width:406pt'><b>Example</b></td>
  </tr>
  <tr height=19 style='height:14.5pt'>
-  <td colspan=3 height=19 class=xl676200 width=1185 style='border=-right:.5pt solid black;height:14.5pt;width:890pt'>
+  <td colspan=3 height=19 width=1185 style='border=-right:.5pt solid black;height:14.5pt;width:890pt'>
   <b>Installation testing: can the software be invoked on different setups?</b></td>
  </tr>
  <tr height=19 style='height:14.5pt'>
-  <td height=19 class=xl656200 width=179 style='height:14.5pt;borde=
+  <td height=19 width=179 style='height:14.5pt;borde=
 r-top:none;
   width:135pt'><b>Installation testing</b></td>
-  <td class=xl636200 width=465 style='border-top:none;border-left:none;width:349pt'>
+  <td width=465 style='border-top:none;border-left:none;width:349pt'>
   Can the software be installed on different platforms?</td>
-  <td class=xl666200 width=541 style='border-top:none;border-left:none;width:406pt'>
+  <td width=541 style='border-top:none;border-left:none;width:406pt'>
   <i>Test whether Software X can be installed using apt-get, pip, conda and from source.</i></td>
  </tr>
  <tr height=19 style='height:14.5pt'>
-  <td height=19 class=xl656200 width=179 style='height:14.5pt;border-top:none;width:135pt'>
+  <td height=19  width=179 style='height:14.5pt;border-top:none;width:135pt'>
   <b>Configuration testing</b></td>
-  <td class=xl636200 width=465 style='border-top:none;border-left:none;width:349pt'>
+  <td  width=465 style='border-top:none;border-left:none;width:349pt'>
   With which dependencies can the software be used?</td>
-  <td class=xl666200 width=541 style='border-top:none;border-left:none;width:406pt'>
+  <td  width=541 style='border-top:none;border-left:none;width:406pt'>
   <i>Test whether Software X can be used with different versions of BLAST+.</i></td>
  </tr>
  <tr height=39 style='height:29.0pt'>
-  <td height=39 class=xl656200 width=179 style='height:29.0pt;border-top:none;width:135pt'>
+  <td height=39  width=179 style='height:29.0pt;border-top:none;width:135pt'>
   <b>Implementation testing<b></td>
-  <td class=xl636200 width=465 style='border-top:none;border-left:none;width:349pt'>
+  <td  width=465 style='border-top:none;border-left:none;width:349pt'>
   Do different implementations work similarly enough?</td>
-  <td class=xl666200 width=541 style='border-top:none;border-left:none;width:406pt'>
+  <td  width=541 style='border-top:none;border-left:none;width:406pt'>
   <i>Test whether Software X works the same between the standalone and webserver versions.</i></td>
  </tr>
  <tr height=19 style='height:14.5pt'>
-  <td height=19 class=xl656200 width=179 style='height:14.5pt;border-top:none;width:135pt'>
+  <td height=19  width=179 style='height:14.5pt;border-top:none;width:135pt'>
   <b>Compatibility testing</b></td>
-  <td class=xl636200 width=465 style='border-top:none;border-left:none;width:349pt'>
+  <td  width=465 style='border-top:none;border-left:none;width:349pt'>
   Are newer versions compatible with previous input/output?</td>
-  <td class=xl666200 width=541 style='border-top:none;border-left:none;width:406pt'>
+  <td  width=541 style='border-top:none;border-left:none;width:406pt'>
   <i>Test whether Software X can be used with older versions of the UniProtKB database.</i></td>
  </tr>
  <tr height=39 style='height:29.0pt'>
-  <td height=39 class=xl656200 width=179 style='height:29.0pt;border-top:none;width:135pt'>
+  <td height=39  width=179 style='height:29.0pt;border-top:none;width:135pt'>
   <b>Static testing</b></td>
-  <td class=xl636200 width=465 style='border-top:none;border-left:none;width:349pt'>
+  <td  width=465 style='border-top:none;border-left:none;width:349pt'>
   Is the source code syntactically correct?</td>
-  <td class=xl666200 width=541 style='border-top:none;border-left:none;width:406pt'>
+  <td  width=541 style='border-top:none;border-left:none;width:406pt'>
   <i>Check whether all opening braces have corresponding closing braces or whether code is indented correctly in Software X.</i></td>
  </tr>
  <tr height=20 style='mso-height-source:userset;height:15.0pt'>
-  <td colspan=3 height=20 class=xl676200 width=1185 style='border=
+  <td colspan=3 height=20 width=1185 style='border=
 -right:.5pt solid black;
   height:15.0pt;width:890pt'><b>Standard functionality testing: does the software do what it should in daily use?</b></td>
  </tr>
  <tr height=19 style='height:14.5pt'>
-  <td height=19 class=xl656200 width=179 style='height:14.5pt;border-top:none;width:135pt'>
+  <td height=19  width=179 style='height:14.5pt;border-top:none;width:135pt'>
   <b>Use case testing</b></td>
-  <td class=xl636200 width=465 style='border-top:none;border-left:none;width:349pt'>
+  <td  width=465 style='border-top:none;border-left:none;width:349pt'>
   Can the software do what it is supposed to do regularly?</td>
-  <td class=xl666200 width=541 style='border-top:none;border-left:none;width:406pt'>
+  <td  width=541 style='border-top:none;border-left:none;width:406pt'>
   <i>Test whether Software X can annotate a small plasmid.</i></td>
  </tr>
  <tr height=39 style='height:29.0pt'>
-  <td height=39 class=xl656200 width=179 style='height:29.0pt;border-top:none;width:135pt'>
+  <td height=39  width=179 style='height:29.0pt;border-top:none;width:135pt'>
   <b>Workflow testing</b></td>
-  <td class=xl636200 width=465 style='border-top:none;border-left:none;width:349pt'>
+  <td  width=465 style='border-top:none;border-left:none;width:349pt'>
   Can the software succesfully traverse each path in the analysis?</td>
-  <td class=xl666200 width=541 style='border-top:none;border-left:none;width:406pt'>
+  <td  width=541 style='border-top:none;border-left:none;width:406pt'>
   <i>Test whether Software X works in different modes (using fast mode, using rnammer over barrnap or using rfam mode).</i></td>
  </tr>
  <tr height=39 style='height:29.0pt'>
-  <td height=39 class=xl656200 width=179 style='height:29.0pt;border-top:none;width:135pt'>
+  <td height=39  width=179 style='height:29.0pt;border-top:none;width:135pt'>
   <b>Sanity testing</b></td>
-  <td class=xl636200 width=465 style='border-top:none;border-left:none;width:349pt'>
+  <td  width=465 style='border-top:none;border-left:none;width:349pt'>
   Can the software be invoked without errors?</td>
-  <td class=xl666200 width=541 style='border-top:none;border-left:none;width:406pt'>
+  <td  width=541 style='border-top:none;border-left:none;width:406pt'>
   <i>Test whether Software X works correctly without flags, or when checking dependencies or displaying help info.</i></td>
  </tr>
  <tr height=20 style='mso-height-source:userset;height:15.0pt'>
-  <td colspan=3 height=20 class=xl676200 width=1185 style='border-right:.5pt solid black;
+  <td colspan=3 height=20 width=1185 style='border-right:.5pt solid black;
   height:15.0pt;width:890pt'>
   <b>Destructive testing: what makes the software fail?</b></td>
  </tr>
  <tr height=58 style='height:43.5pt'>
-  <td height=58 class=xl656200 width=179 style='height:43.5pt;border-top:none;width:135pt'>
+  <td height=58  width=179 style='height:43.5pt;border-top:none;width:135pt'>
   <b>Mutation/fuzz testing</b></td>
-  <td class=xl636200 width=465 style='border-top:none;border-left:none;width:349pt'>
+  <td  width=465 style='border-top:none;border-left:none;width:349pt'>
   How does the software handle different inputs and at which point does the software fail?</td>
-  <td class=xl666200 width=541 style='border-top:none;border-left:none;width:406pt'>
+  <td  width=541 style='border-top:none;border-left:none;width:406pt'>
   <i>Test whether Software X can annotate different FASTA files: with spaces in the header, without a header, an empty file, with spaces in the sequence, with unknown characters in the sequences, et cetera.</i></td>
  </tr>
  <tr height=39 style='height:29.0pt'>
-  <td height=39 class=xl656200 width=179 style='height:29.0pt;border-top:none;width:135pt'>
+  <td height=39  width=179 style='height:29.0pt;border-top:none;width:135pt'>
   <b>Load testing</b></td>
-  <td class=xl636200 width=465 style='border-top:none;border-left:none;width:349pt'>
+  <td  width=465 style='border-top:none;border-left:none;width:349pt'>
   At what input size does the software fail?</td>
-  <td class=xl666200 width=541 style='border-top:none;border-left:none;width:406pt'>
+  <td  width=541 style='border-top:none;border-left:none;width:406pt'>
   <i>Test whether Software X can annotate a small plasmid (10 Kbp), a medium-size genome (2 Mbp) or an unrealistically large genome for a prokaryote (1 Gbp).</i></td>
  </tr>
  <tr height=39 style='height:29.0pt'>
-  <td height=39 class=xl656200 width=179 style='height:29.0pt;border-top:none;width:135pt'>
+  <td height=39  width=179 style='height:29.0pt;border-top:none;width:135pt'>
   <b>Fault injection</b></td>
-  <td class=xl636200 width=465 style='border-top:none;border-left:none;width:349pt'>
+  <td  width=465 style='border-top:none;border-left:none;width:349pt'>
   Does the software fail if faults are introduced and how is this handled?</td>
-  <td class=xl666200 width=541 style='border-top:none border-left:none;width:406pt'>
+  <td  width=541 style='border-top:none border-left:none;width:406pt'>
   <i>Test whether Software X fails if nonsense functions are introduced in the gene calling code.</i></td>
  </tr>
 </table>
@@ -370,7 +223,12 @@ It also contributes to software sustainability by creating community buy-in, whi
 | [CheckM](https://github.com/Ecogenomics/CheckM)    | [![checkm](https://github.com/microbinfie-hackathon2020/CSIS/workflows/checkm/badge.svg)](https://github.com/microbinfie-hackathon2020/CSIS/actions?query=workflow%3Acheckm) | [![Tested Version](https://img.shields.io/badge/version-v1.1.3-brightgreen)](https://github.com/Ecogenomics/CheckM/releases/tag/v1.1.3) | [checkm.yml](/.github/workflows/checkm.yml) |
 | [iVar](https://github.com/andersen-lab/ivar)   | [![iVar](https://github.com/microbinfie-hackathon2020/CSIS/workflows/ivar/badge.svg)](https://github.com/microbinfie-hackathon2020/CSIS/actions?query=workflow%3Aivar) | [![Tested Version](https://img.shields.io/badge/version-v1.3-brightgreen)](https://github.com/andersen-lab/ivar) | [ivar.yml](/.github/workflows/ivar.yml) |
 
-# Etymology
+## Etymology
 
 CSIS is a play on the acronym for the [United States Food Safety Inspection Service](https://www.fsis.usda.gov).
 Additionally, it has CSI in the acronym (Crime Scene Investigation) which has a sort of detective feel to it.
+
+## Contributors
+The following participants were responsible for compiling the set of recommendations presented in this repository: [Boas van der Putten](https://github.com/boasvdp) [Inês Mendes](https://github.com/cimendes), [Brook Talbot](https://github.com/bmtalbot), [Jolinda de Korne-Elenbaas](https://github.com/jolindadekorne), [Rafael Mamede](https://github.com/rfm-targa), [Pedro Vila-Cerqueira](https://github.com/pedrorvc), [Luis Pedro Coelho](https://github.com/luispedro), [Christopher A. Gulvik](https://github.com/chrisgulvik), [Lee S. Kat](https://github.com/lskatz). 
+
+The following participants were contributed in automating tests for bioinformatics and contributing a community resource for identifying software that can pass unit tests, available in this repository: [Áine O'Toole](https://github.com/aineniamh), [Justin Payne](https://github.com/crashfrog), [Mário Ramirez](https://github.com/orgs/B-UMMI/people/ramirma), [Peter van Heusden](https://github.com/pvanheus), [Robert A. Petit III](https://github.com/rpetit3), [Verity Hill](), [Yvette Unoarumhi](). 
