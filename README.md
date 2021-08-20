@@ -33,8 +33,9 @@ We recommend:
 - Developers establish software needs and testing goals during planning and designing stages to ensure an efficient testing structure;
 - A minimal test set should address the validation of core components or  the program as a whole (Blackbox testing) and gradually progress toward verification of key functions which can accommodate code changes over time (Whitebox testing).
 
-The following table provides an overview of testing methodologies and can serve as a guide to developers that aim to implement testing practices.
+The following [table](#Table-1:-Overview-of-testing-approaches) provides an overview of testing methodologies and can serve as a guide to developers that aim to implement testing practices.
 
+#### Table 1: Overview of testing approaches
 <style>
 .xl636200
 	{padding-top:1px;
@@ -297,6 +298,7 @@ r-top:none;
   <i>Test whether Software X fails if nonsense functions are introduced in the gene calling code.</i></td>
  </tr>
 </table>
+<br>
 
 ### 2. Input test files: the good, the bad, and the ugly
 
