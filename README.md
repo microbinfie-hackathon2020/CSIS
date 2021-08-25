@@ -1,19 +1,212 @@
-# CSIS
+# Software testing in microbial bioinformatics: a call to action
+
 :detective: Code Safety Inspection Service
 
-## In short
+## The CSIS
 
-Many bioinformatics projects do not use unit testing.
-Without unit testing, it is difficult to ensure which bioinformatics software is in working order,
- or which bioinformatics software adheres to basic standards.
-We are adding basic unit tests for bioinformatics software here using the GitHub Actions platform.
+Prior to the American Society for Microbiology Conference on Rapid Applied Microbial Next-Generation Sequencing and Bioinformatic Pipelines held in December 2020, we organized a collaborative three-day “Hackathon” and brought together more than twenty researchers in the field of microbial bioinformatics from five continents.
+The goal of our Hackathon was to explore how to employ software testing in microbial bioinformatics.
 
-# Current software
+The ASM NGS 2020 Hackathon aimed to promote the uptake of testing practices and engage the community in its adoption for public health.
+This repository is an open-source project that gathers guidance, guidelines and examples for software testing for microbial bioinformatics researchers.
+
+## Why Software Testing
+
+Computational algorithms have become an essential component of research, with great efforts of the scientific community to raise standards on development and distribution of code.
+Despite these efforts, sustainability and reproducibility are major issues since continued validation through software testing is still not a widely-adopted practice.
+
+Based on the experiences from our Hackathon, we developed a set of seven recommendations for researchers seeking to improve the quality and reproducibility of their analyses through software testing.
+We propose collaborative software testing as an opportunity to continuously engage software users, developers, and students to unify scientific work across domains.
+
+
+## Our Recommendations
+
+As automated software testing remains underused in scientific software, our set of recommendations not only ensures appropriate effort can be invested into producing a high quality and robust software, but also increases engagement in its sustainability.
+
+Here we propose seven recommendations that should be followed during software development.
+
+### 1. Establish software needs and testing goals
+
+Manually testing the functionality of a tool is feasible in early development, but can become laborious as software matures.
+We recommend:
+
+- Developers establish software needs and testing goals during planning and designing stages to ensure an efficient testing structure;
+- A minimal test set should address the validation of core components or  the program as a whole (Blackbox testing) and gradually progress toward verification of key functions which can accommodate code changes over time (Whitebox testing).
+
+The following [table](#Table-1:-Overview-of-testing-approaches) provides an overview of testing methodologies and can serve as a guide to developers that aim to implement testing practices.
+
+#### Table 1: Overview of testing approaches
+
+<table cellpadding=0 cellspacing=0 width=1185 style='border-collapse:collapse table-layout:fixed;width:435pt'>
+ <col width=179 style='mso-width-source:userset;mso=-width-alt:6260 width:135pt'>
+ <col width=465 style='mso-width-source:userset;mso=-width-alt:16221;width:349pt'>
+ <col width=541 style='mso-width-source:userset;mso=-width-alt:18897;width:406pt'>
+ <tr height=19 style='height:14.5pt'>
+  <td height=19 width=179 style='height:14.5pt;width:135pt'>
+  <b>Name</b></td>
+  <td width=465 style='border-left:none;width:349pt'><b>Description</b></td>
+  <td width=541 style='border-left:none;width:406pt'><b>Example</b></td>
+ </tr>
+ <tr height=19 style='height:14.5pt'>
+  <td colspan=3 height=19 width=1185 style='border=-right:.5pt solid black;height:14.5pt;width:890pt'>
+  <b>Installation testing: can the software be invoked on different setups?</b></td>
+ </tr>
+ <tr height=19 style='height:14.5pt'>
+  <td height=19 width=179 style='height:14.5pt;borde=
+r-top:none;
+  width:135pt'><b>Installation testing</b></td>
+  <td width=465 style='border-top:none;border-left:none;width:349pt'>
+  Can the software be installed on different platforms?</td>
+  <td width=541 style='border-top:none;border-left:none;width:406pt'>
+  <i>Test whether Software X can be installed using apt-get, pip, conda and from source.</i></td>
+ </tr>
+ <tr height=19 style='height:14.5pt'>
+  <td height=19  width=179 style='height:14.5pt;border-top:none;width:135pt'>
+  <b>Configuration testing</b></td>
+  <td  width=465 style='border-top:none;border-left:none;width:349pt'>
+  With which dependencies can the software be used?</td>
+  <td  width=541 style='border-top:none;border-left:none;width:406pt'>
+  <i>Test whether Software X can be used with different versions of BLAST+.</i></td>
+ </tr>
+ <tr height=39 style='height:29.0pt'>
+  <td height=39  width=179 style='height:29.0pt;border-top:none;width:135pt'>
+  <b>Implementation testing<b></td>
+  <td  width=465 style='border-top:none;border-left:none;width:349pt'>
+  Do different implementations work similarly enough?</td>
+  <td  width=541 style='border-top:none;border-left:none;width:406pt'>
+  <i>Test whether Software X works the same between the standalone and webserver versions.</i></td>
+ </tr>
+ <tr height=19 style='height:14.5pt'>
+  <td height=19  width=179 style='height:14.5pt;border-top:none;width:135pt'>
+  <b>Compatibility testing</b></td>
+  <td  width=465 style='border-top:none;border-left:none;width:349pt'>
+  Are newer versions compatible with previous input/output?</td>
+  <td  width=541 style='border-top:none;border-left:none;width:406pt'>
+  <i>Test whether Software X can be used with older versions of the UniProtKB database.</i></td>
+ </tr>
+ <tr height=39 style='height:29.0pt'>
+  <td height=39  width=179 style='height:29.0pt;border-top:none;width:135pt'>
+  <b>Static testing</b></td>
+  <td  width=465 style='border-top:none;border-left:none;width:349pt'>
+  Is the source code syntactically correct?</td>
+  <td  width=541 style='border-top:none;border-left:none;width:406pt'>
+  <i>Check whether all opening braces have corresponding closing braces or whether code is indented correctly in Software X.</i></td>
+ </tr>
+ <tr height=20 style='mso-height-source:userset;height:15.0pt'>
+  <td colspan=3 height=20 width=1185 style='border=
+-right:.5pt solid black;
+  height:15.0pt;width:890pt'><b>Standard functionality testing: does the software do what it should in daily use?</b></td>
+ </tr>
+ <tr height=19 style='height:14.5pt'>
+  <td height=19  width=179 style='height:14.5pt;border-top:none;width:135pt'>
+  <b>Use case testing</b></td>
+  <td  width=465 style='border-top:none;border-left:none;width:349pt'>
+  Can the software do what it is supposed to do regularly?</td>
+  <td  width=541 style='border-top:none;border-left:none;width:406pt'>
+  <i>Test whether Software X can annotate a small plasmid.</i></td>
+ </tr>
+ <tr height=39 style='height:29.0pt'>
+  <td height=39  width=179 style='height:29.0pt;border-top:none;width:135pt'>
+  <b>Workflow testing</b></td>
+  <td  width=465 style='border-top:none;border-left:none;width:349pt'>
+  Can the software succesfully traverse each path in the analysis?</td>
+  <td  width=541 style='border-top:none;border-left:none;width:406pt'>
+  <i>Test whether Software X works in different modes (using fast mode, using rnammer over barrnap or using rfam mode).</i></td>
+ </tr>
+ <tr height=39 style='height:29.0pt'>
+  <td height=39  width=179 style='height:29.0pt;border-top:none;width:135pt'>
+  <b>Sanity testing</b></td>
+  <td  width=465 style='border-top:none;border-left:none;width:349pt'>
+  Can the software be invoked without errors?</td>
+  <td  width=541 style='border-top:none;border-left:none;width:406pt'>
+  <i>Test whether Software X works correctly without flags, or when checking dependencies or displaying help info.</i></td>
+ </tr>
+ <tr height=20 style='mso-height-source:userset;height:15.0pt'>
+  <td colspan=3 height=20 width=1185 style='border-right:.5pt solid black;
+  height:15.0pt;width:890pt'>
+  <b>Destructive testing: what makes the software fail?</b></td>
+ </tr>
+ <tr height=58 style='height:43.5pt'>
+  <td height=58  width=179 style='height:43.5pt;border-top:none;width:135pt'>
+  <b>Mutation/fuzz testing</b></td>
+  <td  width=465 style='border-top:none;border-left:none;width:349pt'>
+  How does the software handle different inputs and at which point does the software fail?</td>
+  <td  width=541 style='border-top:none;border-left:none;width:406pt'>
+  <i>Test whether Software X can annotate different FASTA files: with spaces in the header, without a header, an empty file, with spaces in the sequence, with unknown characters in the sequences, et cetera.</i></td>
+ </tr>
+ <tr height=39 style='height:29.0pt'>
+  <td height=39  width=179 style='height:29.0pt;border-top:none;width:135pt'>
+  <b>Load testing</b></td>
+  <td  width=465 style='border-top:none;border-left:none;width:349pt'>
+  At what input size does the software fail?</td>
+  <td  width=541 style='border-top:none;border-left:none;width:406pt'>
+  <i>Test whether Software X can annotate a small plasmid (10 Kbp), a medium-size genome (2 Mbp) or an unrealistically large genome for a prokaryote (1 Gbp).</i></td>
+ </tr>
+ <tr height=39 style='height:29.0pt'>
+  <td height=39  width=179 style='height:29.0pt;border-top:none;width:135pt'>
+  <b>Fault injection</b></td>
+  <td  width=465 style='border-top:none;border-left:none;width:349pt'>
+  Does the software fail if faults are introduced and how is this handled?</td>
+  <td  width=541 style='border-top:none border-left:none;width:406pt'>
+  <i>Test whether Software X fails if nonsense functions are introduced in the gene calling code.</i></td>
+ </tr>
+</table>
+<br>
+
+### 2. Input test files: the good, the bad, and the ugly
+
+When testing, it is important to include test files with known expected outcomes for a successful run.
+However, it is equally important to include files on which the tool is expected to fail.
+For example, some tools should recognize and report an empty input file or a wrong input format.
+Examples of valid and invalid file formats are available through the [BioJulia project](https://github.com/BioJulia/BioFmtSpecimens).
+
+### 3. Use an easy-to-follow language format to implement testing
+
+Understanding the test workflow is necessary not only to ensure continued software development but also the integrity of the project for developers and users.
+This can be done through the adoption of a standardized and easy-to-follow format, such as [YAML](https://yaml.org/).
+
+Additionally, testing packages or frameworks offer an efficient approach to test creation and design.
+Frameworks such as [unittest](https://docs.python.org/3/library/unittest.html) or [pytest](https://docs.pytest.org/en/stable/) for Python improve test efficiency, help bug detection and reduce manual intervention.  
+When possible frameworks should be integrated into test workflows.
+
+### 4. Testing is good, automated testing is better
+
+When designing tests for your software, plan to automate.
+Whether your tests are small or comprehensive, automatic triggering of tests will help reduce your workload.
+
+Many platforms trigger tests automatically based on a set of user-defined conditions. Platforms such as [GitHub Actions](https://github.com/features/actions), [GitLab CI](https://about.gitlab.com/stages-devops-lifecycle/continuous-integration), [CircleCI](https://circleci.com/), [Travis CI](https://www.travis-ci.com/) or [Jenkins](https://www.jenkins.io/) offer straightforward automated testing of code seamlessly upon deployment.
+
+### 5. Try the test once, then try it again
+
+The result of an automated test in the context of one computational workspace does not ensure the same result will be obtained in a different setup.
+Although package managers and containers have reduced variability between workspaces, it is still important to ensure your software can be installed and used across supported platforms.
+One way to ensure this is to test on different environments, with varying dependency versions (e.g., multiple Python versions, instead of only the most recent one).
+
+### 6. Showcase the tests
+
+For prospective users, it is good to know whether you have tested your software and, if so, which tests you have included.
+This can be done by displaying a badge in your [Github README](), or linking to your defined testing strategy e.g. a Github Actions YAML, (see [recommendation #2]()).
+
+Documenting the testing goal and process enables end-users to easily check tool functionality and the level of testing.
+
+We recommend contacting the authors, directly or through issues in the code repository, whose software you have tested to share successful outcomes or if you encountered abnormal behavior or component failures.
+An external perspective can be useful to find bugs that the authors are unaware of.  
+
+### 7. Encourage others to test your software
+
+Software testing can be crowd-sourced, as showcased by the ASM NGS 2020 Hackathon.
+Software suites such as [Pangolin](https://github.com/cov-lineages/pangolin) and [chewBBACA](https://github.com/B-UMMI/chewBBACA) have implemented automated testing developed during the Hackathon.
+
+For developers, crowd-sourcing offers the benefits of fresh eyes on your software.
+Feedback and contributions from users can expedite the implementation of software testing practices.
+It also contributes to software sustainability by creating community buy-in, which ultimately helps the software maintainers keep pace with dependency changes, and identify current user needs.
+
+## Example software testing
 
 | Software | badge with link to CI | version badge | yaml |
 |----------|-----------------------|---------------|------|
 | [This repo](https://github.com/microbinfie-hackathon2020/CSIS/workflows/CSIS) | [![CSIS](https://github.com/microbinfie-hackathon2020/CSIS/workflows/CSIS/badge.svg)](https://github.com/microbinfie-hackathon2020/CSIS/actions?query=workflow%3ACSIS) | [![Tested Version](https://img.shields.io/badge/version-v1-brightgreen)](https://github.com/microbinfie-hackathon2020/CSIS) |  [CSIS.yml](/.github/workflows/CSIS.yml) |
-| [Genotyphi](https://github.com/katholt/genotyphi)   | [![genotyphi](https://github.com/microbinfie-hackathon2020/CSIS/workflows/genotyphi/badge.svg)](https://github.com/microbinfie-hackathon2020/CSIS/actions?query=workflow%3Agenotyphi) | [![Tested Version](https://img.shields.io/badge/version-4296976-brightgreen)](https://github.com/katholt/genotyphi/tree/42969769753a53bb74f15bfb3d60846b5828ff91) | [genotyphi.yml](/.github/workflows/genotyphi.yml) |
+| [Genotyphi](https://github.com/katholt/genotyphi)   | [![genotyphi](https://github.com/microbinfie-hackathon2020/CSIS/workflows/genotyphi/badge.svg)](https://github.com/microbinfie-hackathon2020/CSIS/actions?query=workflow%3Agenotyphi) | [![Tested Version](https://img.shields.io/badge/version-4296976-brightgreen)](https://github.com/katholt/genotyphi/tree/42969769753a53bb74f15bfb60846b5828ff91) | [genotyphi.yml](/.github/workflows/genotyphi.yml) |
 | [Kraken](https://github.com/DerrickWood/kraken)   | [![kraken](https://github.com/microbinfie-hackathon2020/CSIS/workflows/kraken/badge.svg)](https://github.com/microbinfie-hackathon2020/CSIS/actions?query=workflow%3Akraken) | [![Tested Version](https://img.shields.io/badge/version-v1.1.1-brightgreen)](https://github.com/DerrickWood/kraken/releases/tag/v1.1.1) | [kraken.yml](/.github/workflows/kraken.yml) |
 | [KrakenUniq](https://github.com/fbreitwieser/krakenuniq)   | [![krakenuniq](https://github.com/microbinfie-hackathon2020/CSIS/workflows/krakenuniq/badge.svg)](https://github.com/microbinfie-hackathon2020/CSIS/actions?query=workflow%3Akrakenuniq) | [![Tested Version](https://img.shields.io/badge/version-v0.5.8-brightgreen)](https://github.com/fbreitwieser/krakenuniq/releases/tag/v0.5.8) | [krakenuniq.yml](/.github/workflows/krakenuniq.yml) |
 | [Kraken2](https://github.com/DerrickWood/kraken2)   | [![kraken2](https://github.com/microbinfie-hackathon2020/CSIS/workflows/kraken2/badge.svg)](https://github.com/microbinfie-hackathon2020/CSIS/actions?query=workflow%3Akraken2) | [![Tested Version](https://img.shields.io/badge/version-v2.1.1-brightgreen)](https://github.com/DerrickWood/kraken2/releases/tag/v2.1.1) | [kraken2.yml](/.github/workflows/kraken2.yml) |
@@ -30,59 +223,12 @@ We are adding basic unit tests for bioinformatics software here using the GitHub
 | [CheckM](https://github.com/Ecogenomics/CheckM)    | [![checkm](https://github.com/microbinfie-hackathon2020/CSIS/workflows/checkm/badge.svg)](https://github.com/microbinfie-hackathon2020/CSIS/actions?query=workflow%3Acheckm) | [![Tested Version](https://img.shields.io/badge/version-v1.1.3-brightgreen)](https://github.com/Ecogenomics/CheckM/releases/tag/v1.1.3) | [checkm.yml](/.github/workflows/checkm.yml) |
 | [iVar](https://github.com/andersen-lab/ivar)   | [![iVar](https://github.com/microbinfie-hackathon2020/CSIS/workflows/ivar/badge.svg)](https://github.com/microbinfie-hackathon2020/CSIS/actions?query=workflow%3Aivar) | [![Tested Version](https://img.shields.io/badge/version-v1.3-brightgreen)](https://github.com/andersen-lab/ivar) | [ivar.yml](/.github/workflows/ivar.yml) |
 
-## Long story
-
-### Why is this useful?
-
-If you have a project hosted on GitHub, you want to make sure it keeps working even if your code evolves through time. 
-You push your own changes to the project and other people might fork your code and open pull requests. 
-Checking whether the updated code works as expected is a repetitve task, and can be automated. 
-However, this automated testing is missing from a lot of current projects.
-
-### How does automated testing work?
-
-GitHub Actions offers automated testing of code, which get triggered by certain events (e.g. pull requests). 
-A new virtual machines is started on GitHub-hosted servers, on which the code gets installed and subsequently runs through a number of tests. 
-Several virtual machine configurations are available, allowing users to test their code in a wide range of environments
-(e.g. different operating systems or using different versions of Python). 
-You can also choose to host your own custom virtual machine for testing, if this is necessary. 
-The exact automated testing workflow is defined in a `.yml` file, which describes the configuration of the system(s) you want to test on,
-the code and version you want to test, and the commands that make up the tests themselves. 
-
-For more information on GitHub Actions, see [the documentation](https://docs.github.com/en/free-pro-team@latest/actions).
-
-For test ideas and examples using Prokka and Quast, see [EXAMPLES.md](EXAMPLES.md).
-
-### Why is this a cool idea for a hackathon?
-
-* Multiple widely-used tools could benefit from automated testing.
-* This is a process that can be crowdsourced well. 
-* Participants learn valuable skills that can be brought back to their own projects. 
-* Early warning system for software that is breaking
-
-### Why GitHub Actions?
-
-There are many continuous integration (CI) platforms available.
-Examples include CircleCI, Travis, Galaxy's Planemo or Jenkins.
-While many of these platforms offer the same or highly similar functionalities, GitHub Actions offers a couple of advantages:
-
-1. Actions fully integrates with GitHub
-2. Actions is completely free for public repositories, including running builds and tests on GitHub servers
-3. Actions provides many premade configurations on Marketplace
-
-Based on these characteristics, we think that GitHub Actions is a great way to learn CI and unit testing.
-
-# Contributing
-
-Please see [CONTRIBUTING.md](CONTRIBUTING.md)
-
-Register your team at [TEAMS.md](TEAMS.md)
-
-# Practicalities
-
-Please see [HACKATHON.md](HACKATHON.md) for information on the teams, schedule, communication and other practicalities.
-
-# Etymology
+## Etymology
 
 CSIS is a play on the acronym for the [United States Food Safety Inspection Service](https://www.fsis.usda.gov).
 Additionally, it has CSI in the acronym (Crime Scene Investigation) which has a sort of detective feel to it.
+
+## Contributors
+The following participants were responsible for compiling the set of recommendations presented in this repository: [Boas van der Putten](https://github.com/boasvdp) [Inês Mendes](https://github.com/cimendes), [Brook Talbot](https://github.com/bmtalbot), [Jolinda de Korne-Elenbaas](https://github.com/jolindadekorne), [Rafael Mamede](https://github.com/rfm-targa), [Pedro Vila-Cerqueira](https://github.com/pedrorvc), [Luis Pedro Coelho](https://github.com/luispedro), [Christopher A. Gulvik](https://github.com/chrisgulvik), [Lee S. Kat](https://github.com/lskatz). 
+
+The following participants were contributed in automating tests for bioinformatics and contributing a community resource for identifying software that can pass unit tests, available in this repository: [Áine O'Toole](https://github.com/aineniamh), [Justin Payne](https://github.com/crashfrog), [Mário Ramirez](https://github.com/orgs/B-UMMI/people/ramirma), [Peter van Heusden](https://github.com/pvanheus), [Robert A. Petit III](https://github.com/rpetit3), [Verity Hill](), [Yvette Unoarumhi](). 

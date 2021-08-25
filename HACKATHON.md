@@ -87,4 +87,3 @@ Each team will have a channel, named after their team.
 Although Discord is encouraged, each team can decide if there is a different platform that they would like to set up for themselves.
 * To communicate new pull requests, please start with a new issue in GitHub.
 * The hackathon itself will be held over Zoom.
-
