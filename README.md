@@ -18,6 +18,11 @@ Despite these efforts, sustainability and reproducibility are major issues since
 Based on the experiences from our Hackathon, we developed a set of seven recommendations for researchers seeking to improve the quality and reproducibility of their analyses through software testing.
 We propose collaborative software testing as an opportunity to continuously engage software users, developers, and students to unify scientific work across domains.
 
+## Our Aim
+
+In the field of microbial bioinformatics, good software engineering practices are not widely adopted (yet). Many microbial bioinformaticians start out as (micro)biologists and subsequently learn how to code. 
+Without abundant formal training, a lot of education about good software engineering practices comes down to an exchange of information within the microbial bioinformatics community. 
+That is also where we aim to position our repository: as a resource that could help microbial bioinformaticians get started with software testing if they have not had formal training. 
 
 ## Our Recommendations
 
