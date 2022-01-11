@@ -185,7 +185,7 @@ One way to ensure this is to test on different environments, with varying depend
 ### 6. Showcase the tests
 
 For prospective users, it is good to know whether you have tested your software and, if so, which tests you have included.
-This can be done by displaying a badge in your [Github README](), or linking to your defined testing strategy e.g. a Github Actions YAML, (see [recommendation #2]()).
+This can be done by displaying [a badge](https://shields.io/) in your [Github README](https://github.com/microbinfie-hackathon2020/CSIS#example-software-testing), or linking to your defined testing strategy e.g. a Github Actions YAML, (see [recommendation #2](https://github.com/microbinfie-hackathon2020/CSIS#2-input-test-files-the-good-the-bad-and-the-ugly)).
 
 Documenting the testing goal and process enables end-users to easily check tool functionality and the level of testing.
 
