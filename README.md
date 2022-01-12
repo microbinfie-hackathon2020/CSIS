@@ -133,11 +133,11 @@ r-top:none;
  </tr>
  <tr height=58 style='height:43.5pt'>
   <td height=58  width=179 style='height:43.5pt;border-top:none;width:135pt'>
-  <b>Mutation/fuzz testing</b></td>
+  <b>Mutation testing</b></td>
   <td  width=465 style='border-top:none;border-left:none;width:349pt'>
-  How does the software handle different inputs and at which point does the software fail?</td>
+  How do the current tests handle harmful alterations to the software?</td>
   <td  width=541 style='border-top:none;border-left:none;width:406pt'>
-  <i>Test whether Software X can annotate different FASTA files: with spaces in the header, without a header, an empty file, with spaces in the sequence, with unknown characters in the sequences, et cetera.</i></td>
+  <i>Test whether changing a single addition to a subtraction within Software X causes the test suite to fail.</i></td>
  </tr>
  <tr height=39 style='height:29.0pt'>
   <td height=39  width=179 style='height:29.0pt;border-top:none;width:135pt'>
