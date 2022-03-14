@@ -1,5 +1,19 @@
 # CONTRIBUTING
 
+The hackathon has been completed and our collaborative manuscript has been published in Microbial Genomics (https://doi.org/10.1099/mgen.0.000790). However, we are still welcoming contributions to this repository.
+
+We especially welcome contributions of two kinds:
+1. Adding or improving guidelines for software testing.
+2. Testing workflows which serve as good examples for the microbial bioinformatics community.
+
+For all other contributions, we will first assess whether these fit the intended scope of this repository.
+
+
+
+## THE INFORMATION BELOW DESCRIBES CONTRIBUTING GUIDELINES DURING THE HACKATHON (DECEMBER 2020). CURRENT CONTRIBUTING GUIDELINES ARE LISTED ABOVE
+*During the hackathon, contributions focused on implementing software testing workflows using GitHub Actions*
+
+
 ## Workflows
 
 Your team can create a workflow in the `.github/workflows` folder.
