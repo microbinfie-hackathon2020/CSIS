@@ -1,0 +1,49 @@
+type: article
+title: 'Software testing in microbial bioinformatics: a call to action'
+authors:
+- family-names: van der Putten
+  given-names: Boas C.L.
+- family-names: Mendes
+  given-names: C I
+- family-names: Talbot
+  given-names: Brooke M
+- family-names: de Korne-Elenbaas
+  given-names: Jolinda
+- family-names: Mamede
+  given-names: Rafael
+- family-names: Vila-Cerqueira
+  given-names: Pedro
+- family-names: Coelho
+  given-names: Luis Pedro
+- family-names: Gulvik
+  given-names: Christopher A
+- family-names: Katz
+  given-names: Lee S
+- family-names: participants
+  given-names: The ASM NGS 2020 Hackathon
+journal: Microbial Genomics
+year: '2022'
+publisher:
+  name: Microbiology Society
+volume: '8'
+issue: '3'
+keywords:
+- software testing
+- continuous integration
+- computational biology
+abstract: Computational algorithms have become an essential component of research,
+  with great efforts by the scientific community to raise standards on development
+  and distribution of code. Despite these efforts, sustainability and reproducibility
+  are major issues since continued validation through software testing is still not
+  a widely adopted practice. Here, we report seven recommendations that help researchers
+  implement software testing in microbial bioinformatics. We have developed these
+  recommendations based on our experience from a collaborative hackathon organised
+  prior to the American Society for Microbiology Next Generation Sequencing (ASM NGS)
+  2020 conference. We also present a repository hosting examples and guidelines for
+  testing, available from https://github.com/microbinfie-hackathon2020/CSIS.
+issn: 2057-5858
+doi: 10.1099/mgen.0.000790
+url: https://www.microbiologyresearch.org/content/journal/mgen/10.1099/mgen.0.000790
+identifiers:
+- type: url
+  value: https://doi.org/https://doi.org/10.1099/mgen.0.000790
